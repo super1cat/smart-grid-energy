@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Peekable dot icon interaction for Smart Grid Energy micro-content tooltips.">
+  <title>Peekable Dot</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Peekable Dot Style === */
+    .dot-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .dot-line {
+      position: relative;
+      font-size: clamp(16px, 2vw, 20px);
+      margin-bottom: clamp(24px, 4vw, 40px);
+      line-height: 1.6;
+    }
+
+    .peek-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background-color: #1b4d28;
+      border-radius: 50%;
+      margin-left: 8px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .peek-tip {
+      position: absolute;
+      bottom: 125%;
+      left: 0;
+      transform: translateX(-50%);
+      background-color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: #333;
+      font-size: clamp(14px, 1.8vw, 17px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      white-space: normal;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      min-width: 200px;
+      max-width: 280px;
+      z-index: 10;
+    }
+
+    .peek-tip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 14px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: #fff transparent transparent transparent;
+    }
+
+    .peek-dot:hover .peek-tip,
+    .peek-dot.active .peek-tip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="dot-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">Quick Clarifications When You Need Them</h1>
+
+    <div class="dot-line">
+      You don’t pay for the panels, just the electricity
+      <span class="peek-dot">
+        <div class="peek-tip">The PPA electric company owns and installs the system. You only pay for the power it produces, not the hardware itself.</div>
+      </span>
+    </div>
+
+    <div class="dot-line">
+      Repairs and replacements are covered
+      <span class="peek-dot">
+        <div class="peek-tip">If the system breaks or the battery fails, the provider handles all service and replacement at no cost to you.</div>
+      </span>
+    </div>
+
+    <div class="dot-line">
+      You’re not buying solar — you’re switching electric providers
+      <span class="peek-dot">
+        <div class="peek-tip">Think of it like changing who supplies your electricity. Solar just happens to be where it's coming from now.</div>
+      </span>
+    </div>
+  </main>
+
+  <script>
+    // Optional: toggle dot activation (touch-friendly)
+    document.querySelectorAll('.peek-dot').forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dot.classList.toggle('active');
+        // Close others
+        document.querySelectorAll('.peek-dot').forEach(other => {
+          if (other !== dot) other.classList.remove('active');
+        });
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.peek-dot').forEach(dot => dot.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

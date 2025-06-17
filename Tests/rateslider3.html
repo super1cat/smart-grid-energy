@@ -1,0 +1,121 @@
+<!-- 🌟 Dynamic Rate Comparison Panel – Version 2 -->
+<section class="rate-comparison-dynamic">
+    <h2 class="section-title">Why Pay More for the Same Electricity?</h2>
+    <p class="section-subtitle">See how California's top utility providers stack up against a locked-in Solar PPA rate.</p>
+  
+    <div class="card-grid">
+      <div class="rate-card">
+        <h3>PG&E</h3>
+        <div class="rate-value">44.65¢</div>
+        <p class="rate-caption">per kWh</p>
+        <div class="rate-bar" style="--value: 89%;"></div>
+      </div>
+      <div class="rate-card">
+        <h3>SDG&E</h3>
+        <div class="rate-value">38.3¢</div>
+        <p class="rate-caption">per kWh</p>
+        <div class="rate-bar" style="--value: 76.6%;"></div>
+      </div>
+      <div class="rate-card">
+        <h3>SCE</h3>
+        <div class="rate-value">31.4¢</div>
+        <p class="rate-caption">per kWh</p>
+        <div class="rate-bar" style="--value: 62.8%;"></div>
+      </div>
+      <div class="rate-card solar">
+        <h3>Solar PPA</h3>
+        <div class="rate-value">25¢</div>
+        <p class="rate-caption">per kWh</p>
+        <div class="rate-bar" style="--value: 50%;"></div>
+      </div>
+    </div>
+  
+    <div class="rate-footer">
+      <button class="cta-button" onclick="location.href='form1.html'">Check Your Savings</button>
+      <p class="disclaimer">Based on 2025 residential averages for homeowners not on CARE or discount programs.</p>
+    </div>
+  </section>
+  
+  <style>
+  .rate-comparison-dynamic {
+    background: #fff;
+    padding: clamp(40px, 6vw, 80px);
+    text-align: center;
+  }
+  .section-title {
+    font-size: clamp(24px, 4vw, 40px);
+    color: #1b4d28;
+    margin-bottom: 10px;
+  }
+  .section-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .rate-card {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 20px 24px;
+    width: 180px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+  }
+  .rate-card:hover {
+    transform: translateY(-6px);
+  }
+  .rate-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  .rate-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+  }
+  .rate-caption {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+  }
+  .rate-bar {
+    margin-top: 16px;
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, #1b4d28 var(--value), #ccc var(--value));
+    border-radius: 6px;
+  }
+  .solar {
+    background: #e8f4ea;
+    border: 2px solid #1b4d28;
+  }
+  .rate-footer {
+    margin-top: 40px;
+  }
+  .cta-button {
+    font-size: 18px;
+    padding: 12px 28px;
+    background-color: #1b4d28;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .cta-button:hover {
+    background-color: #143b1e;
+  }
+  .disclaimer {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #666;
+  }
+  </style>
+  

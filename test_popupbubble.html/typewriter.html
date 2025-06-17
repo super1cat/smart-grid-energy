@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Typewriter-style reveal effect for conversational PPA explanations.">
+  <title>Typewriter Reveal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Typewriter Reveal === */
+    .typewriter-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .tw-line {
+      margin-bottom: clamp(20px, 4vw, 36px);
+    }
+
+    .tw-trigger {
+      font-weight: 600;
+      font-size: clamp(16px, 2vw, 22px);
+      color: #1b4d28;
+      cursor: pointer;
+    }
+
+    .tw-output {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+      margin-top: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #1b4d28;
+      width: 0;
+      animation: none;
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #1b4d28; }
+    }
+
+    .tw-output.typing {
+      animation: typewriter 2s steps(50, end) forwards, blink 0.8s step-end infinite;
+    }
+  </style>
+</head>
+<body>
+  <main class="typewriter-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">Why a PPA Might Be Perfect for You</h1>
+
+    <div class="tw-line">
+      <div class="tw-trigger">I didn’t want to pay for solar equipment</div>
+      <div class="tw-output" data-text="With a PPA, the solar company installs and maintains everything — you just buy the power."></div>
+    </div>
+
+    <div class="tw-line">
+      <div class="tw-trigger">I didn’t want to deal with repairs or upgrades</div>
+      <div class="tw-output" data-text="All maintenance, monitoring, and even battery swaps are handled for you by the electric company."></div>
+    </div>
+
+    <div class="tw-line">
+      <div class="tw-trigger">I didn’t even know I could switch electric providers</div>
+      <div class="tw-output" data-text="You can — and you don’t have to buy solar to do it. Just get your power from the system installed on your home."></div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.tw-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const output = trigger.nextElementSibling;
+
+        // Reset others
+        document.querySelectorAll('.tw-output').forEach(out => {
+          out.classList.remove('typing');
+          out.textContent = '';
+        });
+
+        const fullText = output.dataset.text;
+        output.textContent = '';
+        output.classList.add('typing');
+
+        let i = 0;
+        const typeChar = () => {
+          if (i < fullText.length) {
+            output.textContent += fullText.charAt(i);
+            i++;
+            setTimeout(typeChar, 20);
+          } else {
+            output.style.borderRight = 'none';
+          }
+        };
+
+        setTimeout(typeChar, 200);
+      });
+    });
+  </script>
+</body>
+</html>

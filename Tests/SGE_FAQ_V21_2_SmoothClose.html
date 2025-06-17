@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Questions | Smart Grid Energy</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: clamp(16px, 4vw, 48px);
+      color: #111;
+    }
+
+    .faq-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: clamp(24px, 5vw, 48px);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .faq-header-block {
+      text-align: center;
+      margin-bottom: clamp(24px, 4vw, 48px);
+      padding: clamp(12px, 3vw, 24px);
+      border-bottom: 1px solid #d8d8d8;
+    }
+
+    h1.faq-heading {
+      font-size: clamp(32px, 6vw, 56px);
+      color: #1b4d28;
+      margin-bottom: 8px;
+    }
+
+    .faq-subhead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #444;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    .faq-category {
+      margin-bottom: clamp(20px, 3vw, 32px);
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 6px;
+    }
+
+    .faq-category-button {
+      background-color: #f5f6f7;
+      border-radius: 12px;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: clamp(16px, 2vw, 24px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq-category-button:hover {
+      background-color: #eaeaea;
+    }
+
+    .faq-category-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: #1b4d28;
+    }
+
+    .faq-category-desc {
+      font-size: clamp(14px, 2vw, 18px);
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .faq-category-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-arrow {
+      font-size: clamp(20px, 2.8vw, 28px);
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .rotate {
+      transform: rotate(90deg);
+    }
+
+    .faq-question-button {
+      background: #ffffff;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: clamp(16px, 2vw, 22px);
+      font-size: clamp(16px, 2vw, 20px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      box-shadow: inset 0 -1px 0 #e6e6e6;
+    }
+
+    .faq-question-button:hover {
+      background-color: #f4f4f4;
+    }
+
+    .faq-question-button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .faq-answer-content {
+      padding: clamp(16px, 2vw, 24px);
+      background-color: #f5f7f7;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.75;
+      color: #1a1a1a;
+      border-left: 4px solid #c3d2c1;
+      border-radius: 12px;
+      margin-bottom: clamp(8px, 1vw, 16px);
+    }
+
+    .faq-answer-content strong {
+      font-weight: 600;
+    }
+
+    .faq-questions,
+    .faq-answer {
+      overflow: hidden;
+      transition: height 0.4s ease;
+      height: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="faq-wrapper">
+    <div class="faq-header-block">
+      <h1 class="faq-heading">Common Questions</h1>
+      <div class="faq-subhead">Clear answers to the things homeowners ask us every day.</div>
+    </div>
+
+    
+<!-- Category 1 -->
+<section class="faq-category">
+  <button class="faq-category-button" data-toggle="category">
+    <div class="faq-category-text">
+      <div class="faq-category-title">⚡ Power Purchase Agreement Basics</div>
+      <div class="faq-category-desc">How solar electricity works when you don’t own the system.</div>
+    </div>
+    <span class="faq-arrow">›</span>
+  </button>
+  <div class="faq-questions">
+    <div class="faq-question">
+      <button class="faq-question-button">What is a Power Purchase Agreement?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> A PPA allows you to benefit from solar energy with no equipment ownership. You pay for electricity produced by the solar system at a lower rate than your current utility.</div></div>
+    </div>
+    <div class="faq-question">
+      <button class="faq-question-button">Who maintains the system if I don’t own it?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> The solar company handles installation, insurance, maintenance, and repairs — including battery replacement if needed. You simply use the power it generates.</div></div>
+    </div>
+    <div class="faq-question">
+      <button class="faq-question-button">What happens when the PPA term ends?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> At the end of your agreement, you may have the option to renew, upgrade, buy out the system at a discount, or request removal.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Category 2 -->
+<section class="faq-category">
+  <button class="faq-category-button" data-toggle="category">
+    <div class="faq-category-text">
+      <div class="faq-category-title">🔧 Owning Your Solar System</div>
+      <div class="faq-category-desc">For homeowners who want to purchase or finance solar equipment.</div>
+    </div>
+    <span class="faq-arrow">›</span>
+  </button>
+  <div class="faq-questions">
+    <div class="faq-question">
+      <button class="faq-question-button">What are the benefits of owning my system?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> Ownership means you're eligible for tax credits and other incentives. You build equity in the system and avoid future rate increases from utility companies.</div></div>
+    </div>
+    <div class="faq-question">
+      <button class="faq-question-button">Do I need to pay for maintenance if I own it?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> Yes, you are responsible for routine maintenance and ensuring your system runs optimally, although most systems require very little upkeep.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Category 3 -->
+<section class="faq-category">
+  <button class="faq-category-button" data-toggle="category">
+    <div class="faq-category-text">
+      <div class="faq-category-title">🔋 Battery Backup & Storage</div>
+      <div class="faq-category-desc">Information on solar batteries and blackout protection.</div>
+    </div>
+    <span class="faq-arrow">›</span>
+  </button>
+  <div class="faq-questions">
+    <div class="faq-question">
+      <button class="faq-question-button">Do all systems include a battery?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> No, but many systems — especially in high-outage areas — do include a battery. You can also add one later if needed for backup protection.</div></div>
+    </div>
+    <div class="faq-question">
+      <button class="faq-question-button">How long can a battery power my home?<span class="faq-arrow">›</span></button>
+      <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> Most batteries will power essentials (like a refrigerator, lights, and Wi-Fi) for 10 to 24 hours. Actual backup time depends on usage and battery size.</div></div>
+    </div>
+  </div>
+</section>
+
+    <section class="faq-category">
+      <button class="faq-category-button" data-toggle="category">
+        <div class="faq-category-text">
+          <div class="faq-category-title">⚡ Power Purchase Agreement Basics</div>
+          <div class="faq-category-desc">How solar electricity works when you don’t own the system.</div>
+        </div>
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-questions">
+        <div class="faq-question">
+          <button class="faq-question-button">What is a Power Purchase Agreement?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> A PPA lets you buy electricity from solar panels installed on your home without owning the equipment. You simply pay for the power the system produces at a rate that’s typically lower than your utility company’s — and the company takes care of the rest.</div></div>
+        </div>
+        <div class="faq-question">
+          <button class="faq-question-button">Who maintains the system if I don’t own it?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> The solar provider installs, insures, and maintains the entire system for you — including battery replacement and ongoing performance monitoring. That means no maintenance bills and no surprises.</div></div>
+        </div>
+        <div class="faq-question">
+          <button class="faq-question-button">What happens after my 20–25 year PPA ends?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> At the end of your agreement, you’ll typically have several options: renew at a new rate, upgrade to a more efficient system, purchase the system outright at a reduced price, or have the panels removed. The provider will walk you through these choices well in advance.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-toggle="category"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.closest('.faq-category');
+        const box = category.querySelector('.faq-questions');
+        const arrow = btn.querySelector('.faq-arrow');
+        const isOpen = box.classList.contains('open');
+
+        document.querySelectorAll('.faq-questions').forEach(q => {
+          q.style.height = '0px';
+          q.classList.remove('open');
+        });
+
+        document.querySelectorAll('.faq-category-button .faq-arrow').forEach(a => {
+          a.classList.remove('rotate');
+        });
+
+        if (!isOpen) {
+          box.classList.add('open');
+          arrow.classList.add('rotate');
+          box.style.height = box.scrollHeight + "px";
+          category.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-question-button').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const answer = btn.nextElementSibling;
+        const arrow = btn.querySelector('.faq-arrow');
+        const categoryBox = btn.closest('.faq-questions');
+        const isOpen = answer.style.height && answer.style.height !== '0px';
+
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.height = '0px');
+        document.querySelectorAll('.faq-question-button .faq-arrow').forEach(a => a.classList.remove('rotate'));
+
+        if (!isOpen) {
+          answer.style.height = answer.scrollHeight + 'px';
+          arrow.classList.add('rotate');
+          setTimeout(() => {
+            categoryBox.style.height = categoryBox.scrollHeight + 'px';
+          }, 300);
+          answer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          answer.style.height = '0px';
+          arrow.classList.remove('rotate');
+          setTimeout(() => {
+            categoryBox.style.height = categoryBox.scrollHeight + 'px';
+          }, 300);
+        }
+      });
+    });
+  
+    // Listen to all answer transitions and re-measure height
+    document.querySelectorAll('.faq-answer').forEach(answer => {
+      answer.addEventListener('transitionend', () => {
+        const categoryBox = answer.closest('.faq-questions');
+        if (categoryBox && categoryBox.classList.contains('open')) {
+          const openAnswers = categoryBox.querySelectorAll('.faq-answer[style*="height"]:not([style*="0px"])');
+          if (openAnswers.length === 0) {
+            categoryBox.style.height = categoryBox.scrollHeight + 'px';
+            setTimeout(() => {
+              categoryBox.style.height = '0px';
+              categoryBox.classList.remove('open');
+            }, 600); // slower close
+          } else {
+            categoryBox.style.height = categoryBox.scrollHeight + 'px';
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

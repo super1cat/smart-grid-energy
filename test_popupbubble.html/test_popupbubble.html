@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Floating pop-up bubbles for Smart Grid Energy benefit callouts.">
+  <title>Pop-Up Bubble Test</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Pop-Up Bubble Style === */
+    .popup-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+      position: relative;
+    }
+
+    .popup-trigger {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      color: #1b4d28;
+      cursor: pointer;
+    }
+
+    .popup-bubble {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background-color: #fff;
+      color: #333;
+      font-size: clamp(14px, 1.8vw, 18px);
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      max-width: 280px;
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .popup-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 20px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: #fff transparent transparent transparent;
+    }
+
+    .popup-trigger.active .popup-bubble {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="popup-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">PPA Benefits in Quick Hints</h1>
+
+    <p>
+      Most homeowners don’t realize that <span class="popup-trigger">they can switch electricity providers
+        <span class="popup-bubble">Instead of buying from your utility, you can get power from a solar provider who installs and maintains the system for you.</span>
+      </span> without buying solar panels.
+    </p>
+
+    <p>
+      With a PPA, <span class="popup-trigger">you don’t own the equipment
+        <span class="popup-bubble">The electric company owns, monitors, and replaces the system if anything breaks — you just buy the electricity.</span>
+      </span> but you benefit from lower, stable rates.
+    </p>
+
+    <p>
+      That also means <span class="popup-trigger">you avoid the upfront costs
+        <span class="popup-bubble">No need to pay for solar panels or batteries. The system is installed at no cost, and you just pay for power over time.</span>
+      </span> that come with buying solar.
+    </p>
+  </main>
+
+  <script>
+    // Toggle pop-up bubbles
+    document.querySelectorAll('.popup-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close others
+        document.querySelectorAll('.popup-trigger').forEach(other => {
+          if (other !== trigger) other.classList.remove('active');
+        });
+        trigger.classList.toggle('active');
+      });
+    });
+
+    // Close bubbles when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.popup-trigger').forEach(trigger => {
+        trigger.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

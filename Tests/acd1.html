@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Questions | Smart Grid Energy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Reset and Basic Style */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Search Box Style */
+        .search-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Main Category Box Styling */
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .category-box {
+            width: 45%;
+            height: 200px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-box img {
+            max-width: 80%;
+            margin-bottom: 15px;
+        }
+
+        .category-box h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .category-box p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 767px) {
+            .category-box {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .search-box input {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Search Box (Optional) -->
+    <div class="search-box">
+        <input type="text" id="faq-search" placeholder="Search for a question..." onkeyup="searchQuestions()">
+    </div>
+
+    <main>
+        <section class="faq-section">
+            <h1>Common Questions</h1>
+
+            <!-- Category Boxes: PPA, Ownership, Grid, Electricity -->
+            <div class="category-container">
+                
+                <!-- PPA Box -->
+                <div class="category-box" onclick="window.location.href='ppa-questions.html'">
+                    <img src="img/ppa-icon.png" alt="PPA" />
+                    <h3>PPA Questions</h3>
+                    <p>Learn more about Power Purchase Agreements and how they work for you.</p>
+                </div>
+
+                <!-- Ownership Box -->
+                <div class="category-box" onclick="window.location.href='ownership-questions.html'">
+                    <img src="img/ownership-icon.png" alt="Ownership" />
+                    <h3>Ownership Questions</h3>
+                    <p>Find out more about owning solar systems and what it means for you.</p>
+                </div>
+
+                <!-- Grid Box -->
+                <div class="category-box" onclick="window.location.href='grid-questions.html'">
+                    <img src="img/grid-icon.png" alt="Grid Providers" />
+                    <h3>Grid Providers</h3>
+                    <p>Understand how your electricity grid provider works and the options available.</p>
+                </div>
+
+                <!-- Electricity Box -->
+                <div class="category-box" onclick="window.location.href='electricity-questions.html'">
+                    <img src="img/electricity-icon.png" alt="Electricity" />
+                    <h3>Electricity Questions</h3>
+                    <p>Get answers to common questions about electricity usage, rates, and savings.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Search functionality (Optional)
+        function searchQuestions() {
+            const input = document.getElementById("faq-search");
+            const filter = input.value.toLowerCase();
+            const categories = document.querySelectorAll(".category-box");
+
+            categories.forEach(category => {
+                const categoryText = category.textContent.toLowerCase();
+                if (categoryText.indexOf(filter) > -1) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

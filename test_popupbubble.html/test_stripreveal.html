@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Highlight strip reveal layout for Smart Grid Energy's PPA solution points.">
+  <title>Highlight Strip Reveal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Highlight Strip Reveal === */
+    .highlight-strip-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .strip-row {
+      position: relative;
+      padding: clamp(14px, 3vw, 20px) clamp(16px, 4vw, 28px);
+      margin-bottom: clamp(16px, 3vw, 28px);
+      background-color: #fff;
+      border-left: 6px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.25s ease, background-color 0.25s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .strip-row.active {
+      border-color: #1b4d28;
+      background-color: #f5fbf7;
+    }
+
+    .strip-title {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: #111;
+    }
+
+    .strip-content {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+      margin-top: 10px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .strip-row.active .strip-content {
+      max-height: 300px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main class="highlight-strip-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">What Makes a PPA So Different?</h1>
+
+    <div class="strip-row">
+      <div class="strip-title">You don’t pay for the system — just the electricity</div>
+      <div class="strip-content">With a PPA, the provider installs and maintains the solar system on your home. You only pay for the power it generates, often at a lower rate than your utility.</div>
+    </div>
+
+    <div class="strip-row">
+      <div class="strip-title">Maintenance, monitoring, and battery replacements are included</div>
+      <div class="strip-content">The PPA electric company is responsible for keeping the system working. If the battery ever fails, they replace it — no added cost, no service call hassle.</div>
+    </div>
+
+    <div class="strip-row">
+      <div class="strip-title">Switching providers doesn’t mean buying solar</div>
+      <div class="strip-content">You don’t have to buy solar panels to switch electric companies. A PPA lets you change who provides your power — it just happens to come from your roof.</div>
+    </div>
+
+  </main>
+
+  <script>
+    // Toggle each highlight row
+    document.querySelectorAll('.strip-row').forEach(row => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

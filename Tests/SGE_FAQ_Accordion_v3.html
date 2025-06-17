@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common Questions | Smart Grid Energy</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7f7f7;
+      padding: 20px;
+      color: #111;
+    }
+
+    .faq-wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #1b4d28;
+    }
+
+    .category-block {
+      background-color: #e3e8dd;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    .category-block:hover {
+      background-color: #d7ddcf;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1b4d28;
+    }
+
+    .category-desc {
+      font-size: 14px;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .faq-category {
+      margin-bottom: 20px;
+    }
+
+    .faq-questions {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .faq-question {
+      padding: 16px 20px;
+      font-size: 16px;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .faq-question:nth-child(even) {
+      background-color: #efefef;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 14px 20px;
+      background-color: #f1f6f2;
+      font-size: 15px;
+      line-height: 1.6;
+      font-style: italic;
+      color: #2e2e2e;
+      border-left: 4px solid #c1d1b0;
+    }
+
+    .arrow {
+      font-size: 16px;
+      transition: transform 0.3s;
+    }
+
+    .faq-question.open .arrow {
+      transform: rotate(90deg);
+    }
+
+    .faq-question.open + .faq-answer {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="faq-wrapper">
+    <h1>Common Questions</h1>
+
+    <div class="faq-category" data-category>
+      <div class="category-block">
+        <div>
+          <div class="category-title">⚡ Power Purchase Agreement Basics</div>
+          <div class="category-desc">How solar electricity works when you don’t own the system.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question">What is a Power Purchase Agreement?<span class="arrow">›</span></div>
+        <div class="faq-answer">A PPA lets you buy electricity from solar panels installed on your home without owning the equipment.</div>
+        <div class="faq-question">Who maintains the system?<span class="arrow">›</span></div>
+        <div class="faq-answer">The provider installs, insures, and maintains the solar system for you, including battery replacement.</div>
+      </div>
+    </div>
+
+    <div class="faq-category" data-category>
+      <div class="category-block">
+        <div>
+          <div class="category-title">🔧 Owning Your Solar System</div>
+          <div class="category-desc">For those considering buying or financing solar equipment.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question">Can I own the solar system?<span class="arrow">›</span></div>
+        <div class="faq-answer">Yes. Some homeowners choose to buy or finance their solar system for full ownership.</div>
+      </div>
+    </div>
+
+    <div class="faq-category" data-category>
+      <div class="category-block">
+        <div>
+          <div class="category-title">🏛️ Electric Companies – PG&E, SDG&E, and others</div>
+          <div class="category-desc">What you should know about your current utility provider.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question">How is this different from my utility?<span class="arrow">›</span></div>
+        <div class="faq-answer">You're still getting power, just from solar panels installed on your home—at better rates.</div>
+      </div>
+    </div>
+
+    <div class="faq-category" data-category>
+      <div class="category-block">
+        <div>
+          <div class="category-title">🔋 How Solar and Batteries Work</div>
+          <div class="category-desc">Answers about how solar energy powers your home and stores energy.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question">How does solar power my home?<span class="arrow">›</span></div>
+        <div class="faq-answer">Sunlight is converted into electricity that powers your home or is stored in a battery for later.</div>
+      </div>
+    </div>
+
+    <div class="faq-category" data-category>
+      <div class="category-block">
+        <div>
+          <div class="category-title">💡 General Electricity Questions</div>
+          <div class="category-desc">Common questions about energy, usage, and grid connection.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question">Will I still be connected to the grid?<span class="arrow">›</span></div>
+        <div class="faq-answer">Yes. You stay connected to the grid as backup—most of your power will come from your own roof.</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // One open category at a time
+  const categories = document.querySelectorAll('[data-category]');
+  categories.forEach(cat => {
+    const toggle = cat.querySelector('.category-block');
+    toggle.addEventListener('click', () => {
+      categories.forEach(c => {
+        if (c !== cat) c.querySelector('.faq-questions').style.display = 'none';
+      });
+      const questions = cat.querySelector('.faq-questions');
+      questions.style.display = questions.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // One question open per category
+    cat.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cat.querySelectorAll('.faq-question').forEach(other => {
+          if (other !== q) other.classList.remove('open');
+        });
+        q.classList.toggle('open');
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clean bullet-point expander with lightbulb icon for Smart Grid Energy">
+  <title>Simple Lightbulb Reveal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Simple Lightbulb Reveal === */
+    .lightbulb-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .lightbulb-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      padding: clamp(14px, 2vw, 20px) 0;
+      transition: background-color 0.25s ease;
+    }
+
+    .lightbulb-row:hover .icon {
+      filter: brightness(1.4);
+    }
+
+    .lightbulb-row.active {
+      background-color: #eaf1fb;
+      border-radius: 6px;
+      padding: clamp(14px, 2vw, 20px);
+    }
+
+    .icon {
+      width: clamp(22px, 3vw, 28px);
+      height: clamp(22px, 3vw, 28px);
+      transition: filter 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .lightbulb-text {
+      flex: 1;
+    }
+
+    .headline {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: #111;
+    }
+
+    .details {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+      margin-top: 8px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .lightbulb-row.active .details {
+      max-height: 300px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main class="lightbulb-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">What Makes This Work</h1>
+
+    <div class="lightbulb-row">
+      <img src="img/lightbulb-white.svg" class="icon" alt="Lightbulb">
+      <div class="lightbulb-text">
+        <div class="headline">You don’t pay for equipment</div>
+        <div class="details">The provider installs and owns the solar system. You simply buy the electricity it produces at a more affordable rate.</div>
+      </div>
+    </div>
+
+    <div class="lightbulb-row">
+      <img src="img/lightbulb-white.svg" class="icon" alt="Lightbulb">
+      <div class="lightbulb-text">
+        <div class="headline">The battery is maintained and replaced if needed</div>
+        <div class="details">If something goes wrong with the system or the battery wears out, the electric company replaces it at no cost to you.</div>
+      </div>
+    </div>
+
+    <div class="lightbulb-row">
+      <img src="img/lightbulb-white.svg" class="icon" alt="Lightbulb">
+      <div class="lightbulb-text">
+        <div class="headline">You’re just switching electric companies</div>
+        <div class="details">Instead of buying electricity from your utility, you get it from a company that installs solar and delivers power directly from your roof.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle open state on each row
+    document.querySelectorAll('.lightbulb-row').forEach(row => {
+      row.addEventListener('click', () => {
+        row.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

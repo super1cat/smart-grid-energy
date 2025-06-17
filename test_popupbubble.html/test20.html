@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGE Solution Bullet Expander</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #0f2842;
+      color: white;
+      margin: 0;
+      padding: clamp(40px, 5vw, 80px);
+    }
+
+    .solution-section {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .solution-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: left;
+    }
+
+    .solution-bullet {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .solution-bullet img {
+      width: 40px;
+      height: 56px;
+      filter: drop-shadow(0 0 2px white) brightness(1.1);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .solution-bullet img:hover {
+      filter: brightness(1.8);
+    }
+
+    .solution-bullet img.active {
+      filter: drop-shadow(0 0 6px #f0c14b) brightness(2.2);
+    }
+
+    .solution-title {
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      font-weight: 700;
+    }
+
+    .solution-dropdown {
+      background-color: #fff9e6;
+      color: #0f2842;
+      margin-left: 60px;
+      padding: 20px clamp(20px, 4vw, 40px);
+      border-radius: 20px;
+      margin-top: 20px;
+      display: none;
+      position: relative;
+    }
+
+    .solution-dropdown::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background-color: #f0c14b;
+      border-radius: 0 4px 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="solution-section">
+    <h2>Here's How It Works</h2>
+
+    <div class="solution-bullet" data-index="0">
+      <img src="img/white_bulb.png" alt="Light Bulb" class="bulb" />
+      <div class="solution-title">You don’t pay for the system</div>
+    </div>
+    <div class="solution-dropdown">
+      <p>The solar equipment is installed and owned by the electric company. You only pay for the electricity it produces — not for the panels, batteries, or maintenance.</p>
+    </div>
+
+    <div class="solution-bullet" data-index="1">
+      <img src="img/white_bulb.png" alt="Light Bulb" class="bulb" />
+      <div class="solution-title">Maintenance is fully covered</div>
+    </div>
+    <div class="solution-dropdown">
+      <p>Monitoring, repairs, and even battery swaps are all handled for you. No surprise bills. No service scheduling. Just power, backed by full coverage.</p>
+    </div>
+
+    <div class="solution-bullet" data-index="2">
+      <img src="img/white_bulb.png" alt="Light Bulb" class="bulb" />
+      <div class="solution-title">You’re just switching providers</div>
+    </div>
+    <div class="solution-dropdown">
+      <p>Instead of buying electricity from your old utility, you now get it directly from the solar system on your home — at a lower, fixed rate. Same lights, better power source.</p>
+    </div>
+  </section>
+
+  <script>
+    const bullets = document.querySelectorAll('.solution-bullet');
+    const dropdowns = document.querySelectorAll('.solution-dropdown');
+
+    bullets.forEach((bullet, index) => {
+      bullet.addEventListener('click', (e) => {
+        const bulb = bullet.querySelector('img');
+        const dropdown = dropdowns[index];
+
+        dropdowns.forEach((d, i) => {
+          if (i !== index) d.style.display = 'none';
+          bullets[i].querySelector('img').src = 'img/white_bulb.png';
+          bullets[i].querySelector('img').classList.remove('active');
+        });
+
+        if (dropdown.style.display === 'block') {
+          dropdown.style.display = 'none';
+          bulb.src = 'img/white_bulb.png';
+          bulb.classList.remove('active');
+        } else {
+          dropdown.style.display = 'block';
+          bulb.src = 'img/bulb.png';
+          bulb.classList.add('active');
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.solution-bullet')) {
+        dropdowns.forEach(d => d.style.display = 'none');
+        bullets.forEach(b => {
+          const img = b.querySelector('img');
+          img.src = 'img/white_bulb.png';
+          img.classList.remove('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

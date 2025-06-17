@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Questions | Smart Grid Energy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic Styles */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    /* Search Box */
+    .search-box {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .search-box input {
+      width: 80%;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      margin: 20px auto;
+      display: block;
+      box-sizing: border-box;
+    }
+
+    /* Accordion Container */
+    .faq-section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-category {
+      margin-bottom: 30px;
+    }
+
+    /* Accordion Header (Category Title) */
+    .accordion {
+      background-color: #D3D3D3; /* Lighter Gray for header */
+      color: #333;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      font-size: 22px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      font-weight: 700;
+    }
+
+    .accordion:hover {
+      background-color: #B8B8B8; /* Slightly darker gray on hover */
+    }
+
+    /* Accordion Content */
+    .accordion-content {
+      display: none;
+      padding: 12px 20px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .accordion.active + .accordion-content {
+      display: block;
+    }
+
+    .faq-category p {
+      font-size: 18px;
+      margin: 10px 0;
+      padding: 8px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      transition: background-color 0.2s ease;
+    }
+
+    /* Alternating Colors for Questions */
+    .faq-category .accordion-content p:nth-child(odd) {
+      background-color: #e1e1e1;
+    }
+
+    .faq-category .accordion-content p:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 767px) {
+      .accordion {
+        font-size: 18px; /* Adjust font size on mobile */
+        padding: 14px;
+      }
+
+      .accordion-content {
+        padding: 12px;
+      }
+
+      .search-box input {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Search Box -->
+  <div class="search-box">
+    <input type="text" id="faq-search" placeholder="Search for a question..." onkeyup="searchQuestions()">
+  </div>
+
+  <main>
+    <section class="faq-section">
+      <h1>Common Questions</h1>
+
+      <!-- Category 1: PPA Questions -->
+      <div class="faq-category">
+        <button class="accordion">PPA Questions</button>
+        <div class="accordion-content">
+          <p>What is a Power Purchase Agreement (PPA)?</p>
+          <p>A PPA is a contract that allows you to install solar panels with no upfront cost. You pay for the energy produced by the system at a fixed rate, lower than your current electricity rate.</p>
+          <p>How long does a PPA last?</p>
+          <p>PPAs typically last 20 to 25 years, but the term may vary depending on the agreement with the service provider.</p>
+          <p>What happens when the PPA ends?</p>
+          <p>At the end of a PPA, you can either purchase the system, renew the agreement, or have the system removed at no cost.</p>
+        </div>
+      </div>
+
+      <!-- Category 2: Ownership Questions -->
+      <div class="faq-category">
+        <button class="accordion">Ownership Questions</button>
+        <div class="accordion-content">
+          <p>What is solar ownership?</p>
+          <p>Solar ownership means you pay for the solar system upfront or through financing, and you are responsible for its maintenance. In return, you enjoy the benefits of solar energy, including savings and incentives.</p>
+          <p>How much does it cost to own solar panels?</p>
+          <p>The upfront cost can range from $10,000 to $30,000 depending on the system size and available incentives.</p>
+          <p>How do I benefit from owning solar panels?</p>
+          <p>You can benefit from lower electricity bills, tax incentives, and increased property value by owning solar panels.</p>
+        </div>
+      </div>
+
+      <!-- Category 3: Electric Company Questions -->
+      <div class="faq-category">
+        <button class="accordion">Electric Company Questions</button>
+        <div class="accordion-content">
+          <p>Can I switch electric companies?</p>
+          <p>Yes, you can switch your electricity provider, but you will still be responsible for transmission and distribution services. Switching to solar power can reduce your reliance on the grid.</p>
+          <p>How does net metering work with my electric provider?</p>
+          <p>Net metering allows you to earn credits for the excess solar energy you generate, which can be used to offset your electricity costs when your solar system isn’t producing enough energy.</p>
+        </div>
+      </div>
+
+      <!-- Category 4: Solar System Questions -->
+      <div class="faq-category">
+        <button class="accordion">Solar System Questions</button>
+        <div class="accordion-content">
+          <p>How do solar panels work?</p>
+          <p>Solar panels convert sunlight into electricity using photovoltaic cells. The energy generated is used to power your home, and excess energy is sent to the grid or stored in batteries.</p>
+          <p>How long do solar panels last?</p>
+          <p>Most solar panels last between 25-30 years with minimal degradation in energy output over time.</p>
+        </div>
+      </div>
+
+      <!-- Category 5: Maintenance Questions -->
+      <div class="faq-category">
+        <button class="accordion">Maintenance Questions</button>
+        <div class="accordion-content">
+          <p>How often do I need to maintain my solar panels?</p>
+          <p>Solar panels require minimal maintenance. Typically, you only need to clean them a few times a year and ensure there are no obstructions blocking the panels.</p>
+          <p>What happens if my solar panels break?</p>
+          <p>Most solar systems come with warranties that cover the cost of repairs. Contact your solar provider for service options.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // Accordion functionality for each question
+    document.addEventListener("DOMContentLoaded", function () {
+      const accordions = document.querySelectorAll(".accordion");
+      accordions.forEach(button => {
+        button.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    function searchQuestions() {
+      const input = document.getElementById("faq-search");
+      const filter = input.value.toLowerCase();
+      const categories = document.querySelectorAll(".faq-category");
+
+      categories.forEach(category => {
+        const questions = category.querySelectorAll(".accordion-content p");
+        questions.forEach(question => {
+          const questionText = question.textContent.toLowerCase();
+          
+          if (questionText.indexOf(filter) > -1) {
+            question.style.display = 'block';
+          } else {
+            question.style.display = 'none';
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

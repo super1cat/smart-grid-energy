@@ -1,0 +1,148 @@
+<!-- 🎨 Alt Layout: Flipping Rate Panels (New Look) -->
+<section class="flip-panel-section">
+    <h2 class="panel-title">Do You Know How Much You're Paying for Electricity?</h2>
+    <p class="panel-subtitle">Tap each panel to reveal the average rate. You might be surprised.</p>
+  
+    <div class="panel-grid">
+      <div class="panel" onclick="this.classList.toggle('flipped')">
+        <div class="panel-inner">
+          <div class="panel-front">
+            <h3>PG&E</h3>
+            <p>Tap to reveal</p>
+          </div>
+          <div class="panel-back">
+            <h3>PG&E</h3>
+            <p>44.65¢ / kWh</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="panel" onclick="this.classList.toggle('flipped')">
+        <div class="panel-inner">
+          <div class="panel-front">
+            <h3>SDG&E</h3>
+            <p>Tap to reveal</p>
+          </div>
+          <div class="panel-back">
+            <h3>SDG&E</h3>
+            <p>38.3¢ / kWh</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="panel" onclick="this.classList.toggle('flipped')">
+        <div class="panel-inner">
+          <div class="panel-front">
+            <h3>SCE</h3>
+            <p>Tap to reveal</p>
+          </div>
+          <div class="panel-back">
+            <h3>SCE</h3>
+            <p>31.4¢ / kWh</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="panel solar" onclick="this.classList.toggle('flipped')">
+        <div class="panel-inner">
+          <div class="panel-front">
+            <h3>Solar PPA</h3>
+            <p>Tap to reveal</p>
+          </div>
+          <div class="panel-back">
+            <h3>Solar PPA</h3>
+            <p>25¢ / kWh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="panel-cta">
+      <a href="form1.html" class="panel-button">Know Your Number</a>
+      <p class="panel-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .flip-panel-section {
+    background: #fcfcfc;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .panel-title {
+    font-size: clamp(28px, 5vw, 46px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .panel-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto 60px auto;
+  }
+  .panel {
+    perspective: 1200px;
+  }
+  .panel-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .panel.flipped .panel-inner {
+    transform: rotateY(180deg);
+  }
+  .panel-front, .panel-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+  .panel-front {
+    background: #1b4d28;
+    color: white;
+  }
+  .panel-back {
+    background: #eaf6ed;
+    color: #1b4d28;
+    transform: rotateY(180deg);
+  }
+  .panel h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .panel p {
+    font-size: 18px;
+    margin: 0;
+  }
+  .panel.solar .panel-front {
+    background: #29663a;
+  }
+  .panel.solar .panel-back {
+    background: #d8f1e0;
+    color: #205733;
+  }
+  .panel-cta {
+    margin-top: 30px;
+  }
+  .panel-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    pa

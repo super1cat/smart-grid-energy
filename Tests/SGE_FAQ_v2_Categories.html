@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common Questions | Smart Grid Energy</title>
+  <meta name="description" content="Find answers to common questions about Power Purchase Agreements, solar ownership, and how clean energy works with Smart Grid Energy.">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #111;
+    }
+
+    .faq-container {
+      max-width: 940px;
+      margin: 0 auto;
+      background: #fff;
+      padding: clamp(24px, 5vw, 48px);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      text-align: center;
+      color: #1b4d28;
+      margin-bottom: 30px;
+    }
+
+    .category-box {
+      background: #d8ddca;
+      padding: 20px;
+      margin-bottom: 10px;
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .category-box:hover {
+      background: #cdd3bc;
+    }
+
+    .category-description {
+      font-size: 14px;
+      font-weight: 400;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .arrow {
+      font-size: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-category.active .arrow {
+      transform: rotate(90deg);
+    }
+
+    .faq-category {
+      margin-bottom: 10px;
+    }
+
+    .faq-questions {
+      display: none;
+    }
+
+    .faq-category.active .faq-questions {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .faq-question {
+      padding: 16px;
+      background: #f4f4f4;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .faq-question:nth-child(even) {
+      background: #e9e9e9;
+    }
+
+    .faq-question:hover {
+      background-color: #e1e7df;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 16px;
+      background: #fefefe;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .faq-question.active + .faq-answer {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="faq-container">
+  <h1>Common Questions</h1>
+
+  <div class="faq-category">
+    <div class="category-box">Power Purchase Agreement Basics<span class="arrow">›</span></div>
+    <div class="faq-questions">
+      <div class="faq-question">What is a Power Purchase Agreement?</div>
+      <div class="faq-answer">A PPA lets you buy electricity from solar panels installed on your home without owning the equipment.</div>
+      <div class="faq-question">Who maintains the solar system?</div>
+      <div class="faq-answer">The company providing the electricity installs, insures, and replaces batteries as needed.</div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <div class="category-box">Owning Your Solar System<span class="arrow">›</span></div>
+    <div class="faq-questions">
+      <div class="faq-question">Can I own my solar system instead?</div>
+      <div class="faq-answer">Yes! We offer options for financing or purchasing your system outright.</div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <div class="category-box">Electric Companies – PG&E, SDG&E, and others<span class="arrow">›</span></div>
+    <div class="faq-questions">
+      <div class="faq-question">How does this compare to my current electric company?</div>
+      <div class="faq-answer">You’ll pay less for electricity coming from solar panels installed at your home—usually with battery backup.</div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <div class="category-box">How Solar and Batteries Work<span class="arrow">›</span></div>
+    <div class="faq-questions">
+      <div class="faq-question">How does solar power my home?</div>
+      <div class="faq-answer">Solar panels convert sunlight into electricity, which can power your home or be stored in a battery.</div>
+    </div>
+  </div>
+
+  <div class="faq-category">
+    <div class="category-box">General Electricity Questions<span class="arrow">›</span></div>
+    <div class="faq-questions">
+      <div class="faq-question">Will I still be connected to the grid?</div>
+      <div class="faq-answer">Yes — your home stays connected for backup or when additional power is needed.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const categoryBoxes = document.querySelectorAll('.category-box');
+  categoryBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const parent = box.parentElement;
+      document.querySelectorAll('.faq-category').forEach(cat => {
+        if (cat !== parent) cat.classList.remove('active');
+      });
+      parent.classList.toggle('active');
+    });
+  });
+
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(q => {
+    q.addEventListener('click', () => {
+      const isActive = q.classList.contains('active');
+      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+      if (!isActive) q.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

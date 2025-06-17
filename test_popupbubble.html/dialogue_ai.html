@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conversational dialogue reveal format that mimics AI chat style for Smart Grid Energy.">
+  <title>Energy Guide Dialogue</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Energy Guide Dialogue === */
+    body {
+      background: linear-gradient(to bottom right, #f7f7f7, #ffffff);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .dialogue-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 60px);
+    }
+
+    .chat-trigger {
+      display: block;
+      background-color: #1b4d28;
+      color: #fff;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 600;
+      padding: clamp(12px, 2vw, 18px) clamp(18px, 3vw, 28px);
+      border-radius: 24px;
+      margin-bottom: 20px;
+      max-width: fit-content;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .chat-trigger:hover {
+      background-color: #245a33;
+    }
+
+    .chat-response {
+      background-color: #f0f4f9;
+      color: #333;
+      font-size: clamp(14px, 1.8vw, 18px);
+      padding: clamp(14px, 2vw, 20px);
+      border-radius: 20px;
+      margin-left: clamp(32px, 5vw, 64px);
+      margin-bottom: clamp(24px, 4vw, 40px);
+      max-width: 80%;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      position: relative;
+    }
+
+    .chat-response::before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 14px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent #f0f4f9 transparent transparent;
+    }
+
+    .chat-response.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <main class="dialogue-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(22px, 3vw, 32px); margin-bottom: clamp(20px, 4vw, 40px);">Talk to Your Energy Guide</h1>
+
+    <div class="chat-trigger" data-reply="You don’t have to buy solar equipment. The PPA provider installs and maintains it — you just buy the power it produces.">
+      I don’t want to buy solar panels
+    </div>
+    <div class="chat-response"></div>
+
+    <div class="chat-trigger" data-reply="Absolutely. The PPA electric company covers maintenance, monitoring, and even battery swaps — all included.">
+      What happens if something breaks?
+    </div>
+    <div class="chat-response"></div>
+
+    <div class="chat-trigger" data-reply="Yes — most homeowners don’t realize they can switch electricity providers without buying solar. A PPA makes that possible.">
+      Can I actually switch providers?
+    </div>
+    <div class="chat-response"></div>
+
+    <div class="chat-trigger" data-reply="It works just like paying your utility bill — only cheaper and cleaner. You’ll see a stable rate with little to no surprises.">
+      How do I pay for the electricity?
+    </div>
+    <div class="chat-response"></div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.chat-trigger').forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        const response = trigger.nextElementSibling;
+        const text = trigger.dataset.reply;
+
+        // Clear previous content if needed
+        response.innerHTML = '';
+        response.classList.remove('visible');
+
+        // Simulate typing
+        let i = 0;
+        const type = () => {
+          if (i < text.length) {
+            response.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 16);
+          } else {
+            response.classList.add('visible');
+          }
+        };
+
+        type();
+      });
+    });
+  </script>
+</body>
+</html>

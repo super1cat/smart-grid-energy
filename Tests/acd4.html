@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Questions | Smart Grid Energy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Reset and Basic Style */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #2e6a45;
+        }
+
+        /* Accordion Styles */
+        .accordion-section {
+            margin-bottom: 20px;
+        }
+
+        .category-header {
+            background-color: #e6f0e4;
+            padding: 15px;
+            font-size: 20px;
+            color: #2e6a45;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            border: none;
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-content {
+            display: none;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .sub-question {
+            background-color: #ffffff;
+            border-left: 4px solid #2e6a45;
+            margin-top: 8px;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sub-question p {
+            margin: 0;
+            color: #333;
+        }
+
+        .sub-answer {
+            display: none;
+            padding: 8px;
+            background-color: #e9f1e2;
+            margin-top: 6px;
+            border-radius: 5px;
+        }
+
+        /* Search Box Style */
+        .search-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .accordion-section {
+                margin-bottom: 10px;
+            }
+
+            .category-header {
+                font-size: 18px;
+            }
+
+            .sub-question {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Search Box (Optional) -->
+    <div class="search-box">
+        <input type="text" id="faq-search" placeholder="Search for a question..." onkeyup="searchQuestions()">
+    </div>
+
+    <main>
+        <section class="faq-section">
+            <h1>Common Questions</h1>
+
+            <!-- PPA Questions Accordion -->
+            <div class="accordion-section">
+                <button class="category-header">PPA Questions</button>
+                <div class="category-content">
+                    <div class="sub-question">
+                        <p>What is a Power Purchase Agreement (PPA)?</p>
+                        <div class="sub-answer">
+                            <p>A PPA allows you to get solar installed at no upfront cost. You only pay for the electricity it generates, at a lower locked-in rate.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Do I own the panels?</p>
+                        <div class="sub-answer">
+                            <p>In a PPA, the provider owns and maintains the system. You just enjoy the benefits of solar power without responsibility for upkeep.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>How long does a PPA last?</p>
+                        <div class="sub-answer">
+                            <p>A typical PPA lasts 20 to 25 years, depending on the agreement with the provider. After the term, the homeowner may have the option to purchase the system or renew the agreement.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What happens when my PPA term ends?</p>
+                        <div class="sub-answer">
+                            <p>At the end of your PPA term, you can either purchase the system, renew the agreement, or have the system removed.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Can I transfer my PPA to a new homeowner?</p>
+                        <div class="sub-answer">
+                            <p>Yes, most PPAs are transferable to new homeowners, allowing the new owners to benefit from the lower energy rates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ownership Questions Accordion -->
+            <div class="accordion-section">
+                <button class="category-header">Ownership Questions</button>
+                <div class="category-content">
+                    <div class="sub-question">
+                        <p>How does solar ownership work?</p>
+                        <div class="sub-answer">
+                            <p>When you own the solar panels, you are responsible for maintenance but enjoy the full financial benefits of reduced electricity bills.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What are the benefits of owning a solar system?</p>
+                        <div class="sub-answer">
+                            <p>Ownership provides long-term savings and energy independence, allowing you to keep any excess energy produced and earn credits for it.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What is the upfront cost of owning solar panels?</p>
+                        <div class="sub-answer">
+                            <p>The upfront cost of purchasing solar panels can vary depending on the size of the system and any available incentives or rebates.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Do I need a special permit to install solar panels?</p>
+                        <div class="sub-answer">
+                            <p>Yes, depending on your location, you may need a permit for installation. This is typically handled by the installer.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>How do I maintain my solar panels?</p>
+                        <div class="sub-answer">
+                            <p>Solar panels generally require little maintenance. You should clean them periodically and ensure there are no obstructions blocking sunlight.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Providers Accordion -->
+            <div class="accordion-section">
+                <button class="category-header">Grid Providers</button>
+                <div class="category-content">
+                    <div class="sub-question">
+                        <p>What is a grid provider?</p>
+                        <div class="sub-answer">
+                            <p>Grid providers manage and deliver electricity to your home. They are responsible for maintaining the infrastructure for the energy grid.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Can I choose my grid provider?</p>
+                        <div class="sub-answer">
+                            <p>In some regions, you can choose your grid provider based on pricing, reliability, and services offered.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What happens if my grid provider has an outage?</p>
+                        <div class="sub-answer">
+                            <p>If your grid provider experiences an outage, they will work to restore power. You may also benefit from a backup solar battery system during these times.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What are the costs associated with grid providers?</p>
+                        <div class="sub-answer">
+                            <p>Grid providers typically charge for the electricity they deliver, along with service fees. Rates can vary depending on your location and provider.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Can I switch grid providers?</p>
+                        <div class="sub-answer">
+                            <p>In some regions, you can switch grid providers. Check with your local utility to see if this option is available in your area.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electricity Questions Accordion -->
+            <div class="accordion-section">
+                <button class="category-header">Electricity Questions</button>
+                <div class="category-content">
+                    <div class="sub-question">
+                        <p>What is net metering?</p>
+                        <div class="sub-answer">
+                            <p>Net metering is a system where solar panel owners can sell excess electricity back to the grid for credits on their utility bills.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>How can I lower my electricity bill?</p>
+                        <div class="sub-answer">
+                            <p>Consider switching to solar energy, as it significantly reduces your monthly electricity bill by using the sun's power for your home.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What is time-of-use billing?</p>
+                        <div class="sub-answer">
+                            <p>Time-of-use billing is when electricity rates change depending on the time of day. Typically, electricity is cheaper during off-peak hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>Can I use solar power without a battery?</p>
+                        <div class="sub-answer">
+                            <p>Yes, you can use solar power without a battery. However, without a battery, excess power will be sent to the grid, and you may not be able to store it for later use.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-question">
+                        <p>What is the cost of electricity from solar panels?</p>
+                        <div class="sub-answer">
+                            <p>The cost of electricity from solar panels is lower than traditional utility rates, and it varies depending on the size of the system and your energy consumption.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        // Toggle Category Content
+        const categories = document.querySelectorAll('.category-header');
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                const content = category.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Toggle Sub-Answers
+        const subQuestions = document.querySelectorAll('.sub-question');
+        subQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.querySelector('.sub-answer');
+                answer.style.display = answer.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // Search Functionality (Optional)
+        function searchQuestions() {
+            const input = document.getElementById("faq-search");
+            const filter = input.value.toLowerCase();
+            const questions = document.querySelectorAll(".sub-question");
+
+            questions.forEach(question => {
+                const questionText = question.textContent.toLowerCase();
+                if (questionText.indexOf(filter) > -1) {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

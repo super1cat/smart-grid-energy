@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SGE Solution Stack — Final Bulb Alignment</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0c2b47;
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    .solution-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(30px, 6vw, 80px);
+    }
+
+    .solution-section h2 {
+      font-size: clamp(22px, 3vw, 36px);
+      margin-bottom: clamp(24px, 4vw, 48px);
+    }
+
+    .solution-row {
+      margin-bottom: clamp(32px, 5vw, 48px);
+    }
+
+    .solution-top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+    }
+
+    .bulb-icon {
+      width: 40px;
+      height: 56px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .bulb-icon:hover {
+      content: url('./img/bulb.png');
+    }
+
+    .solution-row.open .bulb-icon {
+      content: url('./img/bulb.png');
+      animation: glow .5s infinite alternate;
+      transform: scale(1.05);
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 0px #f0c14b); }
+      to { filter: drop-shadow(0 0 8px #f0c14b); }
+    }
+
+    .solution-label {
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .solution-reveal {
+      display: none;
+      padding: clamp(16px, 3vw, 24px);
+      background-color: #3d5f7f;
+      border-radius: 18px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.5;
+      margin-left: 60px;
+      margin-top: 14px;
+      border-right: 4px solid #f0c14b;
+    }
+
+    .solution-row.open .solution-reveal {
+      display: block;
+    }
+
+    .solution-reveal.typing {
+      border-right: 2px solid #f0c14b;
+      white-space: pre-wrap;
+      animation: blink 1.5s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #f0c14b; }
+    }
+
+  @keyframes pulseSync {
+  0%   { filter: drop-shadow(0 0 0px #f0c14b); border-color: transparent; }
+  50%  { filter: drop-shadow(0 0 8px #f0c14b); border-color: #f0c14b; }
+  100% { filter: drop-shadow(0 0 0px #f0c14b); border-color: transparent; }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <main class="solution-section" data-wg-notranslate>
+    <h2>Here’s How It Works</h2>
+
+    <div class="solution-row" data-text="Qualified homes are seeing consistent monthly savings of 10% to 40% compared to traditional utility rates, depending on their usage, roof orientation, and shading. The savings begin immediately and grow over time — without any changes to how you live or use power.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Monthly electric bill savings up to 40%</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <div class="solution-row" data-text="Monitoring, repairs, and even battery swaps are all handled for you. No surprise bills. No service scheduling. Just power, maintained.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Maintenance is fully covered</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <div class="solution-row" data-text="You’re not buying solar. You’re just choosing a new electricity source that lives on your roof — one that’s stable, affordable, and supported.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">You’re just switching providers</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+  </main>
+
+  <script>
+    const rows = document.querySelectorAll('.solution-row');
+
+    const closeAll = () => {
+      rows.forEach(r => {
+        r.classList.remove('open');
+        const rev = r.querySelector('.solution-reveal');
+        rev.classList.remove('typing');
+        rev.innerHTML = '';
+        const bulb = r.querySelector('.bulb-icon');
+        bulb.src = './img/white_bulb.png';
+      });
+    };
+
+    rows.forEach(row => {
+      const bulb = row.querySelector('.bulb-icon');
+      const reveal = row.querySelector('.solution-reveal');
+      const text = row.dataset.text;
+      const label = row.querySelector('.solution-label');
+
+      const startTyping = () => {
+        let i = 0;
+        reveal.innerHTML = '';
+        reveal.classList.add('typing');
+
+        const typeChar = () => {
+          if (i < text.length) {
+            reveal.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeChar, 32);
+          } else {
+            reveal.classList.remove('typing');
+            reveal.style.borderRight = '2px solid #f0c14b';  // Keeps the yellow line after typing finishes
+
+          }
+        };
+
+        setTimeout(typeChar, 80);
+      };
+
+      const toggleRow = () => {
+        const isOpen = row.classList.contains('open');
+
+        if (!isOpen) {
+          closeAll();
+          row.classList.add('open');
+          bulb.src = './img/bulb.png';
+          startTyping();
+        } else {
+          row.classList.remove('open');
+          reveal.innerHTML = '';
+          bulb.src = './img/white_bulb.png';
+        }
+      };
+
+      bulb.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleRow();
+      });
+
+      label.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleRow();
+      });
+    });
+
+    document.addEventListener('click', () => {
+      closeAll();
+    });
+  </script>
+</body>
+</html>

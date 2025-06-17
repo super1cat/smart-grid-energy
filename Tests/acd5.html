@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Questions | Smart Grid Energy</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #2e6a45;
+      margin-bottom: 30px;
+    }
+
+    /* Accordion Styles */
+    .accordion-section {
+      margin-bottom: 30px;
+    }
+
+    .category-header {
+      background-color: #c8e0c4;
+      padding: 15px;
+      font-size: 22px;
+      color: #2e6a45;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      border: none;
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .category-header:hover {
+      background-color: #b1d6b3;
+    }
+
+    .category-content {
+      display: none;
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    .sub-question {
+      background-color: #ffffff;
+      border-left: 4px solid #2e6a45;
+      margin-top: 8px;
+      padding: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sub-question:hover {
+      background-color: #e9f1e2;
+    }
+
+    .sub-question p {
+      margin: 0;
+      color: #333;
+    }
+
+    .sub-answer {
+      display: none;
+      padding: 12px;
+      background-color: #e9f1e2;
+      margin-top: 6px;
+      border-radius: 5px;
+    }
+
+    /* Search Box Style */
+    .search-box {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-box input {
+      width: 70%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      display: block;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .category-header {
+        font-size: 18px;
+        padding: 12px;
+      }
+
+      .sub-question {
+        font-size: 16px;
+      }
+
+      .search-box input {
+        width: 80%;
+        padding: 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="search-box">
+    <input type="text" id="faq-search" placeholder="Search for a question..." onkeyup="searchQuestions()">
+  </div>
+
+  <main>
+    <section class="faq-section">
+      <h1>Common Questions</h1>
+
+      <!-- PPA Questions Accordion -->
+      <div class="accordion-section">
+        <button class="category-header">PPA Questions</button>
+        <div class="category-content">
+          <div class="sub-question">
+            <p>What is a Power Purchase Agreement (PPA)?</p>
+            <div class="sub-answer">
+              <p>A Power Purchase Agreement (PPA) is a contract that allows you to install solar panels with no upfront cost. You only pay for the electricity it generates, typically at a lower rate than your utility provider.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>How long does a PPA last?</p>
+            <div class="sub-answer">
+              <p>A typical PPA lasts 20 to 25 years, depending on the agreement with the provider. After the term, the homeowner may have the option to purchase the system or renew the agreement.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>What happens when my PPA term ends?</p>
+            <div class="sub-answer">
+              <p>When your PPA term ends, you may have the option to buy the solar system at a discounted rate or continue with a new agreement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ownership Questions Accordion -->
+      <div class="accordion-section">
+        <button class="category-header">Ownership Questions</button>
+        <div class="category-content">
+          <div class="sub-question">
+            <p>What are the benefits of owning a solar system?</p>
+            <div class="sub-answer">
+              <p>Owning a solar system provides long-term savings, energy independence, and the ability to sell excess energy back to the grid.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>How does solar ownership work?</p>
+            <div class="sub-answer">
+              <p>When you own the solar panels, you are responsible for maintenance but enjoy the full financial benefits of reduced electricity bills.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>Can I finance the purchase of solar panels?</p>
+            <div class="sub-answer">
+              <p>Yes, there are various financing options available, including solar loans and tax incentives to reduce upfront costs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Providers Accordion -->
+      <div class="accordion-section">
+        <button class="category-header">Grid Providers</button>
+        <div class="category-content">
+          <div class="sub-question">
+            <p>What is a grid provider?</p>
+            <div class="sub-answer">
+              <p>Grid providers manage and deliver electricity to your home. They are responsible for maintaining the infrastructure for the energy grid.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>Can I choose my grid provider?</p>
+            <div class="sub-answer">
+              <p>In some regions, you can choose your grid provider based on pricing, reliability, and services offered.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Electricity Questions Accordion -->
+      <div class="accordion-section">
+        <button class="category-header">Electricity Questions</button>
+        <div class="category-content">
+          <div class="sub-question">
+            <p>What is net metering?</p>
+            <div class="sub-answer">
+              <p>Net metering is a system where solar panel owners can sell excess electricity back to the grid for credits on their utility bills.</p>
+            </div>
+          </div>
+
+          <div class="sub-question">
+            <p>How can I lower my electricity bill?</p>
+            <div class="sub-answer">
+              <p>Consider switching to solar energy, as it significantly reduces your monthly electricity bill by using the sun's power for your home.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Toggle Category Content
+    const categories = document.querySelectorAll('.category-header');
+    categories.forEach(category => {
+      category.addEventListener('click', () => {
+        const content = category.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Search Functionality (Search through questions)
+    function searchQuestions() {
+      const input = document.getElementById("faq-search");
+      const filter = input.value.toLowerCase();
+      const questions = document.querySelectorAll(".sub-question");
+
+      questions.forEach(question => {
+        const questionText = question.textContent.toLowerCase();
+        if (questionText.indexOf(filter) > -1) {
+          question.style.display = 'block';
+        } else {
+          question.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

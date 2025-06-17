@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Questions</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #1b4d28;
+      margin-bottom: 40px;
+    }
+
+    .faq-category {
+      margin-bottom: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .faq-category h2 {
+      background-color: #e4f1e7;
+      color: #1b4d28;
+      margin: 0;
+      padding: 16px 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .faq-item {
+      border-top: 1px solid #ddd;
+    }
+
+    .faq-question {
+      padding: 14px 20px;
+      cursor: pointer;
+      background-color: #fff;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 14px 20px;
+      background-color: #f2f2f2;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .faq-question:hover {
+      background-color: #f7f7f7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Common Questions</h1>
+
+  <!-- PPA Category -->
+  <div class="faq-category">
+    <h2>PPA Basics</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is a Power Purchase Agreement (PPA)?</div>
+      <div class="faq-answer">A PPA allows you to buy electricity from solar panels installed on your roof without owning the equipment. You simply pay for the power you use.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How long does a PPA last?</div>
+      <div class="faq-answer">Most PPAs last 20–25 years, with predictable, slow annual increases.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What happens when my PPA ends?</div>
+      <div class="faq-answer">You may have the option to renew, remove the system, or buy it outright. We'll help you choose what works best.</div>
+    </div>
+  </div>
+
+  <!-- Ownership Category -->
+  <div class="faq-category">
+    <h2>Owning Your Solar System</h2>
+    <div class="faq-item">
+      <div class="faq-question">Is it better to own or lease solar panels?</div>
+      <div class="faq-answer">That depends on your goals. Ownership can offer long-term savings and potential incentives, while a PPA provides savings without the equipment investment.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I finance my system?</div>
+      <div class="faq-answer">Yes. We offer financing options to make ownership simple and accessible.</div>
+    </div>
+  </div>
+
+  <!-- Grid Providers -->
+  <div class="faq-category">
+    <h2>Electric Companies – PG&E, SDG&E, and more</h2>
+    <div class="faq-item">
+      <div class="faq-question">Can I still be connected to the grid?</div>
+      <div class="faq-answer">Yes. You'll remain connected for backup power when solar isn’t producing enough.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do I still get a utility bill?</div>
+      <div class="faq-answer">You may see a small bill from your electric company, mostly for basic grid service.</div>
+    </div>
+  </div>
+
+  <!-- Solar System Questions -->
+  <div class="faq-category">
+    <h2>How Solar and Batteries Work</h2>
+    <div class="faq-item">
+      <div class="faq-question">How do solar panels power my home?</div>
+      <div class="faq-answer">Panels capture sunlight and convert it into electricity for your home through an inverter.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What does the battery do?</div>
+      <div class="faq-answer">Your battery stores extra energy and powers your home during outages or at night.</div>
+    </div>
+  </div>
+
+  <!-- General Energy Questions -->
+  <div class="faq-category">
+    <h2>General Electricity Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">Is solar energy reliable?</div>
+      <div class="faq-answer">Yes, especially with battery backup. Solar works even when the grid goes down.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What are the main benefits of switching to solar?</div>
+      <div class="faq-answer">Lower energy costs, greater control, cleaner energy, and protection from rising rates.</div>
+    </div>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(question => {
+      question.addEventListener('click', () => {
+        const open = document.querySelector('.faq-answer.show');
+        if (open && open !== question.nextElementSibling) {
+          open.classList.remove('show');
+          open.style.display = 'none';
+        }
+        const answer = question.nextElementSibling;
+        const isVisible = answer.classList.contains('show');
+        answer.classList.toggle('show');
+        answer.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>

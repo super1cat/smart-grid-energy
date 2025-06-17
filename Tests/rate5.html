@@ -1,0 +1,112 @@
+<!-- 🧠 Premium Animated Rate Comparison – CTA-Focused -->
+<section class="premium-rate-section">
+    <div class="premium-content">
+      <h2 class="premium-title">What Are You Really Paying for Power?</h2>
+      <p class="premium-subtitle">Compare utility rates across California. Then get your free Know Your Number™ Report to see how much you could be saving.</p>
+  
+      <div class="rate-slider-track">
+        <div class="rate-bubble" style="--value: 89%">
+          <strong>PG&E</strong>
+          <span>44.65¢</span>
+        </div>
+        <div class="rate-bubble" style="--value: 76.6%">
+          <strong>SDG&E</strong>
+          <span>38.3¢</span>
+        </div>
+        <div class="rate-bubble" style="--value: 62.8%">
+          <strong>SCE</strong>
+          <span>31.4¢</span>
+        </div>
+        <div class="rate-bubble solar" style="--value: 50%">
+          <strong>Solar PPA</strong>
+          <span>25¢</span>
+        </div>
+      </div>
+  
+      <a href="form1.html" class="premium-cta-button">Get Your Free Know Your Number™ Report</a>
+      <p class="rate-disclaimer">Rate data as of Q1 2025. Based on average monthly usage. Solar PPA shown at fixed 25¢/kWh.</p>
+    </div>
+  </section>
+  
+  <style>
+  .premium-rate-section {
+    background: linear-gradient(to bottom right, #f8fff9, #eef5f0);
+    padding: clamp(60px, 8vw, 100px) clamp(24px, 5vw, 60px);
+    text-align: center;
+  }
+  .premium-title {
+    font-size: clamp(28px, 5vw, 48px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .premium-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 50px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rate-slider-track {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 60px;
+  }
+  .rate-bubble {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    padding: 18px 24px;
+    text-align: center;
+    transition: transform 0.4s ease;
+    position: relative;
+    width: 150px;
+    border-top: 6px solid #ccc;
+    animation: popIn 1s ease-out forwards;
+  }
+  .rate-bubble strong {
+    display: block;
+    font-size: 18px;
+    color: #111;
+    margin-bottom: 8px;
+  }
+  .rate-bubble span {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+  }
+  .rate-bubble.solar {
+    border-top-color: #1b4d28;
+    background: #f1fff4;
+  }
+  .premium-cta-button {
+    display: inline-block;
+    background: linear-gradient(to right, #1b4d28, #29663a);
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(27, 77, 40, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  .premium-cta-button:hover {
+    background: #133c20;
+    box-shadow: 0 10px 26px rgba(27, 77, 40, 0.4);
+    transform: scale(1.04);
+  }
+  .rate-disclaimer {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #666;
+  }
+  @keyframes popIn {
+    0% { transform: translateY(40px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  </style>
+  

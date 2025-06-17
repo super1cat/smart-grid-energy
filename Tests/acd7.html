@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common Questions | Smart Grid Energy</title>
+  <meta name="description" content="Find answers to common questions about Power Purchase Agreements, solar ownership, and how clean energy works with Smart Grid Energy.">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+
+    .faq-wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #fff;
+      padding: clamp(24px, 4vw, 32px);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      text-align: center;
+      margin-bottom: 40px;
+      color: #1b4d28;
+    }
+
+    .category-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      margin: 30px 0 10px;
+      font-weight: 600;
+      color: #1b4d28;
+      background-color: #e7efe9;
+      padding: 16px;
+      border-radius: 6px;
+    }
+
+    .category-title span {
+      display: block;
+      font-size: 15px;
+      color: #555;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    .faq-item {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      cursor: pointer;
+      padding: 16px;
+      font-size: clamp(16px, 2vw, 20px);
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .faq-item:nth-child(even) .faq-question {
+      background-color: #e6e6e6;
+    }
+
+    .faq-question:hover {
+      background-color: #dde4dd;
+    }
+
+    .faq-answer {
+      padding: 16px;
+      font-size: 16px;
+      line-height: 1.5;
+      display: none;
+      background-color: #f9fbfa;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .arrow {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .arrow {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+<div class="faq-wrapper">
+  <h1>Common Questions</h1>
+
+  <div class="category-title">Power Purchase Agreement Basics<span>- How solar electricity works without owning the system</span></div>
+  <div class="faq-item">
+    <div class="faq-question">What is a Power Purchase Agreement?<span class="arrow">›</span></div>
+    <div class="faq-answer">A PPA lets you buy electricity from solar panels installed on your home without owning the equipment. You get predictable, lower-cost power with no upfront cost for the system.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Who maintains the solar system?<span class="arrow">›</span></div>
+    <div class="faq-answer">The company that provides the electricity installs, maintains, insures, and even replaces the batteries as needed—so you don't have to worry about any of it.</div>
+  </div>
+
+  <div class="category-title">Owning Your Solar System<span>- Questions about buying or financing your system</span></div>
+  <div class="faq-item">
+    <div class="faq-question">Can I own my solar system instead?<span class="arrow">›</span></div>
+    <div class="faq-answer">Yes! Some homeowners prefer to buy or finance their system. We’ll help you compare both options to see what fits best for you.</div>
+  </div>
+
+  <div class="category-title">Electric Companies – PG&E, SDG&E, and others<span>- Learn more about your current utility provider</span></div>
+  <div class="faq-item">
+    <div class="faq-question">What’s the difference between this and my current electric company?<span class="arrow">›</span></div>
+    <div class="faq-answer">Instead of paying PG&E or SDG&E, you're simply switching to a provider that gives you electricity from solar panels installed on your roof—with better rates and built-in battery backup.</div>
+  </div>
+
+  <div class="category-title">How Solar and Batteries Work<span>- What to know about panels, energy, and storage</span></div>
+  <div class="faq-item">
+    <div class="faq-question">How do solar panels power my home?<span class="arrow">›</span></div>
+    <div class="faq-answer">They convert sunlight into electricity during the day, which powers your home directly or charges your backup battery for later use.</div>
+  </div>
+
+  <div class="category-title">General Electricity Questions<span>- Basics about energy use and reliability</span></div>
+  <div class="faq-item">
+    <div class="faq-question">Will I still be connected to the grid?<span class="arrow">›</span></div>
+    <div class="faq-answer">Yes. Your home remains connected for backup or extra energy use—but most of your power will come from your own roof.</div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach((el) => {
+    el.addEventListener('click', () => {
+      const parent = el.parentElement;
+      const currentlyOpen = document.querySelector('.faq-item.active');
+      if (currentlyOpen && currentlyOpen !== parent) {
+        currentlyOpen.classList.remove('active');
+      }
+      parent.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expandable chat bubble format for exploring PPA benefits in a conversational mobile-friendly way.">
+  <title>Chat Bubbles Test</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Chat Bubble Expanders === */
+    .chat-bubble-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .chat-bubble {
+      background-color: #f5f5f5;
+      border-radius: 18px;
+      padding: clamp(14px, 3vw, 20px);
+      margin-bottom: clamp(12px, 2vw, 24px);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .chat-title {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: #111;
+    }
+
+    .chat-content {
+      margin-top: 10px;
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .chat-bubble.active {
+      background-color: #eaf1fb;
+    }
+
+    .chat-bubble.active .chat-content {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    @media (max-width: 767px) {
+      .chat-bubble {
+        padding: clamp(16px, 5vw, 28px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="chat-bubble-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(16px, 3vw, 32px);">Common Reasons People Choose a PPA</h1>
+
+    <div class="chat-bubble">
+      <div class="chat-title">I didn’t want to pay upfront for solar</div>
+      <div class="chat-content">
+        With a PPA, the solar electric company installs and owns the equipment. You don’t have to pay for panels or batteries — you just buy the electricity.
+      </div>
+    </div>
+
+    <div class="chat-bubble">
+      <div class="chat-title">I just wanted lower rates without the hassle</div>
+      <div class="chat-content">
+        PPA rates are stable, and usually much lower than traditional utilities. The company monitors and maintains everything — you just pay for the power you use.
+      </div>
+    </div>
+
+    <div class="chat-bubble">
+      <div class="chat-title">It felt like switching cell phone carriers</div>
+      <div class="chat-content">
+        That’s exactly the idea. You switch to a new electric provider, and they install equipment to generate clean energy right from your home.
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Tap-to-expand chat bubbles
+    document.querySelectorAll('.chat-bubble').forEach(bubble => {
+      bubble.addEventListener('click', () => {
+        bubble.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

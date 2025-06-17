@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test 18 - Smart Grid Solution Bullets</title>
+  <style>
+    /* ==== Base Reset ==== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #0f2942;
+      color: #fff;
+      padding: clamp(40px, 6vw, 80px);
+    }
+
+    /* ==== Scoped to Solution Section ==== */
+    .solution-section {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .solution-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      margin-bottom: clamp(40px, 5vw, 60px);
+      text-align: left;
+    }
+
+    .solution-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: clamp(30px, 5vw, 50px);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .solution-bulb-img {
+      width: 40px;
+      height: 56px;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .solution-item:hover .solution-bulb-img {
+      content: url("img/bulb.png");
+    }
+
+    .solution-bulb-img.active {
+      filter: contrast(120%) saturate(120%);
+      box-shadow: 0 0 6px 2px rgba(255, 255, 160, 0.8);
+    }
+
+    .solution-title {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .solution-text {
+      margin-left: 60px;
+      margin-top: 12px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      font-size: clamp(16px, 2.5vw, 20px);
+      display: none;
+      max-width: 100%;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .solution-text.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="solution-section">
+    <h2>Here’s How It Works</h2>
+
+    <div class="solution-item" onclick="toggleSolution(this)">
+      <img src="img/white_bulb.png" alt="bulb" class="solution-bulb-img">
+      <div class="solution-title">You don’t pay for the system</div>
+      <div class="solution-text">
+        The solar equipment is installed and owned by the electric company. You only pay for the electricity it produces — not for the panels, batteries, or maintenance.
+      </div>
+    </div>
+
+    <div class="solution-item" onclick="toggleSolution(this)">
+      <img src="img/white_bulb.png" alt="bulb" class="solution-bulb-img">
+      <div class="solution-title">Maintenance is fully covered</div>
+      <div class="solution-text">
+        Monitoring, repairs, and even battery swaps are all handled for you. No surprise bills. No service scheduling. Just power.
+      </div>
+    </div>
+
+    <div class="solution-item" onclick="toggleSolution(this)">
+      <img src="img/white_bulb.png" alt="bulb" class="solution-bulb-img">
+      <div class="solution-title">You’re just switching providers</div>
+      <div class="solution-text">
+        Your new provider generates electricity on your roof with solar, and you buy it at a lower rate. Same wires. Better outcome.
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleSolution(el) {
+      document.querySelectorAll('.solution-item').forEach(item => {
+        if (item !== el) {
+          item.querySelector('.solution-text').classList.remove('show');
+          item.querySelector('.solution-bulb-img').classList.remove('active');
+        }
+      });
+
+      const text = el.querySelector('.solution-text');
+      const bulb = el.querySelector('.solution-bulb-img');
+      const isOpen = text.classList.contains('show');
+
+      if (isOpen) {
+        text.classList.remove('show');
+        bulb.classList.remove('active');
+        bulb.src = 'img/white_bulb.png';
+      } else {
+        text.classList.add('show');
+        bulb.classList.add('active');
+        bulb.src = 'img/bulb.png';
+      }
+    }
+
+    // Close on click outside
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('.solution-item');
+      if (!target) {
+        document.querySelectorAll('.solution-text').forEach(t => t.classList.remove('show'));
+        document.querySelectorAll('.solution-bulb-img').forEach(img => {
+          img.classList.remove('active');
+          img.src = 'img/white_bulb.png';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

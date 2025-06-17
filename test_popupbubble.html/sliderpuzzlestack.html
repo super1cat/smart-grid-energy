@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Slider-style stackable tiles with side-drawer interaction for Smart Grid Energy.">
+  <title>Slider Puzzle Stack</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Slider Puzzle Stack === */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #f7f7f7, #ffffff);
+    }
+
+    .slider-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 60px);
+    }
+
+    .slider-tile {
+      position: relative;
+      background-color: #1b4d28;
+      color: #fff;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 600;
+      padding: clamp(14px, 3vw, 22px) clamp(20px, 4vw, 32px);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+
+    .slider-content {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      background-color: #f5fbf7;
+      color: #333;
+      font-weight: 400;
+      padding: clamp(16px, 3vw, 24px);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: left 0.4s ease, opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .slider-tile.open .slider-content {
+      left: 0;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="slider-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(22px, 3vw, 32px); margin-bottom: clamp(20px, 4vw, 40px);">Slide to Learn How It Works</h1>
+
+    <div class="slider-tile">
+      You don’t pay for the system
+      <div class="slider-content">The solar equipment is installed and owned by the electric company. You only pay for the electricity it produces — not the hardware.</div>
+    </div>
+
+    <div class="slider-tile">
+      Maintenance is fully covered
+      <div class="slider-content">Monitoring, repairs, and even battery swaps are all handled for you. No surprise bills. No service scheduling. Just power, maintained.</div>
+    </div>
+
+    <div class="slider-tile">
+      You’re just switching providers
+      <div class="slider-content">You’re not buying solar. You’re just choosing a new electricity source that lives on your roof — one that’s stable, affordable, and supported.</div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.slider-tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        // Close all others
+        document.querySelectorAll('.slider-tile').forEach(t => t.classList.remove('open'));
+        tile.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

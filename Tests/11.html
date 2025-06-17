@@ -1,0 +1,134 @@
+<!-- ⚡ Electric Meter Guess Game – Click to Reveal -->
+<section class="meter-guess-section">
+    <h2 class="meter-title">Which Meter Has the Lowest Rate?</h2>
+    <p class="meter-subtitle">Click on each electric meter to reveal which provider it represents—and what they charge per kWh.</p>
+  
+    <div class="meter-grid">
+      <div class="meter-card" onclick="this.classList.add('revealed')">
+        <div class="meter-graphic">🔌</div>
+        <div class="meter-label">PG&E</div>
+        <div class="meter-rate">44.65¢ / kWh</div>
+      </div>
+      <div class="meter-card" onclick="this.classList.add('revealed')">
+        <div class="meter-graphic">🔌</div>
+        <div class="meter-label">SDG&E</div>
+        <div class="meter-rate">38.3¢ / kWh</div>
+      </div>
+      <div class="meter-card" onclick="this.classList.add('revealed')">
+        <div class="meter-graphic">🔌</div>
+        <div class="meter-label">SCE</div>
+        <div class="meter-rate">31.4¢ / kWh</div>
+      </div>
+      <div class="meter-card solar" onclick="this.classList.add('revealed')">
+        <div class="meter-graphic">🔆</div>
+        <div class="meter-label">Solar PPA</div>
+        <div class="meter-rate">25¢ / kWh</div>
+      </div>
+    </div>
+  
+    <div class="meter-cta">
+      <a href="form1.html" class="meter-button">Know Your Number</a>
+      <p class="meter-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .meter-guess-section {
+    background: #f4f9f6;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .meter-title {
+    font-size: clamp(28px, 5vw, 46px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .meter-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .meter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto 60px auto;
+  }
+  .meter-card {
+    background: #e5e5e5;
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .meter-card:hover {
+    transform: scale(1.03);
+  }
+  .meter-graphic {
+    font-size: 80px;
+    transition: opacity 0.3s ease;
+  }
+  .meter-label, .meter-rate {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    font-weight: 700;
+  }
+  .meter-label {
+    font-size: 20px;
+    margin-top: 12px;
+    color: #1b4d28;
+  }
+  .meter-rate {
+    font-size: 22px;
+    margin-top: 6px;
+    color: #111;
+  }
+  .meter-card.revealed .meter-label,
+  .meter-card.revealed .meter-rate {
+    opacity: 1;
+  }
+  .meter-card.revealed .meter-graphic {
+    opacity: 0.2;
+  }
+  .meter-card.solar {
+    background: #e2f7e7;
+  }
+  .meter-card.solar .meter-label {
+    color: #195e38;
+  }
+  .meter-cta {
+    margin-top: 30px;
+  }
+  .meter-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .meter-button:hover {
+    background: #143b1e;
+    transform: scale(1.04);
+  }
+  .meter-disclaimer {
+    font-size: 14px;
+    color: #555;
+    margin-top: 16px;
+  }
+  </style>
+  

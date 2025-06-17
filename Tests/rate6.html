@@ -1,0 +1,125 @@
+<!-- 🌐 Interactive Glow Rate Chart – High-Impact Experience -->
+<section class="interactive-glow-rate">
+    <h2 class="glow-title">How Does Your Electric Rate Compare?</h2>
+    <p class="glow-subtitle">Hover to explore California’s top utility rates — and see how a Solar PPA stacks up.</p>
+  
+    <div class="glow-card-grid">
+      <div class="glow-card" data-label="PG&E" data-rate="44.65">
+        <div class="glow-value">44.65¢</div>
+        <div class="glow-meter" style="--bar: 89%"></div>
+        <p class="glow-label">PG&E</p>
+      </div>
+      <div class="glow-card" data-label="SDG&E" data-rate="38.3">
+        <div class="glow-value">38.3¢</div>
+        <div class="glow-meter" style="--bar: 76.6%"></div>
+        <p class="glow-label">SDG&E</p>
+      </div>
+      <div class="glow-card" data-label="SCE" data-rate="31.4">
+        <div class="glow-value">31.4¢</div>
+        <div class="glow-meter" style="--bar: 62.8%"></div>
+        <p class="glow-label">SCE</p>
+      </div>
+      <div class="glow-card solar" data-label="Solar PPA" data-rate="25">
+        <div class="glow-value">25¢</div>
+        <div class="glow-meter" style="--bar: 50%"></div>
+        <p class="glow-label">Solar PPA</p>
+      </div>
+    </div>
+  
+    <div class="glow-footer">
+      <a href="form1.html" class="glow-cta">Get Your Free Know Your Number™ Report</a>
+      <p class="glow-disclaimer">2025 rates based on average non-discounted homeowner usage. Solar PPA estimated at fixed 25¢/kWh.</p>
+    </div>
+  </section>
+  
+  <style>
+  .interactive-glow-rate {
+    background: #0d1c15;
+    color: white;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .glow-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    color: #f5f5f5;
+    margin-bottom: 12px;
+  }
+  .glow-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #aaa;
+    margin-bottom: 50px;
+  }
+  .glow-card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .glow-card {
+    background: #12271d;
+    border-radius: 14px;
+    padding: 24px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,255,128,0.05);
+    position: relative;
+    transition: all 0.4s ease-in-out;
+  }
+  .glow-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(0,255,128,0.2);
+  }
+  .glow-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .glow-label {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #ccc;
+  }
+  .glow-meter {
+    height: 12px;
+    background: linear-gradient(90deg, #00e676 var(--bar), rgba(0,0,0,0.3) var(--bar));
+    border-radius: 6px;
+    transition: width 0.6s ease;
+  }
+  .solar {
+    background: #193825;
+    border: 2px solid #00e676;
+    box-shadow: 0 0 30px rgba(0,255,128,0.15);
+  }
+  .glow-cta {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background: #00e676;
+    color: #0d1c15;
+    padding: 14px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(0,255,128,0.35);
+    transition: all 0.3s ease-in-out;
+  }
+  .glow-cta:hover {
+    background: #1ff98b;
+    box-shadow: 0 0 26px rgba(0,255,128,0.5);
+    transform: scale(1.05);
+  }
+  .glow-footer {
+    margin-top: 60px;
+  }
+  .glow-disclaimer {
+    font-size: 13px;
+    color: #999;
+    margin-top: 18px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
+  

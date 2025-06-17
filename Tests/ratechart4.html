@@ -1,0 +1,119 @@
+<!-- 🚀 Ultra Modern Rate Comparison Panel – Version 3 -->
+<section class="rate-panel-modern">
+    <h2 class="modern-title">California's Utility Rates Are Skyrocketing</h2>
+    <p class="modern-subtitle">Compare the average 2025 residential rates from the major utilities with a Solar PPA — visualized in real-time.</p>
+  
+    <div class="animated-grid">
+      <div class="modern-card" data-rate="44.65">
+        <h3>PG&E</h3>
+        <div class="animated-bar" style="--percent: 89%;"></div>
+        <span class="rate-label">44.65¢/kWh</span>
+      </div>
+      <div class="modern-card" data-rate="38.3">
+        <h3>SDG&E</h3>
+        <div class="animated-bar" style="--percent: 76.6%;"></div>
+        <span class="rate-label">38.3¢/kWh</span>
+      </div>
+      <div class="modern-card" data-rate="31.4">
+        <h3>SCE</h3>
+        <div class="animated-bar" style="--percent: 62.8%;"></div>
+        <span class="rate-label">31.4¢/kWh</span>
+      </div>
+      <div class="modern-card solar" data-rate="25">
+        <h3>Solar PPA</h3>
+        <div class="animated-bar" style="--percent: 50%;"></div>
+        <span class="rate-label">25¢/kWh</span>
+      </div>
+    </div>
+  
+    <div class="modern-footer">
+      <a href="form1.html" class="fancy-cta">Get My Personalized Rate</a>
+      <p class="modern-disclaimer">Rates based on 2025 California averages. Solar PPA assumes fixed 25¢/kWh rate.</p>
+    </div>
+  </section>
+  
+  <style>
+  .rate-panel-modern {
+    background: radial-gradient(circle at top, #e9f5f0, #ffffff);
+    padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px);
+    text-align: center;
+  }
+  .modern-title {
+    font-size: clamp(28px, 5vw, 48px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .modern-subtitle {
+    font-size: clamp(16px, 2.2vw, 22px);
+    color: #444;
+    margin-bottom: 50px;
+  }
+  .animated-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .modern-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    width: 180px;
+    position: relative;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease;
+  }
+  .modern-card:hover {
+    transform: scale(1.04);
+  }
+  .modern-card h3 {
+    font-size: 18px;
+    color: #111;
+    margin-bottom: 18px;
+  }
+  .animated-bar {
+    width: 100%;
+    height: 14px;
+    background: linear-gradient(to right, #1b4d28 var(--percent), #d3d3d3 var(--percent));
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+  }
+  .rate-label {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+    display: block;
+  }
+  .solar {
+    background: #f1fff4;
+    border: 2px solid #1b4d28;
+  }
+  .fancy-cta {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #1b4d28, #276b3a);
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(27, 77, 40, 0.3);
+    transition: all 0.3s ease;
+  }
+  .fancy-cta:hover {
+    background: #143b1e;
+    box-shadow: 0 8px 24px rgba(27, 77, 40, 0.5);
+  }
+  .modern-footer {
+    margin-top: 50px;
+  }
+  .modern-disclaimer {
+    font-size: 13px;
+    color: #666;
+    margin-top: 18px;
+  }
+  </style>
+  

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FAQ – Dynamic Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* --- BASICS --------------------------------------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Open Sans',sans-serif;background:#f7f7f7;line-height:1.45;color:#111;padding:40px}
+    h1{text-align:center;font-size:clamp(28px,6vw,48px);margin-bottom:32px;color:#1b4d28}
+    /* --- ACCORDION CONTAINER -------------------------- */
+    .faq-container{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+    .faq-category{background:#f5f6f7;border:1px solid #e2e2e2;border-radius:16px;overflow:hidden}
+    .faq-category-button{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;padding:16px 24px;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1b4d28;cursor:pointer;gap:20px}
+    .faq-icon{width:32px;height:32px;object-fit:contain;flex-shrink:0}
+    .faq-text-pair{display:flex;flex-direction:column}
+    .faq-category-title{font-weight:700;font-size:clamp(18px,2.4vw,24px)}
+    .faq-category-desc{font-size:clamp(14px,1.6vw,18px);color:#444}
+    .faq-arrow{font-size:24px;transition:transform .3s ease;margin-left:auto}
+    .rotate{transform:rotate(90deg)}
+    .faq-questions{overflow:hidden;height:0;transition:height .4s ease-in-out;background:#fff}
+    .faq-question{border-top:1px solid #eee}
+    .faq-question-button{display:flex;justify-content:space-between;align-items:center;width:100%;background:#fff;border:none;font-size:clamp(15px,1.6vw,18px);padding:14px 24px;cursor:pointer}
+    .faq-answer{overflow:hidden;height:0;background:#f2f4f5;transition:height .4s ease-in-out}
+    .faq-answer-content{padding:18px 24px;font-size:clamp(15px,1.4vw,17px)}
+  </style>
+</head>
+<body>
+  <h1>Common Questions (Dynamic Demo)</h1>
+  <div id="faq-root" class="faq-container"></div>
+
+<script>
+/* ===============================================
+   CONFIG – replace with your published CSV URL
+   Publish Google Sheet: File ▸ Share ▸ Publish to web ▸ CSV
+   =============================================== */
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/<<YOUR-CSV-KEY>>/pub?output=csv';
+
+/* ===== CSV ➜ array of objects ================== */
+function csvToArray(str){
+  const rows=str.trim().split(/\r?\n/).map(r=>r.split(','));
+  const headers=rows.shift();
+  return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h.trim(),r[i]?.trim()||''])));
+}
+
+/* ===== Group by category ======================= */
+function groupByCategory(items){
+  const map={};
+  items.forEach(o=>{
+    const key=o.cat_en;
+    if(!map[key]) map[key]={
+      title:{en:o.cat_en,es:o.cat_es},
+      desc :{en:o.desc_en,es:o.desc_es},
+      icon :o.icon||'',
+      q:[]
+    };
+    map[key].q.push(o);
+  });
+  return Object.values(map);
+}
+
+/* ===== Build accordion ========================= */
+function buildAccordion(data,lang='en'){
+  const root=document.getElementById('faq-root');
+  data.forEach(cat=>{
+    const section=document.createElement('section');
+    section.className='faq-category';
+
+    // category button
+    const btn=document.createElement('button');
+    btn.className='faq-category-button';
+    btn.setAttribute('data-toggle','category');
+    btn.innerHTML=`
+      <img src="${cat.icon}" class="faq-icon" alt="">
+      <div class="faq-text-pair">
+        <div class="faq-category-title">${cat.title[lang]}</div>
+        <div class="faq-category-desc">${cat.desc[lang]}</div>
+      </div>
+      <span class="faq-arrow">›</span>`;
+    section.appendChild(btn);
+
+    // questions wrapper
+    const box=document.createElement('div');
+    box.className='faq-questions';
+    cat.q.forEach(item=>{
+      const qWrap=document.createElement('div');
+      qWrap.className='faq-question';
+      qWrap.innerHTML=`
+        <button class="faq-question-button">
+          ${item[`q_${lang}`]}<span class="faq-arrow">›</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-content"><strong>Answer:</strong> ${item[`a_${lang}`]}</div></div>`;
+      box.appendChild(qWrap);
+    });
+    section.appendChild(box);
+    root.appendChild(section);
+  });
+  initFAQAccordion();
+}
+
+/* ===== Accordion interaction =================== */
+function animateHeight(el,toOpen){
+  const start=el.offsetHeight;
+  el.style.height=start+'px';
+  requestAnimationFrame(()=>{const end=toOpen?el.scrollHeight:0;el.style.height=end+'px';});
+}
+function initFAQAccordion(){
+  // category clicks
+  document.querySelectorAll('[data-toggle="category"]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const cat=btn.closest('.faq-category');
+      const box=cat.querySelector('.faq-questions');
+      const arrow=btn.querySelector('.faq-arrow');
+      const isOpen=box.classList.contains('open');
+      document.querySelectorAll('.faq-questions.open').forEach(b=>{b.classList.remove('open');animateHeight(b,false);b.closest('.faq-category').querySelector('.faq-arrow').classList.remove('rotate');});
+      if(!isOpen){box.classList.add('open');arrow.classList.add('rotate');animateHeight(box,true);}  });
+  });
+  // question clicks
+  document.querySelectorAll('.faq-question-button').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const ans=btn.nextElementSibling;
+      const arrow=btn.querySelector('.faq-arrow');
+      const wrap=btn.closest('.faq-questions');
+      const isOpen=ans.classList.contains('open');
+      wrap.querySelectorAll('.faq-answer.open').forEach(a=>{a.classList.remove('open');animateHeight(a,false);a.previousElementSibling.querySelector('.faq-arrow').classList.remove('rotate');});
+      if(!isOpen){ans.classList.add('open');arrow.classList.add('rotate');animateHeight(ans,true);} });
+  });
+}
+
+/* ===== Fetch + build =========================== */
+fetch(SHEET_CSV_URL)
+  .then(r=>r.text())
+  .then(csv=>groupByCategory(csvToArray(csv)))
+  .then(data=>buildAccordion(data,document.documentElement.lang||'en'))
+  .catch(err=>{
+    document.getElementById('faq-root').innerHTML='<p style="color:red;text-align:center">Failed to load FAQ data.</p>';console.error(err);
+  });
+</script>
+</body>
+</html>

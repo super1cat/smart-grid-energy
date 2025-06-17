@@ -1,0 +1,109 @@
+<!-- 💡 Interactive Savings Slider Section -->
+<section class="solution-slider-section">
+    <h2 class="section-title">How Much Could You Be Saving?</h2>
+    <p class="section-subtitle">Slide to match your current monthly electric bill. See what you’d pay with a Solar PPA instead.</p>
+  
+    <div class="slider-wrapper">
+      <label for="bill-slider">Your Current Monthly Bill: <span id="bill-amount">$200</span></label>
+      <input type="range" id="bill-slider" min="100" max="600" step="10" value="200">
+    </div>
+  
+    <div class="savings-results">
+      <div class="result-box">
+        <h3>What You Pay Now</h3>
+        <p id="current-cost">$200.00</p>
+      </div>
+      <div class="result-box savings-arrow">→</div>
+      <div class="result-box">
+        <h3>With Solar PPA (25¢/kWh)</h3>
+        <p id="ppa-cost">$112.50</p>
+      </div>
+    </div>
+    <p class="disclaimer">Based on average usage of 750 kWh/month. PPA savings may vary by provider and utility region.</p>
+  </section>
+  
+  <style>
+  .solution-slider-section {
+    background-color: #f7f7f7;
+    padding: clamp(30px, 6vw, 80px) clamp(20px, 4vw, 40px);
+    text-align: center;
+  }
+  .section-title {
+    font-size: clamp(24px, 4vw, 42px);
+    color: #1b4d28;
+    margin-bottom: 10px;
+  }
+  .section-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #333;
+    margin-bottom: 30px;
+  }
+  .slider-wrapper label {
+    font-weight: 600;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 12px;
+  }
+  #bill-slider {
+    width: 100%;
+    max-width: 400px;
+  }
+  .savings-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .result-box {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 160px;
+  }
+  .savings-arrow {
+    font-size: 30px;
+    color: #1b4d28;
+    font-weight: bold;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .result-box h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #777;
+  }
+  .result-box p {
+    margin: 8px 0 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+  }
+  .disclaimer {
+    font-size: 13px;
+    color: #666;
+    margin-top: 30px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
+  
+  <script>
+  const slider = document.getElementById("bill-slider");
+  const billAmount = document.getElementById("bill-amount");
+  const currentCost = document.getElementById("current-cost");
+  const ppaCost = document.getElementById("ppa-cost");
+  
+  slider.addEventListener("input", () => {
+    const value = parseInt(slider.value);
+    billAmount.textContent = `$${value}`;
+    currentCost.textContent = `$${value.toFixed(2)}`;
+    const ppaEstimate = (value * 0.5625).toFixed(2); // 25¢ / 44.45¢ avg = ~56.25% of bill
+    ppaCost.textContent = `$${ppaEstimate}`;
+  });
+  </script>
+  

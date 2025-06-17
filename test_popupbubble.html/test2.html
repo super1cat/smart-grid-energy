@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Floating tab-style interactive bullets that expand inline to reveal helpful solar PPA insights.">
+  <title>Floating Tabs Test</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Floating Tabs === */
+    .floating-tab-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .floating-tab {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: #f7f7f7;
+      border-radius: 20px;
+      padding: clamp(16px, 4vw, 24px);
+      margin-bottom: clamp(14px, 3vw, 28px);
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tab-circle {
+      background-color: #1b4d28;
+      color: white;
+      font-weight: 600;
+      border-radius: 50%;
+      min-width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .tab-title {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: #111;
+    }
+
+    .tab-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      margin-top: 10px;
+      margin-left: 52px;
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+    }
+
+    .floating-tab.active {
+      background-color: #e9f6ef;
+    }
+
+    .floating-tab.active .tab-content {
+      max-height: 200px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main class="floating-tab-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">Smart Reasons to Go Solar With a PPA</h1>
+
+    <div class="floating-tab">
+      <div class="tab-circle">1</div>
+      <div>
+        <div class="tab-title">Lower your rate, no equipment cost</div>
+        <div class="tab-content">You get a lower, fixed electric rate — and the solar equipment is installed and maintained by the provider. You don’t pay for panels or batteries up front.</div>
+      </div>
+    </div>
+
+    <div class="floating-tab">
+      <div class="tab-circle">2</div>
+      <div>
+        <div class="tab-title">They handle maintenance and upgrades</div>
+        <div class="tab-content">From battery swaps to software updates, the PPA company keeps everything running smoothly. You just enjoy clean, reliable energy.</div>
+      </div>
+    </div>
+
+    <div class="floating-tab">
+      <div class="tab-circle">3</div>
+      <div>
+        <div class="tab-title">You can switch electric providers</div>
+        <div class="tab-content">Instead of buying from the utility, you buy electricity from the company that installs solar right on your home. It’s simple, legal, and often way cheaper.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    document.querySelectorAll('.floating-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tab.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

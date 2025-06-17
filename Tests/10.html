@@ -1,0 +1,138 @@
+<!-- 🎰 Scratch-Off Style Rate Reveal -->
+<section class="scratch-section">
+    <h2 class="scratch-title">Do You Know How Much You're Paying for Electricity?</h2>
+    <p class="scratch-subtitle">Tap each card to reveal what you're really paying per kilowatt-hour.</p>
+  
+    <div class="scratch-grid">
+      <div class="scratch-card" onclick="revealRate(this, '44.65¢ / kWh')">
+        <div class="scratch-cover">🎫 Scratch Me</div>
+        <div class="scratch-reveal">PG&E<br><span class="rate">44.65¢ / kWh</span></div>
+      </div>
+      <div class="scratch-card" onclick="revealRate(this, '38.3¢ / kWh')">
+        <div class="scratch-cover">🎫 Scratch Me</div>
+        <div class="scratch-reveal">SDG&E<br><span class="rate">38.3¢ / kWh</span></div>
+      </div>
+      <div class="scratch-card" onclick="revealRate(this, '31.4¢ / kWh')">
+        <div class="scratch-cover">🎫 Scratch Me</div>
+        <div class="scratch-reveal">SCE<br><span class="rate">31.4¢ / kWh</span></div>
+      </div>
+      <div class="scratch-card solar" onclick="revealRate(this, '25¢ / kWh')">
+        <div class="scratch-cover">🎫 Scratch Me</div>
+        <div class="scratch-reveal">Solar PPA<br><span class="rate">25¢ / kWh</span></div>
+      </div>
+    </div>
+  
+    <div class="scratch-cta">
+      <a href="form1.html" class="scratch-button">Know Your Number</a>
+      <p class="scratch-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .scratch-section {
+    background: linear-gradient(to bottom, #f6fff8, #ffffff);
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .scratch-title {
+    font-size: clamp(28px, 5vw, 46px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .scratch-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .scratch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    max-width: 720px;
+    margin: 0 auto 50px auto;
+  }
+  .scratch-card {
+    position: relative;
+    background: #f1f1f1;
+    border-radius: 14px;
+    height: 160px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease;
+  }
+  .scratch-card:hover {
+    transform: scale(1.03);
+  }
+  .scratch-cover {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, #ccc, #ccc 10px, #eaeaea 10px, #eaeaea 20px);
+    color: #111;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+  }
+  .scratch-card.revealed .scratch-cover {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .scratch-reveal {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #ffffff;
+    color: #1b4d28;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .scratch-reveal .rate {
+    font-size: 24px;
+    margin-top: 6px;
+  }
+  .scratch-card.solar .scratch-reveal {
+    background: #e5f8eb;
+    color: #195e38;
+  }
+  .scratch-cta {
+    margin-top: 30px;
+  }
+  .scratch-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .scratch-button:hover {
+    background: #143b1e;
+    transform: scale(1.04);
+  }
+  .scratch-disclaimer {
+    font-size: 14px;
+    color: #555;
+    margin-top: 16px;
+  }
+  </style>
+  
+  <script>
+  function revealRate(card, rateText) {
+    card.classList.add('revealed');
+  }
+  </script>
+  

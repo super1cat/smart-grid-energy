@@ -1,0 +1,135 @@
+<!-- 🎯 Interactive Rate Guessing Game: Flip to Reveal -->
+<section class="flip-card-game">
+    <h2 class="flip-title">Do You Know How Much You're Paying for Electricity?</h2>
+    <p class="flip-subtitle">Tap each card to reveal the average rate. Then get your customized Know Your Number™ report.</p>
+  
+    <div class="flip-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">PG&E</div>
+          <div class="flip-back">44.65¢/kWh</div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">SDG&E</div>
+          <div class="flip-back">38.3¢/kWh</div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">SCE</div>
+          <div class="flip-back">31.4¢/kWh</div>
+        </div>
+      </div>
+      <div class="flip-card solar" onclick="this.classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">Solar PPA</div>
+          <div class="flip-back">25¢/kWh</div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="flip-cta">
+      <a href="form1.html" class="flip-button">Know Your Number</a>
+      <p class="flip-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .flip-card-game {
+    background: #f5f5f5;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .flip-title {
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
+    color: #1b4d28;
+    margin-bottom: 14px;
+  }
+  .flip-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #333;
+    margin-bottom: 50px;
+  }
+  .flip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .flip-card {
+    width: 160px;
+    height: 180px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .flip-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    background: white;
+  }
+  .flip-card.flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px;
+  }
+  .flip-front {
+    background: #1b4d28;
+    color: white;
+  }
+  .flip-back {
+    background: #e8f6ea;
+    color: #1b4d28;
+    transform: rotateY(180deg);
+  }
+  .solar .flip-front {
+    background: #2d6e3e;
+  }
+  .solar .flip-back {
+    background: #dff3e4;
+  }
+  .flip-cta {
+    margin-top: 50px;
+  }
+  .flip-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  .flip-button:hover {
+    background: #143b1e;
+  }
+  .flip-disclaimer {
+    font-size: 14px;
+    color: #555;
+    margin-top: 16px;
+  }
+  </style>
+  

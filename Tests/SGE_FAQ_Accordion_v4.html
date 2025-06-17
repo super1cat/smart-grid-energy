@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Common Questions | Smart Grid Energy</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7f7f7;
+      padding: 20px;
+      color: #111;
+    }
+
+    .faq-wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #1b4d28;
+    }
+
+    .category-block {
+      background-color: #e3e8dd;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    .category-block:hover,
+    .category-block:focus-within {
+      background-color: #d7ddcf;
+      outline: none;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1b4d28;
+    }
+
+    .category-desc {
+      font-size: 14px;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .faq-category {
+      margin-bottom: 20px;
+    }
+
+    .faq-questions {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .faq-question {
+      padding: 16px 20px;
+      font-size: 16px;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover,
+    .faq-question:focus {
+      background-color: #e9f1e7;
+      outline: none;
+    }
+
+    .faq-question:nth-child(even) {
+      background-color: #efefef;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 18px 24px;
+      background-color: #f1f6f2;
+      font-size: 15px;
+      line-height: 1.6;
+      font-style: italic;
+      color: #2e2e2e;
+      border-left: 4px solid #c1d1b0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .arrow {
+      font-size: 16px;
+      transition: transform 0.3s;
+    }
+
+    .faq-question.open .arrow {
+      transform: rotate(90deg);
+    }
+
+    .faq-question.open + .faq-answer {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="faq-wrapper">
+    <h1>Common Questions</h1>
+
+    <div class="faq-category" data-category>
+      <div class="category-block" tabindex="0">
+        <div>
+          <div class="category-title">⚡ Power Purchase Agreement Basics</div>
+          <div class="category-desc">How solar electricity works when you don’t own the system.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question" tabindex="0">What is a Power Purchase Agreement?<span class="arrow">›</span></div>
+        <div class="faq-answer">
+          A PPA lets you buy electricity from solar panels installed on your home without owning the equipment. It’s a long-term agreement that provides consistent, affordable electricity with no responsibility for system maintenance or repair.
+        </div>
+        <div class="faq-question" tabindex="0">Who maintains the system?<span class="arrow">›</span></div>
+        <div class="faq-answer">
+          The provider installs, insures, and maintains the solar system for you, including battery replacement. They also monitor performance to ensure your system runs efficiently over time, giving you peace of mind and zero maintenance concerns.
+        </div>
+        <div class="faq-question" tabindex="0">What happens at the end of the PPA term?<span class="arrow">›</span></div>
+        <div class="faq-answer">
+          When the agreement ends, you typically have a few options: renew the agreement, upgrade to a new system, or remove the panels. In some cases, you may also be able to purchase the system at a discounted rate. Your provider will guide you through the options well in advance.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-category" data-category>
+      <div class="category-block" tabindex="0">
+        <div>
+          <div class="category-title">🔧 Owning Your Solar System</div>
+          <div class="category-desc">For those considering buying or financing solar equipment.</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="faq-questions">
+        <div class="faq-question" tabindex="0">Can I own the solar system?<span class="arrow">›</span></div>
+        <div class="faq-answer">Yes. Some homeowners choose to buy or finance their solar system for full ownership and long-term savings.</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // One open category at a time
+  const categories = document.querySelectorAll('[data-category]');
+  categories.forEach(cat => {
+    const toggle = cat.querySelector('.category-block');
+    toggle.addEventListener('click', () => {
+      categories.forEach(c => {
+        if (c !== cat) c.querySelector('.faq-questions').style.display = 'none';
+      });
+      const questions = cat.querySelector('.faq-questions');
+      questions.style.display = questions.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // One question open per category
+    cat.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cat.querySelectorAll('.faq-question').forEach(other => {
+          if (other !== q) other.classList.remove('open');
+        });
+        q.classList.toggle('open');
+      });
+    });
+  });
+</script>
+</body>
+</html>

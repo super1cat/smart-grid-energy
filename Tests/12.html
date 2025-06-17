@@ -1,0 +1,112 @@
+<!-- 💸 Falling Prices Animation Section -->
+<section class="falling-prices-section">
+    <h2 class="falling-title">Utility Bills Keep Falling… in the Wrong Direction</h2>
+    <p class="falling-subtitle">Watch how the IOU rates stack up compared to a locked-in Solar PPA price.</p>
+  
+    <div class="falling-grid">
+      <div class="falling-item io-utility" style="--drop: 85%">
+        <div class="bill-icon">📄</div>
+        <div class="bill-label">PG&E<br><span class="rate">44.65¢</span></div>
+      </div>
+      <div class="falling-item io-utility" style="--drop: 70%">
+        <div class="bill-icon">📄</div>
+        <div class="bill-label">SDG&E<br><span class="rate">38.3¢</span></div>
+      </div>
+      <div class="falling-item io-utility" style="--drop: 58%">
+        <div class="bill-icon">📄</div>
+        <div class="bill-label">SCE<br><span class="rate">31.4¢</span></div>
+      </div>
+      <div class="falling-item solar" style="--drop: 30%">
+        <div class="bill-icon">☀️</div>
+        <div class="bill-label">Solar PPA<br><span class="rate">25¢</span></div>
+      </div>
+    </div>
+  
+    <div class="falling-cta">
+      <a href="form1.html" class="falling-button">Know Your Number</a>
+      <p class="falling-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .falling-prices-section {
+    background: #fdfdfd;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+    overflow-x: hidden;
+  }
+  .falling-title {
+    font-size: clamp(28px, 5vw, 46px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .falling-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 50px;
+  }
+  .falling-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    position: relative;
+    min-height: 320px;
+  }
+  .falling-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-200px);
+    animation: dropIn 1.2s ease-out forwards;
+    animation-delay: calc(var(--drop) / 100);
+  }
+  .falling-item .bill-icon {
+    font-size: 64px;
+    margin-bottom: 12px;
+  }
+  .falling-item .bill-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1b4d28;
+    text-align: center;
+  }
+  .falling-item .bill-label .rate {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    margin-top: 4px;
+  }
+  .solar {
+    color: #195e38;
+  }
+  .falling-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 30px;
+  }
+  .falling-button:hover {
+    background: #143b1e;
+    transform: scale(1.04);
+  }
+  .falling-disclaimer {
+    font-size: 14px;
+    color: #555;
+    margin-top: 16px;
+  }
+  @keyframes dropIn {
+    0% { transform: translateY(-200px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  </style>
+  

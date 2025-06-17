@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Questions | Smart Grid Energy</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: clamp(16px, 4vw, 48px);
+      color: #111;
+    }
+
+    .faq-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: clamp(24px, 5vw, 48px);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .faq-header-block {
+      text-align: center;
+      margin-bottom: clamp(24px, 4vw, 48px);
+      padding: clamp(12px, 3vw, 24px);
+      border-bottom: 2px solid #c1d1b0;
+    }
+
+    h1.faq-heading {
+      font-size: clamp(32px, 6vw, 56px);
+      color: #1b4d28;
+      margin-bottom: 8px;
+    }
+
+    .faq-subhead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #444;
+    }
+
+    .faq-category {
+      margin-bottom: clamp(16px, 2vw, 28px);
+    }
+
+    .faq-category-button {
+      background-color: #e3e8dd;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: clamp(16px, 2vw, 24px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .faq-category-button:hover {
+      background-color: #d7ddcf;
+    }
+
+    .faq-category-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: #1b4d28;
+    }
+
+    .faq-category-desc {
+      font-size: clamp(14px, 2vw, 18px);
+      color: #444;
+      margin-top: 4px;
+    }
+
+    .faq-category-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-arrow {
+      font-size: clamp(20px, 2.8vw, 28px);
+      transition: transform 0.3s ease;
+    }
+
+    .rotate {
+      transform: rotate(90deg);
+    }
+
+    .faq-questions {
+      overflow: hidden;
+      transition: height 0.4s ease;
+    }
+
+    .faq-question {
+      border-top: 1px solid #ddd;
+    }
+
+    .faq-question-button {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: clamp(16px, 2vw, 22px);
+      font-size: clamp(16px, 2vw, 20px);
+      background-color: #f9f9f9;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .faq-question-button:hover {
+      background-color: #eef2ec;
+    }
+
+    .faq-question:nth-child(even) .faq-question-button {
+      background-color: #f0f0f0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: clamp(16px, 2vw, 24px);
+      background-color: #f1f6f2;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.75;
+      font-style: italic;
+      color: #2e2e2e;
+      border-left: 4px solid #c1d1b0;
+      margin-bottom: clamp(8px, 1vw, 16px);
+    }
+
+    .faq-question-button.open .faq-arrow {
+      transform: rotate(90deg);
+    }
+
+    .faq-answer.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main class="faq-wrapper">
+    <div class="faq-header-block">
+      <h1 class="faq-heading">Common Questions</h1>
+      <div class="faq-subhead">Clear answers to the things homeowners ask us every day.</div>
+    </div>
+
+    <!-- PPA Category -->
+    <section class="faq-category">
+      <button class="faq-category-button" data-toggle="category">
+        <div class="faq-category-text">
+          <div class="faq-category-title">⚡ Power Purchase Agreement Basics</div>
+          <div class="faq-category-desc">How solar electricity works when you don’t own the system.</div>
+        </div>
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-questions">
+        <div class="faq-question">
+          <button class="faq-question-button">What is a Power Purchase Agreement?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer">A PPA lets you buy electricity from solar panels installed on your home without owning the equipment. It’s simple, predictable, and usually cheaper than your current utility.</div>
+        </div>
+        <div class="faq-question">
+          <button class="faq-question-button">Who maintains the system?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer">The provider installs, insures, and maintains the solar system for you, including battery replacement. They also monitor performance over time, making sure everything continues to run efficiently so you don’t have to think about a thing.</div>
+        </div>
+        <div class="faq-question">
+          <button class="faq-question-button">What happens after 25 years?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer">At the end of your PPA term, you usually have a few options: renew with an updated rate, purchase the system at a discount, or have it removed. Whatever your choice, your provider will guide you through it with plenty of notice.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ownership Category -->
+    <section class="faq-category">
+      <button class="faq-category-button" data-toggle="category">
+        <div class="faq-category-text">
+          <div class="faq-category-title">🔧 Owning Your Solar System</div>
+          <div class="faq-category-desc">For those considering buying or financing solar equipment.</div>
+        </div>
+        <span class="faq-arrow">›</span>
+      </button>
+      <div class="faq-questions">
+        <div class="faq-question">
+          <button class="faq-question-button">Is ownership better than a PPA?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer">It depends. If you want full control and access to tax incentives, ownership can make sense. But if you want simplicity, no maintenance, and low upfront cost, a PPA may be a better fit.</div>
+        </div>
+        <div class="faq-question">
+          <button class="faq-question-button">How does financing work?<span class="faq-arrow">›</span></button>
+          <div class="faq-answer">Many homeowners choose to finance their system with $0 down. This spreads the cost out over 10–20 years, and in many cases the payment is less than your old utility bill.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-toggle="category"]').forEach(toggle => {
+      toggle.addEventListener('click', function () {
+        const category = this.closest('.faq-category');
+        const questionsBox = category.querySelector('.faq-questions');
+        const arrow = this.querySelector('.faq-arrow');
+
+        document.querySelectorAll('.faq-questions').forEach(box => {
+          if (box !== questionsBox) {
+            box.style.height = '0px';
+            box.classList.remove('open');
+          }
+        });
+
+        document.querySelectorAll('.faq-category-button .faq-arrow').forEach(a => {
+          if (a !== arrow) a.classList.remove('rotate');
+        });
+
+        const isOpen = questionsBox.classList.contains('open');
+        if (isOpen) {
+          questionsBox.style.height = '0px';
+          questionsBox.classList.remove('open');
+          arrow.classList.remove('rotate');
+        } else {
+          questionsBox.style.height = questionsBox.scrollHeight + 'px';
+          questionsBox.classList.add('open');
+          arrow.classList.add('rotate');
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-question-button').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const allAnswers = document.querySelectorAll('.faq-answer');
+        const allButtons = document.querySelectorAll('.faq-question-button');
+        allAnswers.forEach(a => a.classList.remove('show'));
+        allButtons.forEach(b => b.classList.remove('open'));
+
+        const answer = this.nextElementSibling;
+        this.classList.add('open');
+        answer.classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>

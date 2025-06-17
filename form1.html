@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Smart Grid Energy - Form</title>
+
+      <link rel="icon" href="img/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" href="img/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" href="img/favicon-48x48.png" sizes="48x48">
+  <link rel="icon" href="img/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="img/favicon-180x180.png">
+  <link rel="icon" href="img/favicon-192x192.png" sizes="192x192">
+  
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.weglot.com/weglot.min.js"></script>
+    <script>
+      Weglot.initialize({ api_key: 'wg_3131e1378659e57006de1ad89ddb36188' });
+    </script>
+  </head>
+  <body class="weglot-active form-page">
+    <header class="main-nav">
+      <div class="nav-inner">
+        <div class="logo-wrapper">
+          <a href="index.html">
+            <img src="img/logo.png" alt="Smart Grid Energy Logo" class="nav-logo" />
+          </a>
+        </div>
+        <div class="header-message" data-wg-notranslate>
+          <span class="lang-en">Let’s unlock better electric rates for your home.</span>
+          <span class="lang-es">A un paso de ahorrar en su factura.</span>
+        </div>
+        <div class="right-side">
+          <div class="phone" data-wg-notranslate>
+            <a href="tel:+18885111260" class="phone-link">(888).511.1260</a>
+          </div>
+          <div class="language-toggle">
+            <span class="lang-icon" onclick="toggleLangMenu()"></span>
+            <div class="lang-menu" id="langMenu"></div>
+          </div>
+        </div>
+      </div>
+    </header> 
+  <div class="container">
+    <div class="form-container">
+      <div class="form-left">
+        <img src="img/unlocking.jpg" alt="Unlocking Savings">
+      
+        <div class="testimonial-block fade-in">
+          <p class="testimonial-text">
+            <span class="quote-only">
+              I never imagined changing my electric company was even legal. Now we’re saving every month, and we’ve got backup power in case anything goes wrong.
+            </span>
+            <br><br>
+            <span class="testimonial-name">– Gary J.</span><br>
+            <span class="testimonial-location">Fresno, CA</span>
+          </p>
+        </div>
+      </div> 
+      <div class="form-right">
+        <h2><span class="lang-en">Please share a few details below.
+        </span><span class="lang-es">Solo unos detalles</span></h2>
+        <p><span class="lang-en">One of our Energy Guides will be in touch soon</span><span class="lang-es">Un Guía Energético le contactará pronto.</span></p>
+
+        <form id="energy-consultation-form" novalidate>
+          <div class="inline-fields">
+            <div><label for="first-name">First Name <span style="color:red">*</span></label><input type="text" id="first-name" required></div>
+            <div><label for="last-name">Last Name <span style="color:red">*</span></label><input type="text" id="last-name" required></div>
+          </div>
+          <div class="inline-fields">
+            <div><label for="email">Email <span style="color:red">*</span></label><input type="email" id="email" required></div>
+            <div><label for="phone">Phone <span style="color:red">*</span></label><input type="tel" id="phone" required></div>
+          </div>
+          <div id="home-address-wrapper">
+            <div class="lang-en" data-wg-notranslate>
+              <label for="home-address">Home Address <span style="color:red">*</span></label>
+              <input type="text" id="home-address" name="home-address" required placeholder="Only needed to confirm eligibility. No unannounced visits.">
+            </div>
+            <div class="lang-es" data-wg-notranslate>
+              <label for="home-address-es">Dirección del Casa <span style="color:red">*</span></label>
+              <input type="text" id="home-address-es" name="home-address" required placeholder="Para confirmar elegibilidad. Sin visitas sin aviso.">
+            </div>
+          </div>
+
+          <div class="inline-fields">
+            <div class="city-wrapper">
+              <label for="city">
+                <span class="lang-en">City</span>
+                <span class="lang-es">Ciudad</span>
+                <span style="color:red;"> *</span>
+              </label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="state-wrapper">
+              <label for="state">
+                <span class="lang-en">State</span>
+                <span class="lang-es">Estado</span>
+                <span style="color:red;"> *</span>
+              </label>
+              <input type="text" id="state" name="state" required>
+            </div>
+            <div class="zip-wrapper">
+              <label for="zip">
+                <span class="lang-en">ZIP Code</span>
+                <span class="lang-es">Código postal</span>
+                <span style="color:red;"> *</span>
+              </label>
+              <input type="text" id="zip" name="zip" required>
+            </div>
+          </div>
+
+          <div id="ownership-question">
+            <label for="own-home">Do you own your home? <span style="color:red">*</span></label>
+            <select id="own-home" required onchange="handleHomeOwnershipSelect(this)">
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+            <div id="ownership-warning" style="display:none; color: #c00; font-weight: 500; margin-top: 10px;">
+              We are truly sorry but all of our programs only apply to homeowners.
+            </div>
+          </div>
+
+          <div id="electric-bill-question">
+            <label for="electric-bill">How much is your current electric bill? <span style="color:red">*</span></label>
+            <select id="electric-bill" name="electric-bill" required>
+              <option>$150–$249</option><option>$250–$349</option><option>$350+</option>
+            </select>
+          </div>
+
+          <div id="provider-question">
+            <label for="electric-provider">
+              <span class="lang-en">Who is your current electric provider?</span>
+              <span class="lang-es">¿Quién es su proveedor eléctrico actual?</span>
+              <span style="color:red;"> *</span>
+            </label>
+            <select id="electric-provider" name="electric-provider" required data-wg-notranslate>
+              <option value="">Select one</option>
+              <option value="PG&E">PG&E</option>
+              <option value="SCE">Southern California Edison</option>
+              <option value="SDG&E">San Diego Gas & Electric</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+
+          <div id="more-info-question">
+            <label for="more-info">
+              <span class="lang-en">Tell us more (optional):</span>
+              <span class="lang-es">Cuéntenos más (opcional):</span>
+            </label>
+            <textarea id="more-info" name="more-info"></textarea>
+          </div>
+
+        
+          <div class="required-wrapper">
+            <p class="required-fields">
+              <span class="red-asterisk"></span> Required fields
+            </p>
+
+            <div class="privacy-policy-line">
+              We keep your data safe—for PPA approval only!
+            </div>
+          
+            <div class="checkbox-row">
+              <input type="checkbox" id="privacy-policy" required />
+            </div>
+          
+            <p class="privacy-policy">
+              I agree to the 
+              <a href="privacy-terms.html" target="_blank">Privacy Policy / Terms of Service</a>
+            </p>
+          </div>
+          
+          <button type="submit" class="form-submit-button">Connect Me With a <br> Smart Grid Energy Guide</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- ✅ Footer Top Strip -->
+<section class="footer-strip" data-wg-notranslate>
+ <p class="footer-strip-message fade-in">
+    <span class="lang-en"><em>Guiding homeowners to lower electricity costs through smarter, long-term energy solutions.</em></span>
+    <span class="lang-es"><em>Guiando a los dueños de casa a ahorrar en su recibo de luz por muchos años.</em></span>
+  </p>
+</section>
+
+<!-- ✅ Main Footer -->
+<footer class="main-footer-bottom">
+ <div class="footer-row-container">
+  <div class="footer-row">
+
+<!-- 🔺 Logo stack (desktop version keeps license inside) -->
+<div class="footer-logo-stack">
+<a href="form1.html" class="footer-logo-link" aria-label="Getting Started">
+  <img src="img/footerlogo.png" alt="Smart Grid Energy Logo" class="footer-logo" />
+</a>
+
+  <!-- ✅ Desktop-only license -->
+  <div class="footer-license-wrapper license-desktop">
+         <a
+          href="https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/checklicense.aspx"
+          class="footer-license"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="img/cslb.png" alt="Licensed CSLB Consultant" class="cslb-icon" />
+          <span class="cslb-text">CSLB License #151557-SP</span>
+        </a>
+  </div>
+</div>
+
+<!-- ✅ Mobile-only license (moved outside logo stack) -->
+
+    <!-- 🔗 NAV LINKS WITH WEGLOT SUPPORT -->
+    <div class="footer-nav-wrap">
+      <nav class="footer-nav">
+        <a href="why-a-ppa.html">
+          <span class="lang-en" data-wg-notranslate>Why a PPA</span>
+          <span class="lang-es" data-wg-notranslate>¿Qué es un PPA?</span>
+        </a>
+        <a href="why-us.html">
+          <span class="lang-en" data-wg-notranslate>Why Us</span>
+          <span class="lang-es" data-wg-notranslate>¿Por qué Nosotros?</span>
+        </a>
+        <!-- Keep this commented until ready -->
+        <!-- <a href="know-your-number.html">
+          <span class="lang-en" data-wg-notranslate>What You Pay?</span>
+          <span class="lang-es" data-wg-notranslate>¿Qué Pagas?</span>
+        </a> -->
+        <a href="energy-news.html">
+          <span class="lang-en" data-wg-notranslate>Energy News</span>
+          <span class="lang-es" data-wg-notranslate>Noticias</span>
+        </a>
+        <a href="faq.html">
+          <span class="lang-en" data-wg-notranslate>Common Questions</span>
+          <span class="lang-es" data-wg-notranslate>Preguntas</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- 🌐 LANGUAGE TOGGLE -->
+
+    <div class="footer-lang-toggle" id="footer-lang-toggle">
+      <span class="lang-toggle-label" onclick="toggleFooterLang()">
+        <span class="lang-en" data-wg-notranslate>Español</span>
+        <span class="lang-es" data-wg-notranslate>English</span>
+      </span>
+    </div>
+
+    <!-- 📞 CONTACT INFO -->
+    <div class="footer-contact-block">
+      <div class="footer-contact-line">
+        <img src="img/phone.png" alt="Call Smart Grid Energy Now" class="footer-icon" />
+        <a href="tel:+18885111260" class="contact-text">(888)-511-1260</a>
+      </div>
+      <div class="footer-contact-line">
+        <img src="img/mail.png" alt="Send Smart Grid Energy an email" class="footer-icon" />
+        <a href="mailto:guide@smartgridenergy.us" class="contact-text">guide@smartgridenergy.us</a>
+      </div>
+      <div class="footer-contact-line">
+        <img src="img/clock.png" class="footer-icon" alt="Hours of Operation" />
+        <span class="contact-text hours lang-en" data-wg-notranslate>Mon–Fri, 9am–7pm PST</span>
+        <span class="contact-text hours lang-es" data-wg-notranslate>Lun–Vie, 9am–7pm PST</span>
+      </div>
+  </div>
+  <!-- ✅ Mobile-only license goes here between contact and legal -->
+      <div class="footer-license-wrapper license-mobile">
+        <a
+          href="https://www.cslb.ca.gov/OnlineServices/CheckLicenseII/checklicense.aspx"
+          class="footer-license"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="img/cslb.png" alt="Licensed CSLB Consultant" class="cslb-icon" />
+          <span class="cslb-text">CSLB License #151557-SP</span>
+        </a>
+      </div>
+</div>
+    </div> <!-- end .footer-row -->
+  </div> <!-- end .footer-row-container -->
+
+
+  <!-- ⚖️ LEGAL BLOCK -->
+  <div class="footer-legal">
+    <p>
+      <span class="lang-en" data-wg-notranslate>
+        <a href="privacy-terms.html">Privacy Policy / Terms of Service</a>
+      </span>
+      <span class="lang-es" data-wg-notranslate>
+        <a href="privacy-terms.html">Política de Privacidad / Términos del Servicio</a>
+      </span>
+    </p>
+   <p class="footer-disclaimer">
+  <span class="lang-en" data-wg-notranslate>
+    Smart Grid Energy is not affiliated with<br class="mobile-break"> PG&E, SDG&E, SCE,
+    or any municipal utility.<br> <br class="mobile-break">We partner with independent energy providers
+    under<br class="mobile-break">the California PPA framework.
+  </span>
+  <span class="lang-es" data-wg-notranslate>
+    Smart Grid Energy no está afiliada con <br class="mobile-break">PG&E, SDG&E, SCE
+    ni con ninguna compañía <br class="mobile-break">municipal de luz. <br>Colaboramos con proveedores
+    <br class="mobile-break">de energía independientes bajo <br class="mobile-break">el marco de PPA en California.
+  </span>
+</p>
+    <p class="footer-copyright" data-wg-notranslate>
+      <span class="lang-en">© 2025 Smart Grid Energy. All rights reserved.</span>
+      <span class="lang-es">© 2025 Smart Grid Energy. Todos los derechos reservados.</span>
+    </p>
+  </div>
+
+  <!-- 📏 Footer bottom buffer (optional override) -->
+  <div class="footer-bottom-buffer"></div>
+</footer>
+<!-- ✅ COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" data-wg-notranslate>
+  <p class="cookie-text">
+    <span class="lang-en" data-wg-notranslate>
+      This site uses cookies for analytics, personalized messaging, and to improve your experience.
+      By continuing to use Smart Grid Energy, you agree to our use of cookies.
+      <a href="privacy-terms.html" class="cookie-link">Learn More</a>
+    </span>
+    <span class="lang-es" data-wg-notranslate>
+      Este sitio utiliza cookies para análisis, mensajes personalizados y mejorar su experiencia.
+      Al continuar usando Smart Grid Energy, usted acepta nuestro uso de cookies.
+      <a href="privacy-terms.html" class="cookie-link">Ver Más</a>
+    </span>
+  </p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const dismissed = localStorage.getItem("cookieDismissed");
+
+    if (!dismissed && banner) {
+      banner.classList.add("visible");
+
+      setTimeout(() => {
+        banner.classList.remove("visible");
+        localStorage.setItem("cookieDismissed", "true");
+      }, 5000);
+
+      const dismiss = () => {
+        if (banner.classList.contains("visible")) {
+          banner.classList.remove("visible");
+          localStorage.setItem("cookieDismissed", "true");
+        }
+        window.removeEventListener("scroll", dismiss);
+        window.removeEventListener("click", dismiss);
+      };
+
+      window.addEventListener("scroll", dismiss, { once: true });
+      window.addEventListener("click", dismiss, { once: true });
+    }
+  });
+</script>
+  <script>
+    function toggleLangMenu() {
+      document.querySelectorAll('.lang-menu').forEach(menu => menu.classList.toggle("show"));
+    }
+  
+    function closeLangMenus() {
+      document.querySelectorAll('.lang-menu').forEach(menu => {
+        menu.classList.remove("show");
+      });
+    }
+  
+    function updateLangLabel() {
+      const currentLang = Weglot.getCurrentLang();
+      const otherLang = currentLang === "en" ? "es" : "en";
+      const label = otherLang === "en" ? "English" : "Español";
+      document.documentElement.setAttribute("lang", currentLang);
+      document.querySelectorAll('.lang-menu').forEach(menu => {
+        menu.innerHTML = `<a href="#" onclick="switchLang('${otherLang}'); return false;">${label}</a>`;
+      });
+    }
+  
+    function switchLang(lang) {
+      Weglot.switchTo(lang);
+      closeLangMenus();
+    }
+  
+    function toggleOtherField(select) {
+      document.getElementById("other-provider").style.display =
+        select.value === "Other" ? "block" : "none";
+    }
+  
+    function handleHomeOwnershipSelect(select) {
+      const warning = document.getElementById("ownership-warning");
+      warning.style.display = select.value === "no" ? "block" : "none";
+    }
+  
+    // 👇 This runs after Weglot is ready
+    Weglot.on("initialized", () => {
+      updateLangLabel();
+  
+      Weglot.on("languageChanged", () => {
+        setTimeout(updateLangLabel, 150);
+      });
+  
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".language-toggle")) closeLangMenus();
+      });
+    });
+  
+    // 👇 Prevent submission if user selects "no"
+    document.getElementById("energy-consultation-form").addEventListener("submit", function (e) {
+      if (document.getElementById("own-home").value === "no") {
+        e.preventDefault();
+        alert("We're sorry, but this form is only for homeowners.");
+      }
+    });
+  
+    // 👇 Fade-in observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+  
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+  
+      // 👇 Auto-resize for textarea
+      const textarea = document.querySelector("#more-info-question textarea");
+      if (textarea) {
+        textarea.addEventListener("input", function () {
+          this.style.height = "auto";
+          this.style.height = this.scrollHeight + "px";
+        });
+      }
+    });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, { threshold: 0.2 }); // Trigger slightly after entering view
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  });
+</script>
+</script>
+
+<script>
+function toggleFooterLang() {
+  const currentLang = Weglot.getCurrentLang();
+  const nextLang = currentLang === 'en' ? 'es' : 'en';
+  Weglot.switchTo(nextLang);
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const logo = document.querySelector(".footer-logo");
+
+    if (!logo) return;
+
+    // Add glow by default
+    logo.classList.add("pulse-glow");
+
+    // Remove pulse glow after first click
+    logo.addEventListener("click", () => {
+      logo.classList.remove("pulse-glow");
+    });
+  });
+</script>
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq24012da074c478efe356de62f0963e479b07661b6b35d10a631ed7f46028500d" defer></script>
+
+</body>
+</html>

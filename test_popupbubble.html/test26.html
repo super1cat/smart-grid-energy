@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SGE Solution Stack — Test 26</title>
+  <style>
+  body {
+  margin: 0;
+  background-color: #0c2b47;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+}
+
+.solution-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(30px, 6vw, 80px);
+  margin-top: 0px; /* Adjust this value to decrease the top margin */
+  margin-bottom: 0px; /* Adjust this for bottom margin as well */
+}
+
+.solution-section h2 {
+  font-size: clamp(22px, 3vw, 36px);
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+
+.solution-row {
+  margin-top: 0px; /* Reduce space between solution rows */
+  margin-bottom: 20px; /* Adjust spacing between rows, if needed */
+}
+
+.solution-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.bulb-icon {
+  width: 40px;
+  height: 56px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.bulb-icon:hover {
+  content: url('./img/bulb.png');
+}
+
+.solution-row.open .bulb-icon {
+  content: url('./img/bulb.png');
+  animation: glow 0.5s infinite alternate;
+  transform: scale(1.05);
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 0px #f0c14b); }
+  to { filter: drop-shadow(0 0 8px #f0c14b); }
+}
+
+.solution-label {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 0px; /* Ensure no extra space above the first paragraph */
+  letter-spacing: 0.03em
+}
+
+.solution-reveal {
+  display: none;
+  padding: clamp(7px, 2.5vw, 14px);
+  background-color: #3d5f7f;
+  border-radius: 18px;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  margin-left: 60px;
+  margin-top: 14px;
+  border-right: 4px solid #f0c14b;
+  height: auto;         /* Ensure the box expands with content */
+  max-height: none;     /* No limit on the height */
+  overflow: visible;    /* Let content expand outside the box if needed */
+  letter-spacing: 0.03em
+}
+
+/* Each paragraph inside .solution-reveal */
+.solution-reveal p {
+  margin-top: 0.5em;   /* Add a unit (e.g., em) for the top margin */
+  margin-bottom: 6px;  /* Slight space below paragraphs; tweak this value */
+  padding: 0;
+}
+
+.solution-row.open .solution-reveal {
+  display: block;
+}
+
+.solution-reveal.typing {
+  border-right: 2px solid #f0c14b;
+  white-space: pre-wrap;
+}
+
+@keyframes glowPulse {
+  0% { filter: drop-shadow(0 0 0px #f0c14b); }
+  50% { filter: drop-shadow(0 0 8px #f0c14b); }
+  100% { filter: drop-shadow(0 0 0px #f0c14b); }
+}
+
+.solution-row.open .solution-reveal {
+  animation: glowPulse 1s ease-in-out infinite;
+}
+
+  </style>
+</head>
+<body>
+  <main class="solution-section" data-wg-notranslate>
+    <div class="solution-row" data-text="Qualified homes are seeing consistent monthly <strong>savings</strong> of <strong>10% to 40%</strong> compared to traditional utility rates, depending on their usage, roof orientation, and shading. The <strong>savings</strong> begin immediately and grow over time — <strong>without any changes to how you live</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Monthly Electric Bill Savings Up to 40%</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 1: Ahorros Mensuales en la Factura Eléctrica de hasta el 40% -->
+    <div class="solution-row" data-wg-notranslate data-text="Los hogares calificados están viendo ahorros mensuales consistentes del <strong>10% al 40%</strong> en comparación con las tarifas tradicionales de servicios públicos, dependiendo de su uso, orientación del techo y sombreado. Los <strong>ahorros</strong> comienzan de inmediato y crecen con el tiempo — <strong>sin cambios en la forma en que vive</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Ahorros Mensuales en la Factura Eléctrica de hasta el 40%</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 2: Lock in a Long-Term Electric Rate -->
+    <div class="solution-row" data-text="Unlike traditional utility rates that average 18% annual increases in California, a PPA gives you a <strong>fixed, stable rate</strong>. With a PPA, your rate stays <strong>predictable</strong> — with a fixed 2–4% annual maintenance increase depending on the agreement your <strong>Smart Grid Energy Guide</strong> helps ensure you get the <strong>best match</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Lock in a Long-Term Electric Rate</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 2: Fija una Tarifa Eléctrica a Largo Plazo -->
+    <div class="solution-row" data-wg-notranslate data-text="A diferencia de las tarifas tradicionales de servicios públicos que tienen aumentos anuales promedio del <strong>18%</strong> en California, un PPA te ofrece una <strong>tarifa fija y estable</strong>. Con un PPA, tu tarifa se mantiene <strong>predecible</strong> — con un aumento anual de mantenimiento fijo del <strong>2 al 4%</strong> dependiendo del acuerdo que tu <strong>Guía de Energía de Smart Grid</strong> se asegura de que consigas la <strong>mejor opción</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Fija una Tarifa Eléctrica a Largo Plazo</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 3: No Purchase. No Loan. Just Savings. -->
+    <div class="solution-row" data-text="PPAs aren’t about <strong>buying solar</strong> — they’re about <strong>paying less for electricity</strong>. You simply swap the electricity portion of your current bill for a <strong>lower one</strong> — and your home starts running <strong>cleaner, cheaper power</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">No Purchase. No Loan. Just Savings.</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 3: No Compra. No Préstamo. Solo Ahorros. -->
+    <div class="solution-row" data-wg-notranslate data-text="Los PPAs no se tratan de <strong>comprar paneles solares</strong> — se tratan de <strong>pagar menos por electricidad</strong>. Simplemente intercambias la parte de electricidad de tu factura actual por una <strong>más baja</strong> — y tu casa empieza a funcionar con <strong>energía más limpia y más barata</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">No Compra. No Préstamo. Solo Ahorros.</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 4: Avoid Peak-Hour Pricing and Seasonal Rate Increases -->
+    <div class="solution-row" data-text="PPAs eliminate the impact of <strong>time-of-use charges</strong> and <strong>unexpected seasonal price increases</strong>. Your energy costs remain <strong>predictable</strong> and <strong>stable</strong>, even during high-demand periods, ensuring no <strong>surprise jumps</strong> in your bill.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Avoid Peak-Hour Pricing and Seasonal Rate Increases</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 4: Evita los Cargos por Hora Punta y Aumentos de Tarifas Estacionales -->
+    <div class="solution-row" data-wg-notranslate data-text="Los PPAs eliminan el impacto de los <strong>cargos por uso de tiempo</strong> y <strong>los aumentos inesperados de tarifas estacionales</strong>. Tus costos de energía se mantienen <strong>predecibles</strong> y <strong>estables</strong>, incluso durante los períodos de alta demanda, garantizando que no haya <strong>saltos sorpresivos</strong> en tu factura.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Evita los Cargos por Hora Punta y Aumentos de Tarifas Estacionales</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 5: One Simple Electric Charge — No Hidden Fees -->
+    <div class="solution-row" data-text="Your current utility bill likely includes <strong>hidden fees</strong> for programs like <strong>wildfire recovery</strong> or <strong>conservation incentives</strong>. With a PPA, you avoid these extra charges, paying just <strong>one clear monthly rate</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">One Simple Electric Charge — No Hidden Fees</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 5: Un Solo Cargo Eléctrico — Sin Tarifas Ocultas -->
+    <div class="solution-row" data-wg-notranslate data-text="Tu factura actual de servicios públicos probablemente incluye <strong>tarifas ocultas</strong> para programas como <strong>recuperación de incendios</strong> o <strong>incentivos para conservación</strong>. Con un PPA, evitas estos cargos adicionales, pagando solo <strong>una tarifa mensual clara</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Un Solo Cargo Eléctrico — Sin Tarifas Ocultas</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 6: Power Through Outages with Battery Backup -->
+    <div class="solution-row" data-text="A full <strong>emergency battery system</strong> is included with most PPAs, keeping your home powered during grid interruptions. When the power fails, your family stays <strong>safe</strong> and <strong>comfortable</strong> — <strong>lights on</strong>, <strong>phones charged</strong>, and <strong>food fresh</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Power Through Outages with Battery Backup</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 6: Energía Durante Cortes con Respaldo de Batería -->
+    <div class="solution-row" data-wg-notranslate data-text="Un sistema de <strong>batería de emergencia</strong> completo está incluido con la mayoría de los PPAs, manteniendo tu hogar con energía durante las interrupciones de la red. Cuando se apaga la electricidad, tu familia permanece <strong>segura</strong> y <strong>cómoda</strong> — <strong>luces encendidas</strong>, <strong>teléfonos cargados</strong>, y <strong>alimentos frescos</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Energía Durante Cortes con Respaldo de Batería</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 7: Clean Energy, Sourced Locally -->
+    <div class="solution-row" data-text="While many utilities rely on <strong>out-of-state power</strong>, your PPA energy is <strong>generated right on your property</strong>. This leads to <strong>lower costs</strong>, <strong>reduced waste</strong>, and a more <strong>eco-friendly</strong> energy supply for your home.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Clean Energy, Sourced Locally</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 7: Energía Limpia, Generada Localmente -->
+    <div class="solution-row" data-wg-notranslate data-text="Mientras que muchos servicios públicos dependen de <strong>energía importada</strong>, la energía de tu PPA es <strong>generada directamente en tu propiedad</strong>. Esto lleva a <strong>costos más bajos</strong>, <strong>reducción de desechos</strong>, y un suministro de energía más <strong>amigable con el medio ambiente</strong> para tu hogar.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Energía Limpia, Generada Localmente</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 8: Selling or Moving? The PPA Stays with the Home -->
+    <div class="solution-row" data-text="Your <strong>PPA</strong> transfers smoothly to the next homeowner at the same rate, enhancing your home’s appeal with <strong>turnkey</strong>, <strong>stable</strong>, and <strong>affordable energy rates</strong>. We specialize in <strong>flexible PPAs</strong> that make transitions easy, whether you’re planning to <strong>sell</strong> or <strong>move</strong> in the <strong>near or long-term future</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Selling or Moving? The PPA Stays with the Home</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 8: ¿Vendiendo o Mudándote? El PPA Sigue con la Casa -->
+    <div class="solution-row" data-wg-notranslate data-text="Tu <strong>PPA</strong> se transfiere fácilmente al próximo propietario a la misma tarifa, mejorando el atractivo de tu casa con <strong>llave en mano</strong>, <strong>estable</strong>, y <strong>tarifas de energía asequibles</strong>. Nos especializamos en <strong>PPAs flexibles</strong> que facilitan las transiciones, ya sea que planees <strong>vender</strong> o <strong>mudarte</strong> en el <strong>futuro cercano o a largo plazo</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">¿Vendiendo o Mudándote? El PPA Sigue con la Casa</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 9: Fast and Easy Pre-Approval Process -->
+    <div class="solution-row" data-text="Your <strong>Smart Grid Energy Guide</strong> connects with you via phone to assess your home’s energy usage and needs. Afterward, they create a detailed <strong>Energy Report</strong>, typically ready within <strong>2 days</strong>. A follow-up <strong>Google Meet</strong> is set up to review the report, and if all looks good, your guide submits the <strong>application</strong> and <strong>system design</strong> to a PPA Electric partner for approval — usually pre-approved in <strong>minutes</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Fast and Easy Pre-Approval Process</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 9: Proceso de Pre-aprobación Rápido y Sencillo -->
+    <div class="solution-row" data-wg-notranslate data-text="Tu <strong>Guía de Energía de Smart Grid</strong> se comunica contigo por teléfono para evaluar el uso y las necesidades energéticas de tu hogar. Luego, crean un <strong>Informe de Energía</strong> detallado, generalmente listo en <strong>2 días</strong>. Se programa una <strong>reunión de Google Meet</strong> para revisar el informe, y si todo está bien, tu guía envía la <strong>solicitud</strong> y el <strong>diseño del sistema</strong> a un socio de PPA Electric para su aprobación — usualmente pre-aprobado en <strong>minutos</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Proceso de Pre-aprobación Rápido y Sencillo</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Section 10: Seamless Integration with Your Existing Utility Service -->
+    <div class="solution-row" data-text="Once you’re pre-approved, your <strong>Smart Grid Energy Guide</strong> will schedule your home site survey at a time that fits your schedule, usually within <strong>5 days</strong>. A technician will come out and review your home’s <strong>electrical system</strong>, <strong>roof</strong> (if needed), and <strong>shading</strong>, typically in less than <strong>an hour</strong>. <p>After the survey, we’ll secure final approval within <strong>one week</strong>, completing the process in about <strong>two weeks</strong>.Once you’re pre-approved, your <strong>Smart Grid Energy Guide</strong> will schedule your home site survey at a time that fits your schedule, usually within <strong>5 days</strong>. </p>A technician will come out and review your home’s <strong>electrical system</strong>, <strong>roof</strong> (if needed), and <strong>shading</strong>, typically in less than <strong>an hour</strong>. After the survey, we’ll secure final approval within <strong>one week</strong>, completing the process in about <strong>two weeks</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label">Seamless Integration with Your Existing Utility Service</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+    <!-- Spanish Section 10: Integración Perfecta con Tu Servicio Eléctrico Existente -->
+    <div class="solution-row" data-wg-notranslate data-text="Una vez que estés pre-aprobado, tu <strong>Guía de Energía de Smart Grid</strong> programará la inspección de tu hogar en un horario que se ajuste a tu disponibilidad, generalmente dentro de <strong>5 días</strong>. Un técnico vendrá a revisar el <strong>sistema eléctrico</strong> de tu hogar, el <strong>techo</strong> (si es necesario), y la <strong>sombra</strong>, normalmente en menos de <strong>una hora</strong>. Después de la inspección, aseguraremos la aprobación final dentro de <strong>una semana</strong>, completando el proceso en aproximadamente <strong>dos semanas</strong>.">
+      <div class="solution-top">
+        <img src="./img/white_bulb.png" class="bulb-icon" />
+        <div class="solution-label" data-wg-notranslate>Integración Perfecta con Tu Servicio Eléctrico Existente</div>
+      </div>
+      <div class="solution-reveal"></div>
+    </div>
+
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    
+        const rows = document.querySelectorAll('.solution-row');
+    
+        // Close all open rows
+        function closeAll() {
+            rows.forEach(r => {
+                r.classList.remove('open');
+                const rev = r.querySelector('.solution-reveal');
+                rev.classList.remove('typing');
+                rev.innerHTML = '';
+    
+                const bulb = r.querySelector('.bulb-icon');
+                bulb.src = './img/white_bulb.png';
+    
+                // Cancel any ongoing typing timeouts for this row
+                const timeouts = r._typingTimeouts || [];
+                timeouts.forEach(id => clearTimeout(id));
+                r._typingTimeouts = [];
+            });
+        }
+    
+        // Parse an HTML string into DOM nodes
+        function parseHTML(htmlString) {
+            const container = document.createElement('div');
+            container.innerHTML = htmlString.trim();
+            const fragment = document.createDocumentFragment();
+            while (container.firstChild) {
+                fragment.appendChild(container.firstChild);
+            }
+            return fragment;
+        }
+    
+        // Recursively types out a node (and its children)
+        function typeNode(node, container, speed, onDone, timeouts) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                // Type text node character by character
+                const text = node.nodeValue;
+                let i = 0;
+    
+                function typeChar() {
+                    if (i < text.length) {
+                        container.appendChild(document.createTextNode(text[i]));
+                        i++;
+                        const id = setTimeout(typeChar, speed);
+                        timeouts.push(id);
+                    } else {
+                        onDone && onDone();
+                    }
+                }
+                typeChar();
+            }
+            else if (node.nodeType === Node.ELEMENT_NODE) {
+                // Create the same element in container
+                const el = document.createElement(node.nodeName);
+                // Copy attributes
+                for (let attr of node.attributes) {
+                    el.setAttribute(attr.name, attr.value);
+                }
+                container.appendChild(el);
+    
+                // Type children sequentially
+                const children = Array.from(node.childNodes);
+                let idx = 0;
+    
+                function typeNextChild() {
+                    if (idx < children.length) {
+                        typeNode(children[idx], el, speed, () => {
+                            idx++;
+                            typeNextChild();
+                        }, timeouts);
+                    } else {
+                        onDone && onDone();
+                    }
+                }
+                typeNextChild();
+            }
+            else {
+                // Skip comments or unknown node types
+                onDone && onDone();
+            }
+        }
+    
+        // Starts typing the given HTML string into 'reveal'
+        function startTyping(row, reveal, htmlString) {
+            // Clear old content
+            reveal.innerHTML = '';
+            reveal.classList.add('typing');
+            // Make sure we store timeouts for this row
+            row._typingTimeouts = [];
+    
+            // Convert your HTML string to real DOM nodes
+            const fragment = parseHTML(htmlString);
+            const nodes = Array.from(fragment.childNodes);
+    
+            let index = 0;
+            function typeNext() {
+                if (index < nodes.length) {
+                    // Type this node
+                    typeNode(nodes[index], reveal, 40, () => {
+                        index++;
+                        const id = setTimeout(typeNext, 60);
+                        row._typingTimeouts.push(id);
+                    }, row._typingTimeouts);
+                } else {
+                    // Finished typing everything
+                    reveal.classList.remove('typing');
+                    reveal.style.borderRight = '2px solid #f0c14b';
+                }
+            }
+    
+            // Kick off typing after a slight delay
+            const startID = setTimeout(typeNext, 100);
+            row._typingTimeouts.push(startID);
+        }
+    
+        rows.forEach(row => {
+            const bulb = row.querySelector('.bulb-icon');
+            const reveal = row.querySelector('.solution-reveal');
+            const text = row.dataset.text;  // Your HTML with <p> and <strong>
+            const label = row.querySelector('.solution-label');
+    
+            function toggleRow() {
+                const isOpen = row.classList.contains('open');
+                if (!isOpen) {
+                    closeAll();
+                    row.classList.add('open');
+                    bulb.src = './img/bulb.png';
+    
+                    // Start typing your stored HTML
+                    startTyping(row, reveal, text);
+                } else {
+                    row.classList.remove('open');
+                    reveal.innerHTML = '';
+                    bulb.src = './img/white_bulb.png';
+    
+                    // Cancel any existing typing timers
+                    const timeouts = row._typingTimeouts || [];
+                    timeouts.forEach(id => clearTimeout(id));
+                    row._typingTimeouts = [];
+                }
+            }
+    
+            bulb.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleRow();
+            });
+    
+            label.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleRow();
+            });
+        });
+    
+        // Clicking anywhere else closes all rows
+        document.addEventListener('click', () => {
+            closeAll();
+        });
+    });
+    </script>
+    
+</body>
+</html>

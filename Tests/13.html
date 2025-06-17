@@ -1,0 +1,138 @@
+<!-- 🏠 X-Ray Overlay Rate Reveal -->
+<section class="xray-section">
+    <h2 class="xray-title">What's Hiding In Your Electric Bill?</h2>
+    <p class="xray-subtitle">Hover over the hotspots to see what each provider really charges in 2025.</p>
+  
+    <div class="xray-grid">
+      <div class="xray-tile" onmouseenter="revealOverlay(this)">
+        <div class="xray-icon">📟</div>
+        <div class="xray-overlay">
+          <strong>PG&E</strong><br>44.65¢ / kWh
+        </div>
+      </div>
+      <div class="xray-tile" onmouseenter="revealOverlay(this)">
+        <div class="xray-icon">📟</div>
+        <div class="xray-overlay">
+          <strong>SDG&E</strong><br>38.3¢ / kWh
+        </div>
+      </div>
+      <div class="xray-tile" onmouseenter="revealOverlay(this)">
+        <div class="xray-icon">📟</div>
+        <div class="xray-overlay">
+          <strong>SCE</strong><br>31.4¢ / kWh
+        </div>
+      </div>
+      <div class="xray-tile solar" onmouseenter="revealOverlay(this)">
+        <div class="xray-icon">🔆</div>
+        <div class="xray-overlay">
+          <strong>Solar PPA</strong><br>25¢ / kWh
+        </div>
+      </div>
+    </div>
+  
+    <div class="xray-cta">
+      <a href="form1.html" class="xray-button">Know Your Number</a>
+      <p class="xray-disclaimer">Select this button to receive your customized Know Your Number™ report.</p>
+    </div>
+  </section>
+  
+  <style>
+  .xray-section {
+    background: #eef3f0;
+    padding: clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .xray-title {
+    font-size: clamp(28px, 5vw, 46px);
+    color: #1b4d28;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .xray-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #444;
+    margin-bottom: 40px;
+  }
+  .xray-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 28px;
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  .xray-tile {
+    position: relative;
+    background: #1b4d28;
+    border-radius: 12px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  .xray-tile:hover {
+    transform: scale(1.03);
+  }
+  .xray-icon {
+    font-size: 64px;
+    color: white;
+    transition: opacity 0.3s ease;
+  }
+  .xray-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1b4d28;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .xray-tile:hover .xray-icon {
+    opacity: 0.15;
+  }
+  .xray-tile:hover .xray-overlay {
+    opacity: 1;
+  }
+  .xray-tile.solar {
+    background: #2c6742;
+  }
+  .xray-cta {
+    margin-top: 20px;
+  }
+  .xray-button {
+    display: inline-block;
+    background: #1b4d28;
+    color: white;
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .xray-button:hover {
+    background: #143b1e;
+    transform: scale(1.04);
+  }
+  .xray-disclaimer {
+    font-size: 14px;
+    color: #555;
+    margin-top: 16px;
+  }
+  </style>
+  
+  <script>
+  function revealOverlay(tile) {
+    // no JS needed for hover version – function is placeholder for potential scroll-based triggers
+  }
+  </script>

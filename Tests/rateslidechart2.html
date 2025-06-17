@@ -1,0 +1,101 @@
+<!-- 💡 Interactive Rate Comparison: California IOUs vs Solar PPA -->
+<section class="rate-compare-section">
+    <h2 class="section-title">How Do the Big Utilities Stack Up?</h2>
+    <p class="section-subtitle">Compare average residential electricity rates in California for 2025.</p>
+  
+    <div class="rate-chart">
+      <div class="rate-bar" data-company="PG&E" data-rate="44.65">
+        <span class="label">PG&E</span>
+        <div class="bar"></div>
+        <span class="rate">44.65¢</span>
+      </div>
+      <div class="rate-bar" data-company="SDG&E" data-rate="38.3">
+        <span class="label">SDG&E</span>
+        <div class="bar"></div>
+        <span class="rate">38.3¢</span>
+      </div>
+      <div class="rate-bar" data-company="SCE" data-rate="31.4">
+        <span class="label">SCE</span>
+        <div class="bar"></div>
+        <span class="rate">31.4¢</span>
+      </div>
+      <div class="rate-bar solar" data-company="Solar PPA" data-rate="25">
+        <span class="label">Solar PPA</span>
+        <div class="bar"></div>
+        <span class="rate">25¢</span>
+      </div>
+    </div>
+    <p class="disclaimer">Based on average usage. Rates shown are for standard homeowners not on CARE or other discounts.</p>
+  </section>
+  
+  <style>
+  .rate-compare-section {
+    background-color: #f7f7f7;
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 40px);
+    text-align: center;
+  }
+  .section-title {
+    font-size: clamp(24px, 4vw, 42px);
+    color: #1b4d28;
+    margin-bottom: 10px;
+  }
+  .section-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #333;
+    margin-bottom: 30px;
+  }
+  .rate-chart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .rate-bar {
+    position: relative;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rate-bar .bar {
+    width: 100%;
+    background-color: #ccc;
+    height: 0;
+    transition: height 1.2s ease-in-out;
+    border-radius: 8px;
+  }
+  .rate-bar.solar .bar {
+    background-color: #1b4d28;
+  }
+  .label {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .rate {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .disclaimer {
+    font-size: 13px;
+    color: #666;
+    margin-top: 30px;
+  }
+  </style>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bars = document.querySelectorAll('.rate-bar');
+    const maxRate = 50; // to scale bar height
+  
+    bars.forEach(bar => {
+      const rate = parseFloat(bar.dataset.rate);
+      const height = (rate / maxRate) * 180; // max bar height in px
+      const barEl = bar.querySelector('.bar');
+      barEl.style.height = height + 'px';
+    });
+  });
+  </script>
+  

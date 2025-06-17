@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SGE Solution Stack — Test 24</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0c2b47;
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    .solution-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(30px, 6vw, 80px);
+    }
+
+    .solution-section h2 {
+      font-size: clamp(22px, 3vw, 36px);
+      margin-bottom: clamp(24px, 4vw, 48px);
+    }
+
+    .solution-section .solution-row {
+      display: flex;
+      gap: 20px;
+      align-items: center; /* Vertically align the bulb in the center with the text */
+      margin-bottom: clamp(32px, 5vw, 48px)
+    }
+
+    .solution-section .solution-bulb-icon {
+  width: 40px; /* set bulb width */
+  height: 56px; /* set bulb height */
+  
+
+  transition: transform 0.2s ease; /* smooth scaling animation */
+  cursor: pointer; /* pointer cursor on hover */
+  flex-shrink: 0; /* prevent the bulb from shrinking */
+}
+    .solution-section .solution-bulb-icon:hover {
+      content: url('./img/bulb.png');
+    }
+
+    .solution-section .solution-row.open .solution-bulb-icon {
+      content: url('./img/bulb.png');
+      animation: solution-glow-pulse 1s ease-in-out infinite;
+      transform: scale(1.05);
+    }
+
+    @keyframes solution-glow-pulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 0px #f0c14b);
+        border-color: transparent;
+      }
+      50% {
+        filter: drop-shadow(0 0 8px #f0c14b);
+        border-color: #f0c14b;
+      }
+    }
+
+    .solution-section .solution-content {
+      flex: 1;
+    }
+
+    .solution-section .solution-label {
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    .solution-section .solution-reveal {
+      display: none;
+      padding: clamp(16px, 3vw, 24px);
+      background-color: #3d5f7f;
+      border-radius: 18px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.5;
+      overflow: hidden;
+      white-space: pre-wrap;
+    }
+
+    .solution-section .solution-row.open .solution-reveal {
+      display: block;
+    }
+
+    .solution-section .solution-reveal.typing {
+      border-right: 2px solid #f0c14b;
+      animation: solution-glow-pulse 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <main class="solution-section" data-wg-notranslate>
+    <h2>Here’s How It Works</h2>
+
+    <div class="solution-row">
+      <img src="./img/white_bulb.png" class="solution-bulb-icon" />
+      <div class="solution-content">
+        <div class="solution-label">Monthly electric bill savings up to 40%</div>
+        <div class="solution-reveal">Qualified homes are seeing consistent monthly savings of 10% to 40% compared to traditional utility rates, depending on their usage, roof orientation, and shading. The savings begin immediately and grow over time — without any changes to how you live or use power.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const rows = document.querySelectorAll('.solution-row');
+
+    const closeAll = () => {
+      rows.forEach(r => {
+        r.classList.remove('open');
+        const rev = r.querySelector('.solution-reveal');
+        rev.classList.remove('typing');
+        rev.innerHTML = rev.dataset.original || rev.innerHTML;
+        r.querySelector('.solution-bulb-icon').src = './img/white_bulb.png';
+      });
+    };
+
+    rows.forEach(row => {
+      const bulb = row.querySelector('.solution-bulb-icon');
+      const reveal = row.querySelector('.solution-reveal');
+      const label = row.querySelector('.solution-label');
+      const originalText = reveal.textContent.trim();
+      reveal.dataset.original = originalText;
+
+      const typeOut = () => {
+        let i = 0;
+        reveal.innerHTML = '';
+        reveal.classList.add('typing');
+
+        const typeChar = () => {
+          if (i < originalText.length) {
+            reveal.innerHTML += originalText.charAt(i);
+            i++;
+            setTimeout(typeChar, 28);  // Slower typing
+          } else {
+            reveal.classList.remove('typing');
+            reveal.style.borderRight = '2px solid #f0c14b'; // Keep yellow line
+          }
+        };
+
+        setTimeout(typeChar, 80);
+      };
+
+      const toggleRow = () => {
+        const isOpen = row.classList.contains('open');
+        if (!isOpen) {
+          closeAll();
+          row.classList.add('open');
+          bulb.src = './img/bulb.png';
+          typeOut();
+        } else {
+          row.classList.remove('open');
+          reveal.innerHTML = reveal.dataset.original;
+          reveal.style.borderRight = 'none';
+          bulb.src = './img/white_bulb.png';
+        }
+      };
+
+      bulb.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleRow();
+      });
+
+      label.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleRow();
+      });
+    });
+
+    document.addEventListener('click', () => {
+      closeAll();
+    });
+  </script>
+</body>
+</html>

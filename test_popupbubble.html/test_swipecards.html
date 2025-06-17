@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Swipe-to-reveal horizontal cards for modern benefit interaction on Smart Grid Energy site.">
+  <title>Swipe Reveal Cards</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === Swipe Reveal Card Styles === */
+    .swipe-reveal-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 60px);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .swipe-card {
+      position: relative;
+      background-color: #f5f5f5;
+      border-radius: 12px;
+      padding: clamp(16px, 3vw, 24px);
+      margin-bottom: clamp(16px, 4vw, 32px);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+
+    .swipe-headline {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 600;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .swipe-arrow {
+      font-size: 20px;
+      transition: transform 0.25s ease;
+    }
+
+    .swipe-card.active .swipe-arrow {
+      transform: rotate(90deg);
+    }
+
+    .swipe-content {
+      max-width: 100%;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      margin-top: 10px;
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: #333;
+    }
+
+    .swipe-card.active .swipe-content {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <main class="swipe-reveal-section" data-wg-notranslate>
+    <h1 style="font-size: clamp(20px, 3vw, 28px); margin-bottom: clamp(20px, 3vw, 36px);">Explore the Benefits</h1>
+
+    <div class="swipe-card">
+      <div class="swipe-headline">
+        Lower electric bills with no upfront cost
+        <span class="swipe-arrow">➤</span>
+      </div>
+      <div class="swipe-content">
+        PPAs let you avoid the cost of buying solar panels. You simply buy the electricity they generate at a lower, locked-in rate.
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-headline">
+        Maintenance and battery replacements are included
+        <span class="swipe-arrow">➤</span>
+      </div>
+      <div class="swipe-content">
+        If something goes wrong — or when the battery reaches end of life — the electric company takes care of the replacement, free of charge.
+      </div>
+    </div>
+
+    <div class="swipe-card">
+      <div class="swipe-headline">
+        You’re switching electric providers, not buying solar
+        <span class="swipe-arrow">➤</span>
+      </div>
+      <div class="swipe-content">
+        Just like you can choose a different phone provider, you can choose who provides your home’s electricity — even if it comes from your own roof.
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle active state on swipe cards
+    document.querySelectorAll('.swipe-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

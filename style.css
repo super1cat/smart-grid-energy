@@ -1,0 +1,5254 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+/* Universal Reset: Ensures consistent box-sizing, margin, and padding across all elements */
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.form-page {
+  background: #EAEAEA;
+}
+
+
+
+main {
+  flex: 1;
+}
+
+body.weglot-active .lang-en,
+body.weglot-active .lang-es {
+  display: none;
+}
+
+body.weglot-active[lang="en"] .lang-en,
+body.weglot-active[lang="es"] .lang-es {
+  display: block;
+}
+
+
+
+/* ✅ COOKIE BANNER STYLES */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255,  0.72);
+  color: #070910;
+  font-size: clamp(12px, 1.3vw, 14px);
+  padding: clamp(10px, 2vw, 14px) clamp(16px, 4vw, 32px);
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 4999;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.cookie-banner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cookie-text {
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cookie-link {
+  color: #3a5a80;
+  text-decoration: underline;
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+
+
+/* Global image settings: Prevent all images from being draggable or selected */
+img {
+  pointer-events: none; /* Disable interaction on the image itself */
+  user-select: none; /* Prevents image from being selected */
+  -webkit-user-drag: none; /* Prevent drag on webkit browsers (Chrome, Safari) */
+  user-drag: none; /* Standard version of disabling drag */
+  display: block; /* Ensures images behave as part of the layout */
+  width: 100%; /* Ensures images fill their container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+
+
+/* HERO SECTION */
+.hero-section {
+  width: 100%;
+  background-image: url('img/hero.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: clamp(60px, 6vh, 100px); /* Space for fixed nav */
+  position: relative !important;
+  display: block !important;
+  height: 1000px !important;
+  min-height: 1000px !important;
+  overflow: visible !important;
+}
+
+/* Hide hero text by default, show in media queries */
+.desktop-hero-header,
+.desktop-subheader1-fix,
+.desktop-subheader2-fix,
+.desktop-cta-button-invert,
+.mobile-hero-header,
+.mobile-subheader1-fix,
+.mobile-subheader2-fix,
+.mobile-cta-button {
+  display: none;
+}
+
+/* NAVIGATION */
+.main-nav {
+  width: 100%;
+  background: white;
+  padding: clamp(4px, 1vw, 14px) clamp(12px, 2vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1000;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* Inner nav wrapper */
+.nav-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Base logo rule (desktop) */
+.nav-logo {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-wrapper .nav-logo {
+  height: clamp(28px, 4.5vw, 55px); /* keep current size */
+  margin-top: 16px; /* this is what lowers it */
+}
+
+
+/* Desktop nav links */
+.nav-links.desktop-only {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 30px);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.nav-links.desktop-only a {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(10px, 1.2vw, 18px);
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 1;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.25px;
+  transition: all 0.2s ease;
+}
+.nav-links.desktop-only a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+
+/* Right side (desktop) for phone + language */
+.right-side.desktop-only {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Phone text in nav */
+.phone {
+  font-size: clamp(11px, 0.9vw, 14px);
+  text-align: center;
+}
+
+/* Language toggle block + menu */
+.language-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+/* === LANG ICON (Globe) === */
+.lang-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('img/globe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 4px white);
+  cursor: pointer;
+  transition: transform 0.9s ease-in-out;
+  z-index: 5000;
+  position: relative;
+}
+.lang-icon:hover {
+  transform: rotate(360deg);
+  .mobile-menu .lang-icon {
+    transition: transform 0.9s ease-in-out;
+  }
+  
+  .mobile-menu .lang-icon:hover {
+    transform: rotate(360deg);
+  }
+  
+}
+
+
+
+
+.lang-menu {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  display: none;
+  white-space: nowrap;
+  z-index: 9999;
+}
+.lang-menu.show {
+  display: block;
+}
+
+.language-toggle {
+  position: relative;
+}
+
+.nav-links .lang-es {
+  font-size: 0.90em; /* ychanges nav menu font size spanish */
+  letter-spacing: 0.2px;
+
+}
+/* === Fix Weglot Dropdown Link Styling === */
+.lang-menu a {
+  color: #152a45 !important;       /* Match your brand green */
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline;
+  line-height: 1.2;
+}
+
+.lang-menu a:hover {
+  text-decoration: underline;
+}
+
+body.index-page.transparent-nav .lang-menu a {
+  color: #152a45 !important;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline;
+  line-height: 1.2;
+}
+
+/* === TRANSPARENT-TO-WHITE NAV (INDEX ONLY) === */
+body.index-page .main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
+}
+
+/* Transparent state + no line */
+body.index-page.transparent-nav .main-nav {
+  background: transparent;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Scrolled state (white nav) */
+body.index-page.scrolled-nav .main-nav {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Hide both logos by default */
+body.index-page .light-logo,
+body.index-page .dark-logo {
+  display: none;
+}
+/* Show white logo (light) in transparent state */
+body.index-page.transparent-nav .light-logo {
+  display: inline-block;
+}
+/* Show dark logo after scroll */
+body.index-page.scrolled-nav .dark-logo {
+  display: inline-block;
+}
+
+
+
+
+/* Nav link/icon color logic */
+body.index-page.transparent-nav .main-nav a,
+body.index-page.transparent-nav .main-nav .phone,
+body.index-page.transparent-nav .main-nav .lang-icon {
+  color: white;
+}
+body.index-page.scrolled-nav .main-nav a,
+body.index-page.scrolled-nav .main-nav .phone,
+body.index-page.scrolled-nav .main-nav .lang-icon {
+  color: black;
+}
+
+
+
+.nav-cta.desktop-only{
+  display:inline-block;
+  font-family:'Open Sans',sans-serif;
+  font-size:clamp(13px,1.2vw,18px);
+  font-weight:700;
+  padding:clamp(6px,1vw,12px) clamp(18px,2vw,18px);
+  background:#3a5a80;             /* green like hero button */
+  color:#fff;
+  border:3px solid #f0c14b;;
+  border-radius:999px;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+/* invert on hover (white background, green border + text) */
+.nav-cta.desktop-only:hover{
+  background:#fff;
+  color:#152a45;
+  border:3px solid #152a45;
+}
+
+
+
+/* CTA button styling for transparent vs. scrolled states */
+body.index-page.transparent-nav .main-nav .nav-cta {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+}
+body.index-page.transparent-nav .main-nav .nav-cta:hover {
+  background: white;
+  color: #152a45;
+}
+body.index-page.scrolled-nav .main-nav .nav-cta {
+  border: 2px solid #f0c14b;
+  color: white;
+  background: #3a5a80;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* ✅ subtle shadow only on white nav */
+}
+
+body.index-page.scrolled-nav .main-nav .nav-cta:hover {
+  background: white;
+  color: #152a45;
+  border:3px solid #152a45;
+}
+
+body:not(.transparent-nav) .nav-cta {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* === MOBILE-NAV-WRAPPER (Consolidated) === */
+.mobile-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 18px; /* ⬅ More left + right spacing */
+  gap: 10px;
+  margin-top: 0px;
+}
+
+.mobile-nav-wrapper .mobile-logo {
+  display: block;
+  height: 40px;
+  margin-top: 2px;   /* ⬇ vertical tighten */
+}
+.mobile-nav-wrapper .nav-cta {
+  margin-top: -6px;
+  font-size: 13px;
+  padding: 5px 10px;
+  font-weight: 600;
+  color: #152a45;
+  border: 2px solid #152a45;
+  border-radius: 999px;
+  background: white;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+
+/* Transparent mode: switch outline to white */
+body.index-page.transparent-nav .mobile-nav-wrapper .nav-cta {
+  color: white;
+  border-color: white;
+  background: transparent;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -20px;
+  font-size: 26px;
+  padding: 0 8px;
+  color: #152a45;
+  background: transparent;
+  cursor: pointer;
+}
+
+body.index-page.transparent-nav .hamburger {
+  color: white;
+}
+
+/* Mobile nav menu panel */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(to bottom right, #EAEAEA, #ffffff);
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.04);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 999;
+  width: 100%;
+}
+.mobile-menu.show {
+  display: flex;
+}
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  padding-left: clamp(16px, 6vw, 24px);
+  text-decoration: none;
+  color: #333 !important;
+  font-size: 16px;
+  font-weight: 500;
+  
+}
+
+.mobile-menu a {
+  transition: all 0.12s ease-in-out;
+}
+
+.mobile-menu a:active:not(.nav-cta) {
+  background-color: rgba(0, 0, 0, 0.08);  /* ✅ darker flash */
+  transform: scale(0.95);                /* ✅ more noticeable shrink */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15); /* ✅ instant glow effect */
+  opacity: 0.9;
+}
+
+.nav-cta {
+  text-decoration: none !important;
+}
+
+/* ✅ Only show the arrow for the visible (translated) span */
+.mobile-menu .active-link span.lang-en::before,
+.mobile-menu .active-link span.lang-es::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 6px;
+  color: #969796;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+/* Language toggle in mobile menu */
+.mobile-lang-toggle {
+  padding-left: clamp(16px, 6vw, 24px);
+  margin-top: 8px;
+}
+
+
+
+
+/* Hide default Weglot container */
+.weglot-container {
+  display: none !important;
+}
+
+
+/* === Mobile hero styling (≤767px) === */
+@media (max-width: 767px) {
+  .mobile-hero-header {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(20px, 7vw, 30px);
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    margin-top: 24px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95),
+                 0 0 10px rgba(0, 0, 0, 0.7);
+    line-height: 1.4;
+  }
+
+  .mobile-subheader1-fix {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 36px auto 16px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.85),
+                 0 0 12px rgba(0, 0, 0, 0.65);
+    max-width: 85%;
+    line-height: 1.4;
+  }
+
+  .mobile-subheader2-fix {
+    position: absolute;
+    top: 61%; /* Adjust as needed for consistent alignment */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); /* ✅ black glow */
+    max-width: 92%;
+    line-height: 1.25;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .mobile-cta-button {
+    display: inline-block;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e1bb72;
+    color: white;
+    padding: clamp(12px, 2.6vw, 14px) clamp(14px, 3vw, 20px) clamp(8px, 1.9vw, 12px) clamp(14px, 3vw, 20px);* Top-left- bottom -right*/
+    font-size: 18px; 
+    font-weight: 800;
+    border-radius: 50px;
+    border: 3px solid white;
+    text-decoration: none;
+    z-index: 1000;
+    width: auto;
+    max-width: 90%;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+
+
+
+  /* Show mobile, hide desktop */
+  .mobile-only {
+    display: flex !important;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+
+}
+
+/* === RESPONSIVE NAV TWEAKS FOR MOBILE === */
+@media (max-width: 767px) {
+  .main-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0; /* reduced both top & bottom */
+  }
+  
+  .nav-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .right-side {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  /* Hide desktop nav items */
+  .nav-links.desktop-only {
+    display: none !important;
+  }
+  .nav-cta.desktop-only {
+    display: none !important;
+  }
+  .right-side.desktop-only {
+    display: none !important;
+  }
+
+  .mobile-nav-wrapper .nav-logo {
+    display: block;
+    height: 40px;
+  }
+}
+/* On mobile, hide the desktop logo wrapper */
+@media (max-width: 767px) {
+  .logo-wrapper {
+    display: none !important;
+  }
+
+  body.index-page.transparent-nav .mobile-nav-wrapper .nav-logo {
+    content: url('img/SGE_logo_white.png'); /* ✅ white logo version */
+    height: 40px; /* ✅ smaller than default */
+  }
+}
+
+/* === Desktop hero styling (≥768px) === */
+@media (min-width: 768px) {
+  .desktop-hero-header {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(24px, 4.4vw, 58px);
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9),
+                 0 0 12px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+    letter-spacing: 0.015em;
+    transform: translateY(20px); /* small nudge */
+  }
+
+  .desktop-subheader1-fix {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(15px, 2vw, 26px);
+    font-weight: 200;
+    text-align: center;
+    color: white;
+    margin-top: 18px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9),
+                 0 0 10px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transform: translateY(20px); /* small nudge */
+  }
+
+  .desktop-subheader2-fix {
+    display: block;
+    position: absolute;
+    top: 59.3%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: clamp(14px, 1.5vw, 22px);
+    font-weight: 400;
+    color: white;
+    padding: 0 16px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); /* ✅ black glow match */
+    white-space: nowrap;
+    z-index: 995;
+    line-height: 1.3;
+    letter-spacing: 0.003em;
+  }
+
+  .desktop-cta-button-invert {
+    display: inline-block;
+    position: absolute;
+    left: calc(9.2% + 3vw); /* Over garage */
+    top: 72.8%; /* Near top of garage */
+    transform: translateY(-50%);
+    padding: clamp(12px, 1.8vw, 18px) clamp(14px, 2.5vw, 24px) clamp(8px, 1.0vw, 14px); /* Top-left&right - bottom */
+    font-size: clamp(13px, 1.6vw, 24px);
+    background-color: #e1bb72;
+    color: white;
+    border: 3px solid white;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 900;
+    z-index: 500;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  .desktop-cta-button-invert:hover {
+    background: white;
+    color: #152a45;
+    border: 3px solid #152a45;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Show desktop elements, hide mobile */
+  .desktop-only {
+    display: flex !important;
+  }
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+
+
+/* === Language switching === */
+.lang-en,
+.lang-es {
+  display: none;
+}
+html[lang="en"] .lang-en {
+  display: inline;
+}
+html[lang="es"] .lang-es {
+  display: inline;
+}
+
+
+
+/* === Global Footer === */
+
+/* === Footer Top Strip Section === */
+.footer-strip {
+  width: 100%;
+  min-height: 60px;
+  background-color: #DADADA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(16px, 4vw, 32px);
+  border-bottom: 1px solid #ccc;
+}
+
+.footer-strip-message {
+  font-size: clamp(13px, 1.6vw, 18px);
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+
+
+.footer-strip .fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.footer-strip .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* 🌑 GLOBAL FOOTER BASE */
+.main-footer-bottom {
+  background-color: #070910; /* ⚫ Dark background */
+  color: #fff; /* Default footer text color */
+  padding-top: 50px; /* 🔼 Space above top row */
+  padding-left: clamp(20px, 5vw, 80px); /* ⬅️ Responsive left padding */
+  padding-right: clamp(20px, 5vw, 80px); /* ➡️ Responsive right padding */
+  padding-bottom: 0; /* Bottom buffer controlled separately */
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(13px, 1vw, 14px);
+  line-height: 1.4;
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0; /* ✅ Remove artificial column spacing that’s crowding layout */
+  padding-left: clamp(20px, 4vw, 40px);   /* ⬅ Clean left edge */
+  padding-right: clamp(20px, 4vw, 40px);  /* ➡ Add right buffer to allow content to breathe */
+}
+
+.footer-row-container {
+  max-width: 1320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 🔺 TRIANGLE + LICENSE STACK */
+.footer-logo-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.footer-logo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* ✅ Center logo + license for mobile too */
+  justify-content: flex-start;
+  text-align: left;
+  margin-top: -10px;
+  flex: 0 0 auto;
+  min-width: unset;                      /* ✅ Prevent block from holding space */
+  max-width: 200px;                      /* ✅ Prevent excess horizontal space */
+  gap:100px;                    /* ✅ Controls vertical spacing between logo and license */
+  position: relative; /* ✅ Needed for absolute child positioning */
+  margin-left: clamp(0px, 0vw, 12px);  /* ✅ Pushes logo+license further left */
+}
+
+.footer-logo {
+  height: clamp(22px, 2vw, 32px);
+  width: auto;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+  transition: transform 0.2s ease, filter 0.3s ease;
+  max-width: 55px;               /* 🔧 Limits logo width */
+  height: auto;                   /* ✅ Preserves natural aspect ratio */
+  display: block;
+  margin: 0 auto;                 /* ⬅️ Centers logo on mobile */
+}
+
+.footer-logo-link:hover .footer-logo {
+  animation: none; /* 🛑 Stop pulsing */
+  transform: translateY(-2px); /* ⬆ Lift */
+  filter: drop-shadow(0 0 24px rgba(255, 255, 255, 0.7)); /* 🌟 White glow highlight */
+}
+
+/* 🧾 CSLB LICENSE LINE */
+.footer-license {
+  font-size: clamp(11.5px, 1.2vw, 13px);        /* 🔠 Controls the text size for 'License #...' */
+  color: #cccccc;                               /* 🎨 Default license text color */
+  text-decoration: none;                        /* 🚫 Removes underline from text */
+  white-space: nowrap;                          /* 📏 Prevents text from wrapping to next line */
+  cursor: pointer;                              /* 🖱️ Shows pointer cursor on hover */
+  display: flex;                                /* 📦 Aligns icon and text side-by-side */
+  align-items: center;                          /* 📐 Vertically centers the icon with the text */
+  gap: 6px;                                     /* 🧱 Space between icon and text */
+  transition: color 0.2s ease;                  /* 🎞 Smooth color change on hover */
+}
+
+.footer-license:hover {
+  color: #e0e0e0;                               /* 🌟 Lighter color on hover */
+  text-decoration: underline;                   /* ➕ Underline text when hovered */
+}
+
+.cslb-icon {
+  width: clamp(18px, 2vw, 22px);                /* 📏 Icon size — adjust this to scale icon larger/smaller */
+  height: auto;                                 /* 🔁 Keeps natural height based on aspect ratio */
+  margin-right: 6px;                            /* ➡️ Adds space between icon and text */
+  object-fit: contain;                          /* 🧩 Ensures icon doesn't distort */
+  vertical-align: middle;                       /* 🔧 Aligns icon vertically with text baseline */
+}
+
+
+.footer-license-wrapper {
+  margin-top: -12px; /* ⬆ Pull it closer to the logo */
+  margin-left: clamp(12px, 1.6vw, 20px); /* ⬅ Optional nudge for better alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* ✅ Default for desktop — normal flow */
+   margin-bottom: 8px;  /* ✅ Shrink this if it's larger */
+   z-index: 2; /* ✅ Ensures it floats above nav/contact columns */
+}
+
+/* 🔗 NAVIGATION */
+.footer-nav-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;      /* ✅ Align nav left */
+  margin-top: 5px;
+  margin-left: clamp(55px, 6vw, 90px); /* ✅ Adjust left or right*/
+  flex: 0 0 auto;
+  min-width: 240px;
+  max-width: 340px;
+  flex-shrink: 1;
+ 
+}
+
+
+.footer-nav {
+  display: flex;
+  gap: clamp(12px, 2.4vw, 32px);
+  align-items: center;
+  flex: 0 0 auto;
+ 
+}
+.footer-nav a {
+  font-size: clamp(13px, 1vw, 14px);
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.footer-nav a:hover {
+  color: #dcdcdc;
+  text-decoration: underline;
+  transform: translateY(-1px);
+}
+
+/* 🌐 LANGUAGE TOGGLE */
+.footer-lang-toggle {
+  display: flex;
+  align-items: center;
+  font-size: clamp(13px, 1vw, 14px);
+  margin-top: 5px;
+  margin-right: clamp(0px, 1vw, 12px); /* ✅ Optional right breathing room */
+  cursor: pointer;
+  color: #ffffff;
+  flex-shrink: 0;
+  padding-left: 130px; /* ✅ Adjust left or right*/
+  margin-left: clamp(10px, 1vw, 20px);
+  flex: 0 0 auto;
+  min-width: 80px;
+  max-width: 100px;
+  flex-shrink: 1;
+}
+
+.footer-lang-toggle:hover {
+  color: #dcdcdc;
+  text-decoration: underline;
+}
+
+/* 📞 CONTACT BLOCK */
+.footer-contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 30px;
+  max-width: 300px;          /* ✅ Constraint width, but allow full control */
+  margin-left: auto !important;
+  margin-right: 0;           /* ✅ Tight to edge *//
+  padding-left: 40px;
+  flex: 0 0 auto;
+  position: relative;
+  right: -120px; /* ✅ Moves block to right margin lower to left more to right */
+}
+
+
+.footer-contact-line {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: clamp(13px, 1vw, 14px);
+}
+
+
+.footer-icon {
+  width: clamp(18px, 2vw, 20px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.15));
+  margin-top: 1px;
+}
+.contact-text {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.contact-text:hover {
+  color: #dcdcdc;
+  text-decoration: underline;
+}
+a[href^="tel"] {
+  color: #ffffff;
+}
+a[href^="tel"]:hover {
+  color: #dcdcdc;
+  text-decoration: underline;
+}
+.footer-contact-line .hours {
+  color: #ffffff;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ⚖️ LEGAL BLOCK */
+.footer-legal {
+  margin-top: 0px;
+  padding-top: 0;
+  transform: translateY(-30px);
+  padding-bottom: 0px;
+  text-align: center;
+  font-size: clamp(12px, 1vw, 13px);
+}
+
+.footer-legal p:first-child {
+  margin-top: -45px;  /* ✅ Pulls 'Privacy Policy' upward toward the block above */
+}
+
+.footer-legal a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.footer-legal a:hover {
+  color: white;
+  text-decoration: underline;
+}
+.footer-disclaimer {
+  color: #bfbfbf;
+  margin-top: 6px;
+  line-height: 2.1;
+}
+.footer-copyright {
+  font-size: clamp(11.5px, 1vw, 12.5px);
+  color: #bfbfbf;
+  margin-top: 8px;
+  margin-bottom: clamp(16px, 4vw, 30px);
+}
+
+/* 📏 BOTTOM BUFFER */
+.footer-bottom-buffer {
+  height: 0px;
+  width: 100%;
+  min-height: 0px;
+}
+
+
+
+/* 🎯 Display rules for dual license blocks */
+.license-desktop {
+  display: block; /* ✅ Show desktop license */
+}
+.license-mobile {
+  display: none;  /* ❌ Hide mobile license */
+}
+
+
+/* Footer Logo Pulse Glow */
+footer .footer-logo.pulse-glow {
+  animation: glowPulseFooter 2.5s ease-in-out infinite;
+}
+
+/* Separate Soft Pulse Glow Animation for Footer */
+@keyframes glowPulseFooter {
+  0% {
+    filter: drop-shadow(0 0 0px #f0c14b); /* Initial glow (no shadow) */
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 12px #f0c14b)  /* Soft glow */
+      drop-shadow(0 0 28px #f0c14b)  /* Expand shadow */
+      drop-shadow(0 0 40px #f0c14b); /* Further expand shadow */
+  }
+  100% {
+    filter: drop-shadow(0 0 0px #f0c14b); /* Final glow (no shadow) */
+  }
+}
+
+/* Solution Section Glow Animation (Different from Footer) */
+.solution-reveal {
+  animation: glowPulseSolution 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulseSolution {
+  0% {
+    filter: drop-shadow(0 0 0px #f0c14b);  /* Same initial glow (no shadow) */
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 12px #f0c14b)  /* Soft glow */
+      drop-shadow(0 0 28px #f0c14b)  /* Expand shadow */
+      drop-shadow(0 0 40px #f0c14b); /* Further expand shadow */
+  }
+  100% {
+    filter: drop-shadow(0 0 0px #f0c14b); /* Final glow (no shadow) */
+  }
+}
+
+
+
+
+
+@media (min-width: 768px) {
+  br.mobile-break {
+    display: none;
+  }
+}
+
+
+
+@media (max-width: 1140px) {
+  /* 📐 Stack everything vertically */
+  .footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    padding-bottom: 40px;
+      width: 100%;
+  max-width: 100%;
+  justify-content: center;     /* ✅ Force full horizontal center alignment */
+  margin: 0 auto;
+  }
+
+  /* 🔺 Logo scaling */
+  .footer-logo {
+    width: clamp(80px, 20vw, 120px);
+    margin: 10px auto 0 auto;
+  }
+
+  .footer-logo-stack {
+    align-items: center;
+    position: relative;
+  }
+
+  /* 🔗 Nav links stacked */
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-nav-wrap {
+    margin-top: 10px;
+    max-width: 480px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 🌐 Language toggle */
+  .footer-lang-toggle {
+    margin-top: 12px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* 📞 Contact block below language */
+  .footer-contact-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    margin-bottom: 10px; /* Space before license */
+    position: relative;
+    right: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footer-contact-line {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* 🧾 Mobile license block */
+  .license-mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    order: 6;
+    flex-direction: column;        /* ✅ Stack icon + text vertically */
+    align-items: center;           /* ✅ Center-align the block itself */
+  }
+
+  .license-mobile .footer-license {
+    justify-content: center;
+     transform: translateX(-8px); /* ✅ Nudges license ~4px left */
+  }
+
+  /* ⚖️ Legal block */
+  .footer-legal {
+    padding-top: 40px;
+    font-size: clamp(11.5px, 1.2vw, 13px);
+    line-height: 1.9;
+  }
+
+  .footer-disclaimer,
+  .footer-copyright {
+    line-height: 2.1;
+  }
+
+  /* 🔁 Force mobile line breaks */
+  br.mobile-break {
+    display: inline;
+  }
+
+  /* 💻 Hide desktop license on mobile */
+  .license-desktop {
+    display: none;
+  }
+
+.footer-nav-wrap,
+.footer-lang-toggle,
+.footer-contact-block {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+}
+
+
+
+
+
+
+
+/* === Energy NEWS SECTION === */
+
+.news-main-body{
+  background: #EAEAEA;
+}
+
+.news-header-section {
+  padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 40px) 0;
+  text-align: center;
+}
+
+
+.news-main-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: #333;
+  margin: 0 auto clamp(20px, 3vw, 40px);
+  line-height: 1.2;
+}
+.news-video-section {
+  padding: clamp(30px, 6vw, 60px) 5vw;
+  text-align: center;
+}
+.video-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-caption {
+  font-size: 14px;
+  color: #666;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+
+
+/* === KNY (Know Your Number) Sections === */
+.kny-header-section {
+  padding: clamp(60px, 8vw, 100px) 5vw 0;
+  text-align: center;
+}
+.kny-main-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: #333;
+  margin: 0 auto clamp(30px, 4vw, 60px);
+  line-height: 1.2;
+}
+.kny-placeholder-section {
+  padding: clamp(40px, 6vw, 80px) 5vw clamp(60px, 8vw, 100px);
+  text-align: center;
+}
+.kny-placeholder-box {
+  width: 100%;
+  height: 360px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* PROBLEM SECTION – FINAL LOCKED VERSION */
+.problem-section-1 {
+  padding: clamp(24px, 5vw, 48px) clamp(8px, 2vw, 32px); 
+  background: #EAEAEA;
+}
+
+.problem-section-1 .problem-content {
+  display: flex;
+  height: 450px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(40px, 7vw, 85px);
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20;
+  margin-bottom: 0px;
+  
+  
+}
+
+.problem-section-1 .problem-text {
+  flex: 0 0 38%; /* Adjusted to fix wrapping */
+  display: flex;
+  flex-direction: column;
+  margin-top: clamp(12px, 3vh, 28px);
+  margin-left: clamp(10px, 3vw, 30px); /* Increased left margin */
+}
+
+.problem-section-1 .problem-text h2 {
+  font-size: clamp(18px, 2.5vw, 34px); /* Responsive font size for the header */
+  color: #333; !important; /*/* Dark gray color for the header text */
+  font-weight: 400; /* Slightly bold font weight for the header */
+  margin-bottom: clamp(24px, 2.5vw, 30px);
+  margin-top: clamp(5px, 1vw, 10px);
+  line-height: 1.3;
+}
+
+.problem-section-1 .intro-line {
+  font-size: clamp(12px, 1.7vw, 20px);
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.problem-section-1 .soft-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  white-space: nowrap; /* Prevents bullet points from breaking */
+}
+
+.problem-section-1 .soft-bullets li {
+  position: relative;
+  font-size: clamp(12px, 1.6vw, 18px);
+  margin-bottom: 20px;
+  padding-left: 32px;
+  line-height: 1.6;
+  white-space: nowrap; /* Keeps bullets in single lines */
+  color: #333;
+}
+
+
+/* Adjust the size and positioning of the lightning bolt image icon */
+.problem-section-1 .soft-bullets li img {
+  width: 12px; /* Adjust the width of the lightning bolt */
+  height: 18px; /* Adjust the height of the lightning bolt */
+  vertical-align: middle; /* Aligns the icon with the text */
+  margin-right: 10px; /* Space between the icon and the text */
+  display: inline-block; /* Keeps the image inline with text */
+}
+
+.problem-section-1 .watch-story-cta {
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+  font-size: clamp(15px, 1.6vw, 20px);
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.problem-section-1 .watch-story-cta::before {
+  content: "▶";
+  color: #333;
+  margin-right: 8px; /* Slightly increased space */
+  text-decoration: none; /* Ensures no underline on play button */
+}
+
+.problem-section-1 .watch-story-cta span {
+  border-bottom: 2px solid transparent; /* transparent border initially */
+  transition: border-bottom 0.3s ease;
+}
+
+.problem-section-1 .watch-story-cta:hover span {
+  border-bottom: 2px solid #717372; /* green underline on hover */
+}
+
+/* RIGHT SIDE CHART STYLING (no changes) */
+.problem-section-1 .chart-wrapper {
+  background: white;
+  padding: 6px;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08),
+              0 15px 27px rgba(0,0,0,0.06);
+  transition: box-shadow 0.5s ease;
+  margin-right: 10px; /* Allow a smaller right margin on smaller screens */
+  box-sizing: border-box; /* Ensure padding and margin are considered in the container's size */
+  flex: 0 1 auto; /* Allow the image container to grow and shrink slightly */
+  height: auto; /* Maintain the aspect ratio of the image */
+  width: 100%;
+  margin-top: 20px; /* Adds margin to the top to lower the image */
+  width: 100%; /* Ensure the container takes up the full available space */
+  margin-right: clamp(10px, 2vw, 10px); /* Keep the margin consistent on the right side */
+  min-width: 320px; /* Ensures the container doesn't shrink beyond 320px */
+  display: block;  /* Make sure the chart container behaves as a block element */
+  
+}
+
+.problem-section-1 .chart-wrapper img {
+  width: 100%; /* Ensure image fills width */
+   height: 100%; /* Make the height flexible as well */
+   object-fit: cover; /* Ensures the image fully covers the container */
+  max-width: 100%; /* Allow the image to scale properly within the container */
+  height: auto; /* Maintain the aspect ratio */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04),
+              0 8px 12px rgba(25, 20, 20, 0.08);
+}
+
+.problem-section-1 .chart-disclaimer {
+  font-size: 13px;
+  font-style: italic;
+  color: #777;
+  margin-top: 10px;
+  margin-left: 2px;
+  text-align: left;
+}
+
+/* Mobile View (Problem Section) */
+
+@media (max-width: 767px) {
+  /* Ensure the content stacks vertically */
+  .problem-section-1 .problem-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between elements in the section */
+  }
+
+  /* Add margin to the problem text */
+  .problem-section-1 .problem-text {
+    margin-left: 20px; /* Adds space between the bullet points and text */
+    text-align: left; /* Keeps text aligned to the left */
+  }
+
+  /* Bullet point styling for mobile */
+  .problem-section-1 .soft-bullets li {
+    white-space: normal; /* Allow wrapping for text */
+    font-size: clamp(12px, 2vw, 16px); /* Scalable font size */
+    padding-left: 10px; /* Adds space to the left of bullet points */
+    text-align: left; /* Left-aligns the bullet points */
+  }
+
+  /* Adjust image to avoid overlap */
+  .problem-section-1 .problem-image {
+    max-width: 100%;  /* Ensures the image scales correctly */
+    height: auto;     /* Keeps aspect ratio intact */
+    max-height: 250px;  /* Prevents overflow */
+    margin-bottom: 20px; /* Adds space below the image */
+    object-fit: contain; /* Ensures the entire image is contained within its box */
+  }
+
+  /* Chart wrapper adjustments for mobile */
+  .problem-section-1 .chart-wrapper {
+    max-width: 90%; /* Keeps chart within screen width */
+    margin-top: 20px; /* Adds space above the chart */
+    margin-bottom: 20px; /* Adds space below the chart */
+  }
+
+    .problem-section-1 {
+    padding-bottom: 20px;  /* Adds space below the section */
+    min-height: 700px;    /* Prevents the section from collapsing */
+    margin-left: auto;  /* Center the section */
+    margin-right: auto; /* Center the section */
+    padding-left: 23px;  /* Optional: Adds space from left */
+    padding-right: 15px; /* Optional: Adds space from right */
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === SOLUTION SECTION === */
+.solution-section {
+  position: relative; /* gradient overlay stays inside */
+  display: flex;          /* So left & right columns sit side-by-side */
+  align-items: stretch;   /* Match their heights */
+  margin-top: 0px;      /* top spacing */
+  padding-top: 0;
+  height: 1350px;    /* Allows scrolling when content exceeds this height */
+  max-height: 1350px;
+  overflow: visible;   /* Prevent overflow hidden to show all content */
+gap: 0; /* Remove any gap */
+
+} 
+
+/* LEFT COLUMN: IMAGE (background) */
+.solution-image {
+  flex: 0 0 52%;  /* ~55% width on desktop */
+  width: 52%;     /* fallback */
+  min-height: 0 !important;
+  height: 100%;  /* matches the parent's 1500px exactly */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;     /* behind text & gradient (z=2) */
+  background: url("img/solarstatement.jpg") no-repeat top center;
+  background-color: #152a45;
+ background-size: cover;            /* keep the image filling container */
+  top: 0;               /* ADDED: stick from the top down */
+    padding: clamp(10px, 4vw, 50px); /* Responsive padding using clamp */
+  margin-right: clamp(2px, 3vw, 10px); /* ensures space between image and text, adjustable */
+}
+
+/* Remove or comment out this if you're no longer using an <img> inside .solution-image */
+.solution-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* GRADIENT OVERLAY ON THE WHOLE SECTION */
+.solution-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background-size: 100% auto;
+
+  /* Feel free to tweak stops for more/less transparency. Currently opaque at left 50%. */
+  background: linear-gradient(
+    to left,
+    rgba(11, 36, 71, 1) 51%,
+    rgba(27, 77, 122, 0.85) 51%,
+    rgba(60, 120, 170, 0.5) 70%,
+    rgba(120, 160, 200, 0.1) 80%
+  );
+}
+
+/* RIGHT COLUMN: TEXT/ACCORDION */
+.solution-text {
+  z-index: 5;
+  flex: 1 1 auto;               /* Fill remaining width */
+  position: relative;           /* Anchor for absolute CTA */
+  width: auto;                  /* Flexible width */
+  padding: 10px;                /* Standard padding */
+  color: white;                 /* White text */
+  display: flex;                /* Flexbox layout */
+  flex-direction: column;       /* Stack items vertically */
+  justify-content: flex-start;  /* Align items at the top */
+  align-items: flex-start;      /* Align items to the left */
+  text-align: left;             /* Left-align text */
+  margin-right: 10px;           /* Margin on the right */
+  max-height: 1250px;           /* Max height to allow scrolling */
+  overflow-y: auto;             /* Vertical scrolling when content exceeds */
+  padding-bottom: 40px;        /* Ensure space below */
+  margin: 0; 
+   
+}
+
+.solution-text p {
+  margin-bottom: 15px;
+}
+
+/* Optional heading overlay if you want text on top of image */
+.solution-heading-overlay {
+  position: absolute;
+  top: 40px;
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-align: center;
+}
+
+/* MAIN HEADING */
+.solution-heading {
+  font-size: clamp(14px, 2vw, 30px);
+  font-weight: 500;
+   margin-top: 0px;
+  white-space: nowrap;
+  letter-spacing: 0.015em;
+  color: #030303;
+
+  z-index: 2; /* Ensure the text is on top of the glow */
+  position: relative;
+}
+
+/* Main Heading (Glow Effect) */
+.solution-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.6); /* Reduced opacity for a softer glow */
+  z-index: -1; /* Place it behind the heading */
+  filter: blur(8px); /* Adjust blur for the glow effect */
+  margin-top: 4px; /* Adjust distance from the text */
+  border-radius: 3px; /* Optional: Round the corners for the glow */
+}
+
+
+
+/* SUBHEADER: "10 Smart Reasons..." */
+.solution-text .solution-subheader {
+  font-size: clamp(14px, 2vw, 28px); !important;
+  font-weight: 400;
+  text-align: center; 
+  text-decoration: underline;
+  text-decoration-thickness: 1px; 
+  text-underline-offset: 20px; /* pick a numeric offset; e.g. 2px */
+  line-height: 1.6;
+  margin-top: 40px;
+  margin-bottom: 45px; 
+  margin-left: 20px; 
+}
+
+
+
+/* Bulb icon states */
+
+/* Ensure bulb icon aligns properly */
+.bulb-icon {
+  width: clamp(18px, 3vw, 38px);               /* Responsive bulb size */
+  height: auto;
+  flex-shrink: 0;
+   transition: transform 0.2s ease, filter 0.3s ease, content 0.3s ease; /* Added transition for scale and content */
+  content: url('./img/white_bulb.png'); /* Default white bulb */
+   filter: grayscale(100%); /* Start with grayscale (off) */
+}
+
+.bulb-icon:hover {
+  content: url('./img/bulb.png');
+}
+
+/* Bulb wrapper (for proper layout alignment) */
+.bulb-wrapper {
+  display: inline-block; /* Make sure the bulb is inline with the label */
+  margin-right: 8px; /* Small margin between the bulb and the text */
+}
+
+.solution-row.open .bulb-icon {
+  content: url('./img/bulb.png');
+  animation: glow 0.5s infinite alternate;
+  transform: scale(1.05);
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 0px #f0c14b); }
+  to   { filter: drop-shadow(0 0 8px #f0c14b); }
+}
+
+
+/* Hover effect on bulb icon */
+.solution-row:hover .bulb-wrapper .bulb-icon {
+  content: url('./img/bulb.png'); /* Switch to colored bulb when hovered */
+  transition: content 0.3s ease; /* Slight delay for the color change */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+ transition: transform 0.2s ease, filter 0.3s ease; /* Only transition for scale and filter */
+  filter: grayscale(0%); /* Remove grayscale (turn on the bulb) */
+  transition-delay: 0.5s; /* Delay the bulb color change (after the line animation starts) */
+}
+
+
+
+
+/* LABEL TEXT */
+.solution-label {
+  font-size: clamp(12px, 1.5vw, 20px);
+  font-weight: 300;
+  line-height: 1.4;
+  margin-top: 0; 
+  letter-spacing: 0.06em; 
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.2s ease; /* Smooth transition for hover effect */
+  overflow: hidden; /* Prevent overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  margin-bottom: 8px; /* Small space between label and reveal box */
+}
+
+
+
+.solution-label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: white; 
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.solution-label:hover:after {
+  transform: scaleX(1); /* Expands underline on hover */
+}
+
+/* ACCORDION ROW */
+.solution-row {
+  display: flex;
+  flex-direction: column; /* Stack the solution label and reveal box vertically */
+  margin-top: 20;
+  margin-bottom: clamp(16px, 1.6vw, 32px); /* Margin between rows */
+  font-size: clamp(12px, 1.6vw, 18px);
+  margin-left: clamp(12px, 2vw, 18px);
+  gap: 20px;
+  align-items: flex-start; /* Align text and reveal box to the left */
+ letter-spacing:   /* Adjust letter-spacing for the reveal text */
+}
+
+
+.solution-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+
+
+/* REVEAL BOX (hidden by default) */
+.solution-reveal {
+  display: none;
+  float: none; 
+  clear: both;
+  padding: clamp(7px, 2.5vw, 14px);
+  background-color: #3a5a80;
+  border-radius: 18px;
+  border-right: 4px solid #f0c14b;
+  font-size: clamp(12px, 1.6vw, 18px);
+  line-height: 1.6;ß
+  letter-spacing: 0.4em;  /* Adjust letter-spacing for the first line */
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  max-width: clamp(200px, 40vw, 600px);
+  margin-left: clamp(10px, 3vw, 15px); /* Adjust the margin left to move the box */
+  padding-left: clamp(20px, 5vw, 20px); /* You can use padding-left if you need more space inside box*/
+  margin-right: clamp(10px, 5vw, 60px);/* Adjust the margin right to move the box */
+  padding-right: clamp(5px, 5vw, 20px);/* You can use  if you need more space inside box*/
+  margin-top: 5px;
+  padding-bottom: 1px; /* Prevent any extra padding from affecting layout */
+}
+
+
+
+.solution-reveal p {
+  letter-spacing: 0.05em;  /* Adjust letter-spacing for the first line */
+  padding: 0;
+}
+
+
+/* When open, show reveal with glowPulse anim */
+.solution-row.open .solution-reveal {
+  display: block;
+  animation: glowPulse 1s ease-in-out infinite;
+    margin-top: 0 !important;  /* Make sure it stays aligned with the label */
+  padding-top: 5; /* Prevent any extra padding from affecting layout */
+}
+
+@keyframes glowPulse {
+  0%   { filter: drop-shadow(0 0 0px #f0c14b); }
+  50%  { filter: drop-shadow(0 0 8px #f0c14b); }
+  100% { filter: drop-shadow(0 0 0px #f0c14b); }
+}
+
+/* If using typing effect */
+.solution-reveal.typing {
+  border-right: 2px solid #f0c14b;
+  white-space: pre-wrap;
+}
+
+/* Prevent nested .solution-section from becoming flex inside .solution-text */
+.solution-text > .solution-section {
+  display: block !important;
+  width: 100%;
+  height: auto !important;
+}
+
+/* .lang-en or .lang-es wrappers => block-level not inline */
+.lang-en[data-wg-notranslate],
+.lang-es[data-wg-notranslate] {
+  display: block; 
+  width: 100%;
+}
+
+/* If there's a nested gradient in the accordion container, remove it. */
+.solution-text > .solution-section::before {
+  content: none !important;
+}
+
+
+
+.solution-text .cta-button {
+padding: clamp(14px, 2vw, 20px) clamp(14px, 2.5vw, 24px) clamp(10px, 1.2vw, 16px); /* Top-left&right - bottom */
+font-size: clamp(13px, 1.4vw, 24px);
+Font-weight: 800;
+  border: 2px solid #f0c14b;
+  background: #1a3c59;
+  color: white;
+  border-radius: 999px; /* Rounded corners */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.solution-text .cta-button:hover {
+  background-color: white;
+  color: #152a45;
+  border-color: #adcbe3;
+}
+
+/* Style for the link */
+.solution-section .cta-link {
+  text-decoration: underline; /* Underline the text by default */
+  color: #d3d3d3; /* Light gray color by default */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  font-size: clamp(14px, 2vw, 20px); /* Responsive font size */
+  margin-top: 0px; /* No margin on top */
+
+}
+  
+
+
+.solution-section .cta-link:hover {
+  color: #848785; 
+}
+
+.solution-section.cta-button, .cta-link {
+  margin: 0;
+  position: static;
+}
+
+
+.solution-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 35px;   /* ✅ buffer between last reveal and CTAs */
+  gap: 65px;           /* ✅ space between the link and button */
+  margin-top: auto;    /* ✅ pushes them toward bottom if space allows */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;         /* Add some margin to prevent content from crossing over */
+  margin-bottom: 20;  
+  width: 100%;
+  max-width: 520px;
+  padding: 0 30px;
+  z-index: 10;
+}
+
+
+
+/* 🔧 Floating Hint Bulb */
+.solution-section #autoHintBulb {
+  width: clamp(18px, 3vw, 42px);               /* Responsive bulb size */
+  height: auto;                                /* Maintain aspect ratio */
+  display: block;
+  margin: 0;
+  filter: drop-shadow(0 0 14px rgba(240, 193, 75, 0.8)); /* Glowing ring */
+  animation: glowPulse 1.2s ease-in-out infinite;        /* Sync pulse */
+  flex-shrink: 0;                              /* Prevent squishing */
+}
+
+/* 📦 Hint Wrapper: Contains both bulb and box */
+.solution-section .auto-hint-wrapper {
+  display: flex;                               /* Places bulb + box in row */
+  align-items: center;                         /* Vertically center-aligns them */
+  gap: clamp(16px, 1.8vw, 26px);               /* Spacing between bulb + box */
+  margin-bottom: clamp(16px, 2vw, 32px);       /* Space below wrapper */
+  margin-left: clamp(10px, 2vw, 15px);        /* 🔧 Nudge wrapper left (more precise) */
+  padding-right: clamp(12px, 2vw, 24px);       /* Optional spacing on right edge */
+}
+
+/* 💬 Hint Box Style */
+.solution-section .solution-auto-hint {
+  background-color: #3a5a80;                   /* Box background color */
+  border-radius: 10px;                         /* Rounded corners */
+  padding: 8px 12px;                           /* Text padding inside box */
+  font-size: clamp(14px, 1.4vw, 18px);         /* Responsive font size */
+  color: #fff;                                 /* Text color */
+  border-right: 2px solid #f0c14b;             /* ✅ Match solution reveal line */
+  display: inline-block;                       /* 📏 Allows natural width expansion */
+  overflow: hidden;                            /* Prevent overflow while typing */
+  white-space: nowrap;                         /* Force single-line growth */
+  box-shadow: 0 0 12px rgba(240, 193, 75, 0.5); /* Static glow (initial state) */
+  animation: glowPulse 1.2s ease-in-out infinite; /* ✅ Pulses just like the bulb */
+}
+
+/* ✨ Hint Box When Activated */
+.solution-section .solution-auto-hint.visible {
+  opacity: 1;                                  /* Fade visible */
+  transform: translateY(0);                    /* Slide up slightly if needed */
+  box-shadow: 0 0 12px rgba(240, 193, 75, 0.5); /* Match visible glow */
+}
+
+
+  /* If you want to adjust the button and link spacing */
+  .solution-text .cta-link {
+    font-size: clamp(12px, 5vw, 20px); /* Adjust font size for mobile */
+    padding: clamp(8px, 2vw, 16px) clamp(15px, 4vw, 30px); /* Adjust padding */
+    text-decoration: underline; /* Keep the link underlined */
+    display: inline-block; /* Ensure the link is treated like a block */
+    margin-bottom: 10px; /* Adjust space between the link and button */
+  }
+
+
+
+/* ================== Media Query for iPad Mini and other devices <= 1023px ================ */
+@media (max-width: 1025px) {
+
+  .solution-section {
+    padding: 0; /* Ensure no unwanted padding */
+    height: auto; /* Allow the section to adjust its height dynamically */
+    margin-top: 0;
+  }
+
+  .solution-image {
+    width: 100%; /* Ensure image takes full width */
+    height: auto !important; /* Allow height to adjust */
+    min-height: 60vh !important; /* Set minimum height to cover the section */
+    object-fit: cover; /* Ensure the image fits properly */
+    margin: 0; /* Remove any margins */
+    z-index: 1; /* Ensure image is positioned correctly behind the text */
+    position: relative;
+
+  }
+
+  /* Adjust the image container height for mobile */
+.solution-text {
+  z-index: 5;
+  flex: 1 1 auto;               /* Fill remaining width */
+  position: relative;           /* Anchor for absolute CTA */
+  width: auto;                  /* Flexible width */
+  padding-left: 0px;                /* Standard padding */
+  color: white;                 /* White text */
+  display: flex;                /* Flexbox layout */
+  flex-direction: column;       /* Stack items vertically */
+  justify-content: flex-start;  /* Align items at the top */
+  align-items: flex-start;      /* Align items to the left */
+  text-align: left;             /* Left-align text */
+  margin-right: 0px;           /* Margin on the right */
+  max-height: 1250px;           /* Max height to allow scrolling */
+  overflow-y: auto;             /* Vertical scrolling when content exceeds */
+  padding-bottom: 40px;        /* Ensure space below */
+  margin: 0; 
+   margin-left: 20px;
+   margin-right: 0px;
+}
+
+
+.solution-section .cta-link {
+  text-decoration: underline; /* Underline the text by default */
+  color: #d3d3d3; /* Light gray color by default */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  font-size: clamp(12px, 1.5vw, 18px); /* Responsive font size */
+  margin-top: 0px; /* No margin on top */
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* =============== Solution MEDIA QUERY FOR ~768PX =============== */
+
+
+
+/* Mobile View Only */
+@media (max-width: 767px) {
+
+  .solution-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    background-color: #152a45; /* Base blue background */
+    width: 100%;
+    z-index: 1; /* Ensure the background stays behind the overlay */
+   
+    overflow: hidden; /* Ensure nothing overflows */
+  }
+
+  /* Remove gradient on mobile */
+  .solution-section::before {
+    content: none !important; /* Remove gradient overlay for mobile */
+  }
+
+  /* Ensure the image behaves properly */
+  .solution-image {
+    width: 100%;
+      height: auto !important;
+    min-height: 700px !important; /* or a more suitable value for mobile */
+    object-fit: cover;
+    margin: 0;
+    z-index: 0; /* Ensure the image stays behind the heading */
+  }
+
+  /* Mobile Heading Overlay */
+  .solution-heading-overlay {
+    position: absolute;
+    top: 10px; /* Adjust the distance from the top */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Ensure the heading stays on top of the image */
+    color: white;
+    font-size: clamp(16px, 5vw, 24px); /* Scalable font size */
+    text-align: center;
+    width: 100%; /* Full width for the heading */
+  }
+
+
+
+  /* Heading Text Style */
+  .solution-heading {
+    font-size: clamp(14px, 4.5vw, 20px); /* Responsive font size */
+    font-weight: 900;
+    color: rgb(2, 2, 2);
+    margin-top: 15px;
+   text-align: center; /* Ensure text inside the heading is centered */
+    z-index: 2; /* Ensure it's above the overlay */
+  }
+
+    /* Main Heading (Glow Effect) */
+.solution-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, .7); /* Reduced opacity for a softer glow */
+  z-index: -1; /* Place it behind the heading */
+  filter: blur(8px); /* Adjust blur for the glow effect */
+  margin-top: 4px; /* Adjust distance from the text */
+  border-radius: 3px; /* Optional: Round the corners for the glow */
+}
+
+
+/* Targeting the Subheader */
+.solution-text .solution-subheader {
+  margin-top: 20px; /* Reduce top margin to bring it closer to the heading */
+  font-weight: 600;
+  text-decoration: underline; /* Underline the subheader text */
+  text-decoration-thickness: 1px; /* Control the thickness of the underline */
+  text-underline-offset: 10px; /* Adjust vertical spacing of the underline */
+  font-size: clamp(14px, 5vw, 38px); /* Responsive font size */
+  width: auto; /* Let the underline span the width of the text */
+  text-align: center; !important;
+  align-items: center; !important;
+  margin-bottom: 30px;
+}
+
+  /* Ensure solution text remains below the image */
+  .solution-text {
+    color: white;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 1; /* Ensure it's below the heading */
+    align-items: center; !important;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    max-width: 100%;     /* Ensure container width is constrained */
+   
+  }
+
+  .solution-top {
+    display: flex; /* Ensures flex behavior for alignment */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Vertically align the items */
+    gap: 6px; /* Reduces space between bulb and text */
+    margin-bottom: 5px; /* Add space between the text and the reveal label */
+    margin-left: 0px;
+   
+  }
+
+  /* Increase lightbulb size for mobile */
+  .bulb-icon {
+    width: clamp(24px, 6vw, 28px); /* Increase size using clamp() for responsiveness */
+    height: auto;
+    margin-left: 10px !important; /* Add margin-left to adjust spacing */
+    flex-shrink: 0; /* Prevent the bulb from shrinking in flexbox */
+    margin-top: -8px; 
+    margin-left: -3px;
+  }
+
+
+  /* Increase text size for mobile and adjust margin */
+  .solution-text  .solution-label {
+    font-size: clamp(14px, 3.6vw, 22px); /* Increase text size */
+    margin-left: -4px; /* Reduce left margin for tighter spacing */
+    text-align: left; /* Ensure the label stays left-aligned */
+    justify-content: left;
+    align-items: center; /* Vertically align the items */
+    font-weight: 700;
+   
+}
+
+
+    .solution-reveal {
+    margin-left: 20px;
+    margin-right: -8px;
+    max-width: calc(100% - 40px); 
+    margin-bottom: 10px;
+   
+    font-size: clamp(14px, 3.3vw, 20px); /* Increase text size */
+    letter-spacing: 0.04em; /* Adjust letter-spacing for the first line */
+    padding-left:20px; /* You can use padding-left if you need more space inside box*/
+    padding-right: 20px;
+    padding-bottom: 0px; /* Add bottom padding for spacing */
+  }
+
+   
+
+  /* Adjust the spacing between the CTA Link and Button */
+  .solution-cta-wrap {
+    gap: 60px; /* Control space between the link and button */
+    margin-bottom: 30px; /* Adjust space below the CTA section */
+    
+  }
+
+  .solution-text .cta-button {
+  padding: clamp(12px, 2.6vw, 14px) clamp(14px, 3vw, 20px) clamp(6px, 1.8vw, 10px) clamp(14px, 3vw, 20px);/* Top-left- bottom -right*/
+  font-size: 18px; 
+font-weight: 800;
+  border: 2px solid #f0c14b;
+  background: transparent;
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition for changes */
+}
+
+/* Tap effect: shrink and bounce back */
+.solution-text .cta-button:active {
+    transform: scale(0.95); /* Shrinks the button slightly */
+    background-color: #3a5a80; /* Change background on press */
+    color: #152a45; /* Darker text color for contrast */
+    animation: bounce 0.3s ease-out; /* Add bounce effect when pressed */
+}
+
+/* Bounce keyframe */
+@keyframes fade-in-slide {
+    from {
+        opacity: 0; /* Start transparent */
+        transform: translateY(30px); /* Start slightly below */
+    }
+    to {
+        opacity: 1; /* End fully visible */
+        transform: translateY(0); /* Move to normal position */
+    }
+}
+
+
+/* Bounce effect keyframe - try for future after site is live for all CTAs compare to boutnce above */
+/*@keyframes bounce {
+    0% {
+        transform: scale(1); /* Start at normal size */
+     }
+    50% {
+        transform: scale(1.1); /* Grow slightly */
+    }
+    100% {
+        transform: scale(1); /* Return to normal size */
+    }
+*/
+
+
+
+
+
+
+
+
+
+
+/* === Testimonial Carousel Section === */
+
+
+.testimonial-carousel-section {
+  background-color: #eaeaea;              /* Section background */
+
+  padding: 0 10px;    /* Remove top and bottom dynamic padding */
+  width: 100%;         /* Ensure full width */
+  max-width: 100%;     /* Remove any container width limit */
+  margin: 0 auto;      /* Center section */
+  width: 100%;                          /* Make the section full width */
+  max-width: 100%;                      /* Remove any container width limit */
+  margin: 0 auto;                        /* Center section */
+  font-family: 'Open Sans', sans-serif; /* Match site font */
+  position: relative;
+  z-index: 10; /* Make sure carousel is above hero but below nav if needed */
+  color: #333;
+  padding-bottom: 120px;                /* Add extra space below the arrows/dots */
+  display: flex;
+  flex-direction: column;             /* Stack content vertically */
+  height: clamp(600px, 70vh, 800px); /* Allows the section to grow while capping it at 800px */
+  min-height: 800px; /* Prevents collapsing too much */
+  overflow: hidden; /* Ensures content doesn't overflow */
+}
+
+.testimonial-carousel-section > h3 {
+  text-align: center;
+  font-size: clamp(24px, 2.5vw, 32px);   /* Responsive heading font */
+  margin: clamp(40px, 4vw, 60px) 0;      /* Top & bottom margin */
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 50px;       /* Reduced margin on top */
+  margin-bottom: 80px;
+}
+
+/* === Splide base wrapper === */
+.splide {
+  position: relative;
+}
+
+/* === Slides List Container === */
+.splide__list {
+  display: flex;                     /* Align slides horizontally */
+  justify-content: flex-start;        /* Align slides to the left */
+  width: 100%;
+  gap: 0px !important; /* Force gap to 5px */
+  padding: 10px; /* Ensure padding around container */
+  margin: 0;  
+}
+
+/* Adjust width of the slides */
+.splide__slide {
+  flex: 0 0 auto;              /* Ensures the slide width is fixed at 28% */
+  width: 28%;                    /* Reduce the slide width further to 30% */
+  padding-left: 45px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box;             /* Ensure padding/border don't add extra width */
+  height: 440px !important;  /* Fixed height */
+  min-height: 440px !important;  /* Ensure all slides have minimum height */
+  max-height: 600px !important;  /* Keep all slides the same height */
+  display: flex;                      /* Stack content inside the slide */
+  flex-direction: column;             /* Stack content vertically */
+  justify-content: space-between;     /* Ensure space between content */
+ 
+}
+
+/* === Adjust the .splide__track to avoid overflow === */
+.splide__track {
+  overflow: hidden!important;                  /* Prevent overflow of extra slides */
+  display: flex;
+  justify-content: flex-start;       /* Align slides to the left */
+  width: 100%;                       /* Ensure the track takes full width */
+  height: 100%; /* Ensure track takes the full height of its parent */
+ min-height: 600px !important;  /* Prevent track from collapsing */
+  align-items: stretch; /* Ensure the children stretch accordingly */
+}
+
+
+/* === Testimonial Card (article) === */
+.splide__slide > article {
+  background-color: #c1bfbf;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+ height: 100% !important;
+  box-sizing: border-box;
+  width: 90%;                           /* Increase width for better fitting */
+   height: auto;                          /* Allow dynamic height based on content */
+   margin-bottom: 20px;                   /* Add margin bottom for spacing */
+    justify-content: flex-end;            /* Align content to the bottom of the container */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.2); /* Apple-style soft box shadow */
+     flex-grow: 0 !important;        /* Prevent content from growing */
+}
+
+/* === Star Image === */
+  .splide__slide > article > img {
+    width: 72px;
+    height: auto;
+    margin-bottom: 0px;
+    margin-top: 10px; 
+  }
+
+/* === Quote Text === */
+.splide__slide article .quote {
+  font-style: italic;
+  font-size: clamp(18px, 1.5vw, 20px);
+  color: #333;
+  flex-grow: 1;
+  margin-bottom: clamp(10px, 1vw, 20px);
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* === Author Name === */
+.splide__slide article .author {
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(14px, 1.5vw, 16px);
+   margin-top: 20px;
+}
+
+/* === Location === */
+.splide__slide article .location {
+  font-style: italic;
+  font-size: clamp(13px, 1.3vw, 15px);
+  color: #888888;
+  margin-top: 8px;
+}
+
+/* === Arrows === */
+/* Center Arrows and Dots */
+/* For .splide__arrows, align the arrows on each side of the dots */
+.splide__arrows {
+  position: absolute;
+  bottom: 50px;                             /* Place arrows directly below the slides */
+  left: 35%;                                 /* Arrows positioned with margin from the left */
+  right: 35%;                                /* Arrows positioned with margin from the right */
+  display: flex;
+  justify-content: space-between;            /* Space arrows on either side */
+  gap: 10px;                                 /* Reduced gap between arrows and dots */
+  z-index: 10;
+}
+
+.splide__arrow {
+  background-color: transparent;
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: clamp(30px, 6vw, 48px);            /* Dynamic width of arrows */
+  height: clamp(30px, 6vw, 48px);           /* Dynamic height of arrows */
+  font-size: clamp(20px, 5vw, 28px);        /* Dynamic font-size for arrows */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.splide__arrow:hover,
+.splide__arrow:focus {
+  background-color: #ccc;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust Pagination Dots Position */
+.splide__pagination {
+  position: absolute;                       /* Position the dots absolutely */
+  bottom: -10px;                             /* Place the dots 10px above the bottom of the slide */
+  left: 50%;                                /* Center them horizontally */
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px;                                /* Space between dots */
+}
+
+/* Pagination Dots */
+.splide__pagination__page {
+  width: clamp(2px, .5vw, 6px);           /* Dynamic width of dots */
+  height: clamp(2px, .5vw, 6px);          /* Dynamic height of dots */
+  background-color: #333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.splide__pagination__page.is-active {
+  background-color: #333;
+}
+
+
+
+/* Ensure container is fully visible and arrows don't escape */
+.splide__list {
+  display: flex;
+  gap: 20px;
+  width: 100%;                            /* Ensure the carousel list takes full width */
+}
+/* === Responsive Breakpoints === */
+
+/* Tablet: 2 testimonials per slide */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .splide__list {
+    width: 100%;  /* Ensures full width of the container */
+    padding: 0 20px;  /* Adds padding to both left and right */
+  }
+  .splide__slide {
+    width: 48% !important;  /* Ensure two slides per view */
+    margin: 0 10px;  /* Gap between slides */
+    height: auto;  /* Allow individual slides to adjust height */
+  }
+    .testimonial-carousel-section {
+    height: auto;  /* Allow height to adjust based on content */
+  }
+
+    .splide__arrow {
+    width: 50px; /* Increase the size of the arrow circles */
+    height: 50px; /* Same height as width for a perfect circle */
+    margin: 0 -50px; /* Adjust the margin between the arrows */
+  }
+
+  /* Adjust the arrow icons themselves (arrow icon inside the circle) */
+  .splide__arrow svg {
+    width: 20px; /* Set width for the arrow icon */
+    height: 20px; /* Set height for the arrow icon */
+  }
+
+  /* Increase space between the left and right arrows */
+  .splide__arrows {
+    gap: 60px; /* Increase the gap between the arrows */
+  }
+    .splide__pagination__page {
+    width: 4px;  /* Smaller dots */
+    height: 4px;
+  }
+.splide__pagination {
+  display: flex;               /* Make the dots container flex */
+  justify-content: center;     /* Center the dots horizontally */
+  gap: 5px;                    /* Adjust the gap between dots */
+  flex-wrap: nowrap;           /* Prevent the dots from wrapping to a new line */
+  margin-top: 20px;            /* Optional: Adjust the space between dots and the carousel */
+}
+  .splide__pagination__page.is-active {
+    background-color: #333; /* Active dot color */
+  }
+  
+}
+
+/* Mobile View Only */
+@media (max-width: 767px) {
+
+
+
+.testimonial-carousel-section {
+  
+  width: 100%;                            /* Ensure full width */
+  max-width: 100%;                        /* Ensure no max width constraint */
+  box-sizing: border-box;
+
+}
+
+  .testimonial-carousel-section > h3 {
+   font-size: clamp(16px, 5vw, 22px) !important;  /* Make the font size smaller */
+  margin-top: 40px !important;                   /* Reduce the space above the heading */
+  margin-bottom: 60px !important;                /* Reduce the space below the heading */
+   margin-left: 15px !important;                   /* Add margin to the left */
+  margin-right: 15px !important;                  /* Add margin to the right */
+  text-align: center !important;                  /* Center the heading */
+  word-wrap: break-word !important;               /* Allow text to wrap onto the next line if necessary */
+  max-width: 90% !important;                      /* Limit the width to prevent it from being too wide */
+}
+
+  /* Ensure each slide fills the entire container and prevents shrinking */
+  .is-mobile .splide__slide {
+    width: 100% !important;              /* Ensure the slide takes up the full container */
+    min-width: 100% !important;          /* Prevent shrinking */
+    margin-left: 0 !important;           /* Remove left margin */
+    margin-right: 0 !important;          /* Remove right margin */
+    padding: 15px !important;            /* Add padding around each slide */
+    box-sizing: border-box;
+    background-color: #f5f5f5 !important; /* Light background for readability */
+    border-radius: 10px;                 /* Slight rounded corners for the slides */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for better readability */
+  }
+
+  /* Ensuring each slide content (article) takes up the full width and height */
+  .is-mobile .splide__slide > article {
+    height: auto !important;             /* Dynamic height based on content */
+    width: 100% !important;              /* Ensure the article fills the slide */
+    margin: 0 !important;                /* Remove margin */
+    padding: 0 !important;               /* Remove padding */
+    box-sizing: border-box;
+  }
+
+  /* Ensure .splide__track hides any overflow of extra slides */
+  .is-mobile .splide__track {
+    overflow: hidden !important;         /* Hide any extra slides */
+    width: 100%;
+     margin-bottom: 0px !important;  /* Remove any space between the slide and the arrows/dots */
+  }
+
+  /* Ensuring the spacing between slides is correct */
+  .is-mobile .splide__list {
+    display: flex;
+    justify-content: center;             /* Center the slides */
+    gap: 20px !important;                /* Space between slides */
+    width: 100% !important;              /* Ensure the list takes full width */
+    margin: 0 !important;                /* Remove margin between slides */
+  }
+
+.splide__arrows {
+ padding-top: 10px;
+  bottom: 10px !important;            /* Reduce space between arrows and bottom of the slide */
+   margin-top: 0px !important;         /* No margin above the arrows */
+padding-bottom: 50px !important; /* No padding below the arrows */
+  }
+
+  .splide__arrow {
+    width: 40px; /* Increase the size of the arrow circles */
+    height: 40px; /* Same height as width for a perfect circle */
+    margin: 0 -100px; /* Adjust the margin between the arrows */
+    top: 10px;
+  }
+
+  /* Adjust the arrow icons themselves (arrow icon inside the circle) */
+  .splide__arrow svg {
+    width: 15px; /* Set width for the arrow icon */
+    height: 15px; /* Set height for the arrow icon */
+  }
+
+  /* Pagination dots spacing adjustment */
+  .splide__pagination {
+    padding-bottom: 55px !important; /* No padding below the arrows */
+    gap: clamp(6px, 5vw, 10px);
+  }
+    .splide__pagination__page {
+    width: 2px;  /* Smaller dots */
+    height: 2px;
+  }
+  
+.splide__pagination {
+  display: flex;               /* Make the dots container flex */
+  justify-content: center;     /* Center the dots horizontally */
+  gap: 5px;                    /* Adjust the gap between dots */
+  flex-wrap: nowrap;           /* Prevent the dots from wrapping to a new line */
+  margin-top: 40px;            /* Optional: Adjust the space between dots and the carousel */
+}
+  .splide__pagination__page.is-active {
+    background-color: #333; /* Active dot color */
+  }
+
+
+}
+ 
+
+
+
+
+
+/* =============== FORM 1 STYLES =============== */
+
+/* FORM 1 Page  */
+
+/* MOBILE HEADER MESSAGE (form pages, etc.) */
+
+/* DESKTOP VIEW (≥768px): spacing for form1.html */
+@media (min-width: 768px) {
+  body.form-page .form-right h2 {
+    font-size: clamp(22px, 5vw, 28px);
+    color: #333;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+
+  body.form-page .form-right p {
+    font-size: 17px;
+
+    font-weight: 500;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 28px;
+  }
+
+
+
+  body.form-page .testimonial-block {
+    margin-top: 32px;
+    text-align: left;
+    padding-right: 12px;
+  }
+
+  body.form-page .testimonial-text {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  body.form-page textarea {
+    margin-bottom: 0;
+  }
+
+  body.form-page .required-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* EVEN spacing between: asterisk → checkbox → privacy → button */
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+
+  body.form-page .required-fields {
+    font-size: 15px;
+    color: #666;
+    text-align: left; 
+    margin: 0;
+  }
+
+
+  body.form-page .checkbox-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  body.form-page .checkbox-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  body.form-page .privacy-policy {
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+  }
+
+  body.form-page .form-submit-button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Submit button */
+.form-submit-button {
+  display: block;
+  margin: 32px auto 0;
+  padding: clamp(12px, 1.6vw, 18px) clamp(14px, 2.5vw, 24px) clamp(10px, 1.2vw, 16px); /* Top-left&right - bottom */
+  font-size: clamp(14px, 1.5vw, 26px);
+  Font-weight: 800;
+  color: white;
+  background-color: #3a5a80;
+  border: 2px solid #f0c14b;
+  border-radius: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  animation: pulse 2s infinite;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+.form-submit-button:hover {
+  background-color: white;
+  color: #152a45 ;
+  border-color: #152a45 ;
+}
+
+}
+.form-container .mobile-header-message {
+  display: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  padding: 12px 20px 8px;
+  background-color: #fff;
+  line-height: 1.4;
+}
+.form-container .header-message {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 600;
+  text-align: center;
+  padding: 10px clamp(12px, 3vw, 24px);
+  color: #333;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* === FORM1 LAYOUT: Main Container + Form + Testimonial === */
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 60px);
+  align-items: stretch;
+   width: 100%;
+  box-sizing: border-box;
+}
+
+.form-left,
+.form-right {
+  background-color: white;
+  padding: clamp(20px, 3vw, 40px);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  flex: 1;
+}
+.form-left img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid rgba(27, 77, 40, 0.15);
+  box-shadow: 0 0 24px rgba(27, 77, 40, 0.18);
+}
+
+/* Form fields + inline logic */
+.form-container .inline-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.form-container .inline-fields > div {
+  flex: 1;
+}
+.inline-fields:nth-of-type(1) { margin-bottom: 4px; }
+.inline-fields:nth-of-type(2) { margin-top: 4px; }
+.inline-fields:nth-of-type(3) { margin-bottom: 3px; }
+.inline-fields:nth-of-type(4) { margin-top: 10px; }
+
+.form-right label {
+  text-align: left;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 6px;
+}
+.form-right input,
+.form-right select,
+.form-right textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+textarea {
+  resize: vertical;
+  height: 42px;
+  line-height: 1.1;
+  font-family: inherit;
+}
+
+/* ID-based spacing for questions */
+#ownership-question,
+#electric-bill-question,
+#provider-question,
+#more-info-question {
+  margin-top: 18px;
+}
+#home-address-wrapper {
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+/* Some column expansions for address fields */
+.city-wrapper { flex: 1.3; }
+.state-wrapper { flex: 0.8; }
+.zip-wrapper   { flex: 1; }
+
+
+
+
+
+/* Required fields + privacy text */
+.form-container .required-fields {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+.form-container #privacy-policy {
+  margin-top: 4px;
+  text-align: center;
+}
+.form-container .privacy-policy {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+.form-container 
+.privacy-policy a {
+  color: #152a45;
+  text-decoration: none;
+}
+.form-container .privacy-policy a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* Testimonial block */
+.testimonial-block {
+  margin-top: 28px;
+  text-align: center;
+  padding: 0 20px;
+}
+.testimonial-text {
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+  margin: 0 auto 6px;
+  max-width: 660px;
+}
+.quote-only::before,
+.quote-only::after {
+  font-size: 1.3rem;
+  color: #999;
+  font-weight: 400;
+}
+.quote-only::before { content: "“"; margin-right: 4px; }
+.quote-only::after  { content: "”"; margin-left: 4px; }
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.testimonial-location {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.2;
+}
+
+
+
+/* DESKTOP VIEW (≥768px): horizontal layout like homepage */
+@media (min-width: 768px) {
+  body.form-page .main-nav {
+    padding: clamp(6px, 1.2vw, 14px) clamp(18px, 3vw, 38px);
+  }
+
+  body.form-page .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  body.form-page .logo-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  body.form-page .header-message {
+    font-size: clamp(18px, 2vw,36px);
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  body.form-page .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  body.form-page .phone {
+    font-size: clamp(11px, 0.9vw, 14px);
+    text-align: center;
+    line-height: 1;
+    font-weight: 400;
+    color: #333;
+  }
+  
+  body.form-page .lang-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url('img/globe.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 4px white);
+    cursor: pointer;
+    transition: transform 0.9s ease-in-out;
+  }
+  
+}
+
+body.form-page .required-fields::before {
+  content: "* ";
+  color: red;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+body.form-page .data-safety-line {
+  font-size: 14px; /* Slightly smaller than the "I agree" text */
+  font-weight: 400; /* Regular weight */
+  color: #777; /* Subtle gray color */
+  text-align: center; /* Center the text */
+  margin: 0px 0; /* Spacing above and below the text */
+  line-height: 1.5;
+}
+
+/* Phone link style */
+.phone-link {
+  color: #152a45 !important;
+  text-decoration: none !important;
+}
+.phone-link:hover {
+  color: #153d20 !important;
+  text-decoration: underline !important;
+}
+
+/* Hamburger lines if using a custom multi-line icon */
+.hamburger-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: #152a45;
+  transition: all 0.3s ease;
+  margin-bottom: 4px;
+}
+
+
+
+/* MOBILE VIEW (≤767px): stacked layout, everything centered */
+@media (max-width: 767px) {
+  body.form-page .nav-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+  }
+
+  body.form-page .logo-wrapper {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: -4px !important; /* pull phone closer to logo */
+    width: 100%;
+  }
+
+  body.form-page .nav-logo {
+    height: 58px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1;
+    vertical-align: middle;
+    display: block;
+  }
+
+  body.form-page .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  body.form-page .phone {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: -2px !important; /* squeeze tighter to logo */
+  }
+
+  body.form-page .lang-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  body.form-page .header-message {
+    text-align: center;
+    font-size: clamp(18px, 4.8vw, 26px);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+ 
+
+  body.form-page .required-fields {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+  }
+
+  body.form-page .required-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 18px 0;
+    min-height: 140px;
+  }
+
+  body.form-page .red-asterisk {
+    color: red;
+    font-weight: bold;
+  }
+
+  body.form-page #privacy-policy {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+
+  body.form-page .privacy-policy {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 6px 0 0;
+  }
+
+
+  body.form-page .checkbox-row {
+    margin: 12px 0;
+  }
+
+.form-submit-button {
+    margin: 20px auto 40px !important; /* Add space below button */
+    padding: clamp(12px, 2.6vw, 14px) clamp(14px, 3vw, 20px) clamp(6px, 1.8vw, 10px) clamp(14px, 3vw, 20px);* Top-left- bottom -right*/
+    font-size: 26px; 
+    font-weight: 900;
+    display: block;
+    margin: 32px auto 0;
+    color: white;
+    background-color: #3a5a80;
+    border: 2px solid #f0c14b;
+    border-radius: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+
+  }
+ .form-submit-button {
+  font-size: 16px !important;
+}
+
+  body.form-page .privacy-policy-line {
+    font-size: 14px;
+    text-align: center;
+    color: #777; /* Lighter color than checkbox text */
+    margin-top: 6px; /* Adjust margin to avoid overlap */
+    white-space: nowrap; /* Prevent line break */
+    width: 100%; /* Ensure it stays within the available width */
+    display: inline-block; /* Keep it inline, prevents wrapping */
+    padding: 0 7px; /* Add padding for spacing if necessary */
+    box-sizing: border-box; /* Make sure padding doesn't affect the width */
+  }
+
+
+  .form-container {
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-left: clamp(16px, 5vw, 24px);
+    padding-right: clamp(16px, 5vw, 24px);
+    margin: 0 auto;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  
+  }
+  .form-left {
+    order: 2; 
+    margin-top: 20px;
+  }
+  .form-right {
+    order: 1;
+  }
+
+  .form-left,
+  .form-right {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: clamp(20px, 4vw, 30px); /* Keep internal spacing mobile-safe */
+  }
+
+  .inline-fields {
+    flex-direction: column;
+  }
+
+  /* Hide desktop header message, show mobile */
+  .main-nav {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 12px;
+  }
+  .header-message {
+    display: none !important;
+  }
+  .mobile-header-message {
+    display: block;
+  }
+
+  .form-right p {
+    font-size: clamp(14px, 2vw, 20px);
+    text-align: left;
+    color: #333;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+  }
+
+    body.form-page .form-right h2 {
+    font-size: clamp(16px, 5vw, 22px);
+    color: #333;
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+
+
+
+
+
+
+/* On desktop, hide the mobile wrapper */
+@media (min-width: 768px) {
+  .mobile-nav-wrapper {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === SMART GRID ENERGY — FINAL FAQ SECTION (CLEAN VERSION) === */
+
+body.faq-page {
+    background: #EAEAEA;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #111;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Centered content container */
+.faq-wrapper {
+  max-width: 1080px;
+  margin: clamp(48px, 5vw, 80px) auto clamp(64px, 8vw, 120px);
+  background: #fff;
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+/* Holds all the category blocks */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 0 clamp(16px, 5vw, 32px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Main section heading */
+h1.faq-heading {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Small subtitle under heading */
+.faq-subhead {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #333;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+  .faq-arrow{
+    margin-left:auto;                             /* pushes to far right */
+    flex-shrink:0;
+    font-size:30px;                               /* your desired size */
+    transition:transform .3s ease;
+  }
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+/* Inner accordion wrapper for each category's questions */
+.faq-questions,
+.faq-answer {
+  overflow: hidden;
+  transition: height 0.4s ease-in-out;
+  height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Each question-answer pair inside a category */
+.faq-question {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Each category block (gray box) */
+.faq-category {
+  max-width: 100%; /* ⬅️ Allow it to span full width inside .faq-wrapper */
+  margin: 0 auto;
+  padding: clamp(4px, .5vw, 8px);/* top/btm, left/right */
+  line-height: 1.25; 
+  border-radius: 16px;
+  background: #f5f6f7;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Keeps icon and text aligned and lets it break on smaller viewports */
+  gap: 16px;
+  min-height: unset; /* ✅ cancel any inherited height from img or flex children */
+  margin-bottom: 30px;
+}
+
+
+/* Top button of each category: emoji + title + desc + arrow */
+.faq-category-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;                /* ✅ Prevent wraps */
+  background: none;
+  gap: clamp(6px, 1vw, 10px);    /* was fixed 24px */
+  padding: clamp(3px, 0.6vw, 5px) clamp(6px, 1.3vw, 10px);
+  line-height: 1.2; 
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  color: #152a45;
+  box-sizing: border-box;
+}
+
+
+.faq-question-button:hover {
+  background: #f4f4f4;
+}
+
+.faq-question-button:focus {
+  outline: none;
+}
+
+
+
+.faq-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 48px);
+  border: none;
+  box-sizing: border-box;
+  position: relative;
+  top: -14px; /* 👈 Lifts the line up visually */
+  max-width: calc(100% - clamp(32px, 5vw, 64px)); /* ✅ Align with inside of wrapper */
+}
+
+
+.faq-category:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.faq-category:hover {
+  background-color: #ebeced;
+  transition: background-color 0.25s ease;
+}
+
+.faq-category > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-title-wrap{
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,1.4vw,20px);
+  flex:1 1 auto;                                /* may shrink/grow */
+  min-width:0;                                  /* allow text to wrap internally */
+}
+
+.faq-icon {
+  width: clamp(52px, 8vw, 60px);
+  height: clamp(52px, 8vw, 60px); /* ⬅️ Force height to match width */
+  object-fit: contain;            /* ✅ Ensures no stretching */
+  vertical-align: top;         /* ✅ Optional extra smooth alignment */
+  flex-shrink: 0;
+}
+
+.faq-text-pair {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.faq-category-title h2{
+  font-weight: 500;
+  font-size: clamp(20px, 2.6vw, 32px); /* ⬅️ Larger title */
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.faq-category-desc {
+  font-size: clamp(16px, 1.3vw, 20px);
+  color: rgba(0, 0, 0, 0.68);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Prevent margin‑collapse from hiding the last answer */
+.faq-questions {
+  padding-bottom: 12px;       /* equals the 10px answer margin + a hair */
+}
+
+.faq-category-header{
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,1.4vw,20px);
+  flex:1 1 auto;          /* ⭐️ makes header stretch the full row */
+  min-width:0;            /* allows long titles to wrap internally */
+}
+
+/* ========== QUESTION BAR UPGRADE ========== */
+.faq-question {
+  position: relative;                 /* lets us target :nth-child later */
+}
+
+/* Question button */
+.faq-question-button {
+  width: 100%;
+  gap: clamp(12px, 1.5vw, 20px);    /* was fixed 24px */
+  padding: clamp(16px, 1.2vw, 20px) clamp(14px, 1.8vw, 22px);
+  line-height: 1.8; 
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 500;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 -1px 0 #e6e6e6;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+/* white card with soft shadow */
+.faq-question-button{
+  background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+  transition:background .2s ease,box-shadow .25s ease;
+}
+
+/* subtle hover */
+.faq-question-button:hover{
+  background:#f8f9fa;            /* light grey tint */
+  box-shadow:0 2px 6px rgba(0,0,0,.10);
+}
+
+/* every other row gets a faint grey so long lists are readable */
+.faq-question:nth-child(even) .faq-question-button{
+  background:#fafbfc;
+}
+
+/* ========== ANSWER CARD STYLING ========== */
+.faq-answer-content{
+  background:#f5f6f7;                 /* very light grey */
+  border-left:4px solid #152a45;      /* brand green accent */
+  border-radius:0 12px 12px 12px;     /* matches top card */
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+  margin-top:8px;
+  padding:clamp(16px,1.8vw,20px) clamp(18px,2vw,26px);
+}
+
+/* Answer block (hidden by default) */
+.faq-answer-content {
+  background: #f2f4f5;
+  border-radius: 12px;
+  padding: clamp(14px, 1.6vw, 18px) clamp(18px, 2vw, 26px);
+  font-size: clamp(15px, 1.3vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #1a1a1a;
+  box-sizing: border-box;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  margin-bottom: 30px; /* Adjust the spacing as needed */
+
+}
+
+.faq-answer-content strong {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-weight:700;
+  color:#152a45;
+}
+
+.faq-answer-content p {
+  margin-top: 20px;
+    margin-bottom: 10px !important; /* Add space between paragraphs */
+    padding-bottom: 16px !important; /* Add space inside the paragraph */
+}
+
+
+/* ========== OPTIONAL: QUESTION BAR ACTIVE STATE ========== */
+/* when its answer is open, tint the bar so users see context */
+.faq-answer.open ~ .faq-question-button,
+.faq-question-button:has(+ .faq-answer.open){
+  background:#eef1ee;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+/* highlight the bar only when the category is CLOSED */
+.faq-category:not(.open):hover{
+  background-color:#ebeced;      /* same colour you had */
+  transition:background-color .25s ease;
+}
+
+/* prevent any extra tint while the category is open */
+.faq-category.open:hover{
+  background-color:#f5f6f7;      /* matches default, so no visible change */
+}
+
+.faq-question-button{
+  transition:
+    background .25s ease,
+    box-shadow .25s ease,
+    transform  .25s ease;          /* add motion */
+}
+
+.faq-question-button:hover{
+  background:#eef1ee;              /* single unified tint so even/odd rows both change */
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transform:translateY(-2px);      /* subtle lift */
+}
+
+/* arrow starts in brand green but dimmed */
+.faq-arrow{
+  margin-left:auto;
+  flex-shrink:0;
+  font-size:30px;
+  color:#152a45;                   /* brand green */
+  opacity:.65;                     /* dim until hover */
+  transition:transform .25s ease, opacity .25s ease;
+}
+
+/* === GLASS CARD v2 — stronger separation === */
+.faq-category{
+  position:relative;                        /* needed for inset line */
+  background:rgba(255,255,255,.58);
+  backdrop-filter:blur(10px) saturate(180%);
+  border-radius:16px;
+  /* layered shadow: faint spread + softer outer blur */
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.08),
+    0 8px 18px rgba(0,0,0,.08);
+  transition:backdrop-filter .25s ease,
+             box-shadow .25s ease,
+             transform  .25s ease;
+}
+
+/* inner 1 px highlight for crisp edge */
+.faq-category::before{
+  content:\"\";position:absolute;inset:0;
+  border-radius:inherit;
+  border:1px solid rgba(255,255,255,.55);   /* white hairline */
+  pointer-events:none;
+}
+
+/* closed‑state hover: lift higher, stronger shadow */
+.faq-category:not(.open):hover{
+  backdrop-filter:blur(14px) saturate(200%);
+  transform:translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.1),
+    0 12px 26px rgba(0,0,0,.16);
+}
+
+/* open state: keep subtle elevation so cards still separate */
+.faq-category.open{
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.06),
+    0 6px 14px rgba(0,0,0,.10);
+}
+
+.faq-category:not(.open):hover::before{
+  border:1px solid rgba(27,77,40,.65);   /* brand green inner stroke */
+}
+
+/* === edge‑to‑edge gradient header (tight & stronger) === */
+.faq-header-block{
+  /* stronger fade */
+  background:linear-gradient(to bottom, #ffffff 0%, #e9ece9 100%);
+
+  /* let the panel bleed into the wrapper padding */
+  margin-left:calc(-1 * clamp(24px,4vw,48px));
+  margin-right:calc(-1 * clamp(24px,4vw,48px));
+
+  /* keep top spacing as‑is, bottom gap smaller */
+  margin-top:0;
+  margin-bottom:clamp(20px,4.8vw,80px); /* space between header and first catagory */
+
+  /* preserve rounded corners & shadow */
+  border-radius:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+
+  /* inner padding unchanged */
+  padding:clamp(18px,4vw,32px) clamp(16px,4vw,32px);
+  text-align:center;
+}
+
+
+/* === CTA BUTTON UNDER FAQ === */
+.faq-cta-wrap{
+  text-align:center;
+  margin-top:clamp(8px,3vw,16px);
+  margin-bottom:clamp(16px,6vw,32px); 
+}
+
+
+
+.faq-cta-lead{
+  font-family:'Open Sans',sans-serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(16px, 2vw, 22px);
+  color:#333;
+  text-align:center;
+  margin-top:clamp(14px,5vw,60px);
+  margin-bottom:clamp(0px,.8vw,4px);
+}
+
+
+.faq-cta-button-invert {
+  font-size: clamp(13px, 1.4vw, 24px);
+ font-weight: 800;
+  padding: clamp(14px, 2vw, 20px) clamp(14px, 2.5vw, 24px) clamp(10px, 1.2vw, 16px);
+  border: 2px solid #f0c14b;
+  background: #1a3c59;
+  color: white;
+  border-radius: 999px; /* Rounded corners */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  bottom: clamp(50px, 6vw, 80px);  /* Adjust the bottom spacing dynamically between 50px and 80px */
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  transition:all .2s ease;
+}
+
+.faq-cta-button-invert:hover {
+  background-color: white;
+  color: #152a45;
+  border-color: #152a45;
+}
+
+
+
+/* === triangle watermark behind FAQ header === */
+.faq-header-block{
+  position:relative;                /* anchor for pseudo‑layer      */
+  overflow:hidden;                  /* keep rounded‐corner clip     */
+}
+
+/* decorative layer */
+.faq-header-block::before{
+  content:"";
+  position:absolute;
+  inset:0;                          /* full block for centering math*/
+  display:flex;                     /* flex + margin‑auto centers img */
+  justify-content:center;
+  align-items:center;
+
+  background:url("img/tri_fade.png") no-repeat center/150px;
+  pointer-events:none;              /* never blocks clicks / hovers */
+  z-index:-1;                        /* sits under the real content  */
+  opacity:.9;                       /* image is already faded; tweak if needed */
+}
+
+/* keep text above the triangle */
+.faq-header-block > *{position:relative; z-index:1;}
+
+/* ↓ Optional: shrink or hide on very small screens */
+@media (max-width:480px){
+  .faq-header-block::before{
+    background-size:90px;           /* reduce, not totally hide     */
+  }
+}
+
+/* -- larger triangle watermark (≈ 2×) -- */
+.faq-header-block::before{
+  background-size:200px;   /* was 150px */
+}
+
+@media (max-width:480px){
+  .faq-header-block::before{
+    background-size:180px; /* was 90px — still half on very small phones */
+  }
+}
+
+/* lift triangle watermark 15 px */
+.faq-header-block::before{
+  background-position:center calc(70% - 30px);  /* shift up */
+}
+
+/* keep the smaller mobile version lifted too */
+@media (max-width:480px){
+  .faq-header-block::before{
+    background-position:center calc(50% - 15px);
+  }
+}
+
+
+
+
+
+/* ====== Why US: Master Container ====== */
+
+/* === Body Setup === */
+
+body.why-us-page {
+  font-family: 'Open Sans', sans-serif; /* Sets body font to Open Sans */
+  background:#EAEAEA;
+  display: flex; /* Uses flexbox to align child elements vertically */
+  flex-direction: column; /* Stacks the content vertically (header, main, footer) */
+  padding: 0; /* Removes any default padding on the body */
+  height: 100vh; /* Ensure body takes up the full viewport height */
+  width: 100% !important; /* Remove container width limit */
+  max-width: none !important; /* Ensure the container doesn't restrict footer width */
+  padding-bottom: 100px; /* Ensure there's enough padding at the bottom */
+  margin: 0 !important; /* Remove any body margin */
+  
+}
+
+
+/* ===Header triangle watermark behind why us header === */
+
+
+body.why-us-page .why-us-header h1 {
+  margin-top: 35px; /* 🔼 Adjusts the position of the header slightly upwards */
+  font-size: clamp(18px, 2.5vw, 36px);
+  color: #333;
+  font-weight: 500;
+  margin-bottom: clamp(34px, 6vw, 52px); /* 📏 Adds responsive margin below the header */
+  display: flex; /* ✅ Treat header like a flex container */
+  flex-direction: column; /* ⬇ Stack spans vertically */
+  align-items: center; /* ⬍ Center-align each span inside */
+  text-align: center; /* 🅰 Ensures text inside span is centered too */
+  padding-top: clamp(20px, 2vw, 40px);
+  padding-bottom: clamp(20px, 2vw, 40px);        
+  width: 100%; /* 📏 Ensures the header block spans the full row */
+   margin: 0;                /* Remove any extra margins */
+  padding: 0;               /* Ensure no extra padding is added */
+  display: flex;            /* Make sure it's treated as a flex item */
+  justify-content: center;  /* Centers text horizontally within its container */
+}
+
+
+body.why-us-page .why-us-header span {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  text-align: center;                  /* Text always above triangle */
+   justify-content: center; /* Align content vertically and horizontally */
+}
+
+body.why-us-page .header-gradient {
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(to bottom, #ffffff 0%, #d3d3d3 100%);
+  z-index: -1;
+  transition: background 2s ease-out;
+  box-shadow: inset 0 5px 60px rgba(0, 0, 0, 0.15), inset 0 -12px 10px rgba(0, 0, 0, 0.05);
+}
+
+.why-us-header{
+  position:relative;                /* anchor for pseudo‑layer      */
+  overflow:hidden;                  /* keep rounded‐corner clip     */
+}
+
+
+body.why-us-page .why-us-header {
+  position: relative;                /* Anchor triangle and text */
+  z-index: 40;
+  min-height: 230px;                 /* More space for triangle */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: none !important;
+  overflow: visible;
+  padding: 0px 0 48px 0;            /* Top/bottom header spacing */
+   justify-content: center; /* Align content vertically and horizontally */
+  width: 100%;               /* Ensure header takes full available width */
+  margin: 0 auto;            /* Center the header */
+   box-sizing: border-box; /* Prevents overflow issues */
+}
+
+
+body.why-us-page .why-us-header::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:url("img/tri_fade.png") no-repeat center/150px;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.9;
+  bottom: 35%;
+}
+
+
+
+body.why-us-page .fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+body.why-us-page .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Only show ONE language at a time in header */
+body.why-us-page .why-us-header .lang-en,
+body.why-us-page .why-us-header .lang-es {
+  display: none;
+}
+html[lang="en"] body.why-us-page .why-us-header .lang-en { display: block !important; }
+html[lang="es"] body.why-us-page .why-us-header .lang-es { display: block !important; }
+
+
+/* ===Why- Us Content Block === */
+body.why-us-page .why-us-main-container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: clamp(12px, 3vw, 22px);
+  padding-right: clamp(12px, 3vw, 22px);
+  justify-content: flex-start;      /* Align the content at the top */
+   padding-top: clamp(800px, 3vh, 180px); /* Space for fixed nav */
+}
+
+
+body.why-us-page,
+body.why-us-page .why-us-main-container {
+  margin: 0 !important;    /* Remove any margin */
+  padding: 0 !important;   /* Remove any padding */
+  width: 100vw !important; /* Ensure full width */
+}
+
+
+/* === Hero Section with Image Background === */
+
+body.why-us-page .why-us-hero-section {
+  background-image: url('img/group.jpg');  /* Set the background image */
+  background-size: cover;                  /* Ensure it fills the entire section */
+  background-position: center center;      /* Keep the image centered */
+  background-repeat: no-repeat;            /* Prevent image repetition */
+  height: 700px;                           /* adjust image height and width */
+   position: relative; /* Reset positioning to prevent overlap */
+  z-index: 1; /* Ensure the hero section stays beneath other content */
+  display: flex;                           /* Flexbox layout */
+  align-items: center;                     /* Vertically center content */
+  justify-content: center;                 /* Horizontally center content */
+  overflow: hidden;                        /* Prevents overflow */
+  margin-top: 0px;   /* Remove the gap by shifting the section up */
+  padding-top: clamp(60px, 6vh, 100px); /* Space for fixed nav */
+  width: 100vw !important;     /* Ensure full viewport width */
+  min-height: 60vh; /* Ensure the hero section height adjusts with the viewport height */
+   margin-top: -80px;  /* Ensures no unnecessary margin is added */
+   transition: transform 0.3s ease;  /* Add a smooth transition */
+    overflow: hidden; /* Prevents the image from overflowing */
+}
+
+body.why-us-page .why-us-hero-section img {
+  max-width: 100%;      /* Ensure the image doesn’t overflow its container */
+  height: auto;         /* Maintain aspect ratio */
+  object-fit: cover;  /* Shrink and maintain aspect ratio */
+  width: 100%;          /* Make sure it spans the full width of the container */
+  transition: transform 0.5s ease;  /* Smooth zoom transition */
+
+}
+
+
+
+body.why-us-page .why-us-hero-section.zoom {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+ 
+/* === Content Block inside Hero Section (Centered Content) === */
+body.why-us-page .hero-content-block {
+  width: 90%;                              /* Content takes 90% of image width */
+  padding-left: clamp(20px, 5vw, 40px);  /* Adjust left padding dynamically */
+  padding-right: clamp(20px, 5vw, 40px); /* Adjust right padding dynamically */
+  max-width: 1700px;                        /* Restrict max width for larger screens */
+  position: absolute;                      /* Position content inside hero section */
+  top: 0px;                               /* Space from the top, below the header */
+  left: 50%;                               /* Center horizontally */
+  transform: translateX(-50%);             /* Fine-tune centering */
+  padding: clamp(20px, 4vw, 40px);          /* Responsive padding */
+  text-align: center;                      /* Center the text */
+  z-index: 5;  
+   display: flex;
+  flex-direction: column;         /* Ensure content is stacked vertically */
+  justify-content: flex-start;           /* Align content at the top */
+  align-items: center;            /* Center horizontally */                            /* Ensure content sits above the image */
+}
+
+/* === Subheader (H2) Styling === */
+body.why-us-page .why-us-hero-subheader {
+  font-size: clamp(20px, 4.5vw, 38px);     /* Responsive font size */
+  margin-top: 0;                           /* No space between gradient and subheader */
+  margin-bottom: clamp(20px, 2.5vw, 100px); /* Adds spacing below subheader */
+  font-weight: 400;                        /* Bold font weight */
+  line-height: 1.4; /* Improve readability */
+}
+
+/* === Paragraph Styling === */
+body.why-us-page .why-us-hero-paragraph {
+  font-size: clamp(12px, 1.5vw, 20px);       /* Responsive font size */
+  max-width: 100%;                          /* Constrain the width of the paragraph */
+  margin: 0 auto;                          /* Center the paragraph */
+  margin-top: 0px;                        /* Space from subheader */
+  line-height: 1.6;                        /* Adjust line height for readability */
+  font-weight: 500;                        /* Normal weight */
+
+
+}
+
+
+
+/* ===== Why Us New Section CSS ===== */
+
+
+
+body.why-us-page .why-us-new-section {
+  background-color: #070910;       /* Dark background color for the section */
+  height: 1350px;                    /* Allow section height to grow depending on content */
+  min-height: 100vh; /* Ensures it takes the full viewport height at its minimum */
+   max-height: 100vh;  /* Adjusts the section height for narrow screens */
+  display: flex;                    /* Flexbox layout for easy alignment */
+  flex-direction: column;           /* Stack content vertically */
+  justify-content: flex-start;      /* Align items at the top */
+  align-items: center;              /* Center the content horizontally */
+  padding: clamp(20px, 5vw, 30px);  /* Responsive padding */
+  width: 100%;                      /* Full width */
+  margin-bottom: 0px;              /* Space at the bottom to separate from the next section */
+  box-sizing: border-box;           /* Make sure padding and margins don’t break layout */
+  position: relative;  /* Ensures proper positioning of elements */
+  margin-top: -80px;  /* Ensures no unnecessary margin is added */
+  padding-left: clamp(20px, 4vw, 40px);  /* Left padding */
+  padding-right: clamp(20px, 4vw, 40px);  /* Right padding */
+  overflow-y: auto;                  /* Allow scrolling if the content overflows */
+    z-index: 10; /* Ensure this section stays above the hero section */
+}
+
+
+/* Icon and text container within the section */
+body.why-us-page .why-us-new-section .icon-text-container {
+  max-width: 1300px;     /*width of text block container*/
+  width: 95%;                       /* Full width for the container */
+  display: flex;                    /* Align icon and text horizontally */
+  justify-content: flex-start;       /* Align the items to the left */
+  align-items: center;               /* Vertically center the icon and text */
+  margin-bottom: 20px;               /* Space between each icon-text container */
+  
+  max-width:100%;                 /* Set a maximum width for the content */
+  padding: 10px;                     /* Padding to give space inside the container */
+  box-sizing: border-box;            /* Ensure padding doesn't overflow */
+  padding-left: clamp(20px, 4vw, 40px);  /* Left padding */
+  padding-right: clamp(20px, 4vw, 40px);  /* Right padding */
+}
+
+
+body.why-us-page .why-us-new-content-block {
+  width: 100%;                              /* Content takes 90% of image width */
+  max-width: 1700px;                 /* Remove any max-width restriction */
+  padding-left: clamp(10px, 3vw, 30px);  /* Adjust left padding dynamically */
+  padding-right: clamp(10px, 3vw, 30px); /* Adjust right padding dynamically */
+                      /* Restrict max width for larger screens */
+  position: absolute;                      /* Position content inside hero section */
+  left: 50%;                               /* Center horizontally */
+  transform: translateX(-50%);             /* Fine-tune centering */
+  padding: 20px;          /* Responsive padding */
+  text-align: center;                      /* Center the text */
+  z-index: 5;  
+  display: flex;
+  flex-direction: column;         /* Ensure content is stacked vertically */
+  justify-content: flex-start;           /* Align content at the top */
+  align-items: center;            /* Center horizontally */        
+  margin-bottom: 60px;             /* Space between content blocks */
+  padding bottom: 60px;
+  padding-top: 40px; /* Space at the top of the content block */
+}
+
+
+
+/* Icon styling - Adjusting margins directly on the container */
+body.why-us-page .why-us-new-content-block .icon-text-container {
+  margin-left: 50px;          /* Space between icon and left side of container */
+  margin-right: 0px;        /* Space between icon and text */
+  display: flex;              /* Ensure horizontal alignment */
+  align-items: center;        /* Vertically center icon and text */
+  margin-bottom:30px; /* Space between paragraphs */
+  flex-direction: row; /* Align icons and text horizontally */
+  gap: 0px; /* Adjust this value to set space between the icon and text */
+  align-items: center;  /* Vertically center the icon and text */
+}
+
+/* Adjusting icon size directly */
+body.why-us-page .why-us-new-content-block .icon-text-container .icon {
+width: clamp(20px, 5vw, 60px); /* Icon will shrink to 20px, grow to 60px */
+  height: clamp(20px, 5vw, 60px); /* Icon will shrink to 20px, grow to 60px */
+  object-fit: contain;        /* Ensure the icon doesn't stretch */
+  flex-shrink: 0;             /* Prevent shrinking when container width shrinks */
+  margin-left: 0px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* 3D shadow for depth */
+}
+
+
+/* Paragraph styling within the section */
+body.why-us-page .why-us-new-section .why-us-paragraph {
+  font-size: clamp(14px, 1.5vw, 20px);   /* Responsive font size */
+ text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.4);  /* More subtle glow */
+  max-width: 1500px;                   /* Limit the paragraph width for readability */
+  margin: 0 auto;                     /* Center the paragraph */
+  margin-top: 0px;                   /* Space between the paragraphs */
+  line-height: 1.7;                   /* Adjust line height for readability */
+  letter-spacing: 0.12cap;
+  text-align: left;                   /* Align text to the left */
+  color: #fcfafa;                     /* Light color for text */
+  padding: 0 10px;     
+  font-weight: 300;                 /* Padding for some inner spacing */
+   margin-left: clamp(20px, 3vw, 40px); /* Adjust left margin */
+  margin-right: clamp(20px, 3vw, 40px); /* Adjust right margin */
+  strong {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6); /* white stroke */
+  color: #ffffff;  /* Ensures the text is still white */
+}
+}
+
+/* Adjusting paragraph text for mobile responsiveness */
+body.why-us-page .why--us-new-section .why-us-paragraph.lang-en,
+body.why-us-page .why-us-new-section .why-us-paragraph.lang-es {
+  text-align: left;                   /* Ensure text alignment remains left on both languages */
+  margin-bottom: 20px;                /* Space between each paragraph */
+}
+
+/* Styling for the subheader (h2) within the section */
+body.why-us-page .why-us-new-section h2 {
+  font-size: clamp(18px, 4vw, 36px);   /* Responsive font size */
+  margin-bottom: 20px;                 /* Space below the subheader */
+  font-weight: 500;                    /* Medium weight for the subheader */
+  color: #fff;                         /* White color for the subheader */
+  text-align: center;                  /* Center-align the subheader */
+  padding: 0 10px;                     /* Padding for left-right space */
+}
+
+/* Correct CTA Button Positioning */
+
+
+
+.why-us-cta-button {
+  font-size: clamp(13px, 1.4vw, 24px);
+ font-weight: 800;
+padding: clamp(14px, 2vw, 20px) clamp(14px, 2.5vw, 24px) clamp(10px, 1.2vw, 16px);
+  border: 2px solid #f0c14b;
+  background: #1a3c59;
+  color: white;
+  border-radius: 999px; /* Rounded corners */
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  bottom: clamp(50px, 6vw, 80px);  /* Adjust the bottom spacing dynamically between 50px and 80px */
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.why-us-cta-button:hover {
+  background-color: white;
+  color: #152a45;
+  border-color: #152a45;
+}
+
+
+
+
+/* Mobile Styles for Why Us Page */
+@media (max-width: 767px) {
+
+  /* --- Hero Section --- */
+  body.why-us-page .why-us-hero-section {
+    background-image: url('img/group.png');
+    background-size: 140% auto;  /* Zoom out a little bit */
+    background-position: top center;  /* Keep the top of the image in focus */
+    background-repeat: no-repeat;
+    height: auto; /* Remove fixed height for the section */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out; /* Smooth zoom-in and out */
+    z-index: 0;
+    margin-bottom: 0px;
+    background-position: top center;
+     padding-bottom: 0;  /* Remove extra space below hero image */
+   min-height: 44vh;   /* Adjust min-height to ensure the image doesn't overflow */
+  }
+
+  /* Ensure the hero image fills the section properly */
+  body.why-us-page .why-us-hero-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Maintain aspect ratio while zooming */
+  }
+
+  /* --- Zoom effect only on mobile --- */
+  body.why-us-page .why-us-hero-section {
+    transform: scale(1); /* Initial scale, no zoom */
+  }
+
+  /* Triggered when scrolling */
+  body.why-us-page .why-us-hero-section.zoomed {
+    transform: scale(1.05); /* Slight zoom in */
+  }
+
+  /* --- Paragraph and Icon Styling --- */
+  body.why-us-page .why-us-new-section {
+    padding: 0 20px;
+    margin-top: -80;
+      padding-top: 0; /* Remove padding at the top */
+  }
+
+  /* Icon container adjustments for mobile */
+/* Icon Container Adjustments for Mobile */
+body.why-us-page .why-us-new-section .icon-text-container {
+  margin-left: auto; /* Center icon horizontally */
+  margin-right: auto; /* Center icon horizontally */
+  width: 95%; /* Limit width for mobile view */
+  display: flex;
+  flex-direction: column; /* Stack the icon above the text */
+  align-items: center; /* Center the icon horizontally */
+  margin-top: 20px; /* Add space above the icon */
+
+}
+
+ /* Adjust the Icon size for Mobile */
+body.why-us-page .why-us-new-section .icon-text-container .icon {
+  width: 70px; /* Increase the icon size for mobile */
+  height: 70px; /* Ensure the icon is proportional */
+  object-fit: contain; /* Ensure the icon does not stretch */
+  margin-bottom: 10px; /* Space between the icon and the text */
+  margin-top: 0px;
+}
+
+  /* Adjust text size and layout for readability */
+  body.why-us-page .why-us-new-section .why-us-paragraph {
+    font-size: clamp(17px, 3vw, 22px); /* Responsive font size */ 
+    width: 100%;  /* Make the paragraph width 90% of the screen */
+    max-width: 100%;    /* Ensure text doesn't stretch too wide */
+    margin-bottom: 20px; /* Add space between paragraphs */
+    line-height: 1.8;
+    margin: 0 auto; /* Center the text */
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Adjust button size and positioning */
+  .why-us-cta-button {
+  
+    font-weight: 800;
+    padding: clamp(12px, 2.6vw, 14px) clamp(14px, 3vw, 20px) clamp(6px, 1.8vw, 10px) clamp(14px, 3vw, 20px);
+    font-size: 18px;   /* Smaller font size for mobile */
+    margin-top: 50px;  /* Space between content and button */
+    width: auto;       /* Button width auto-adjusts */
+    margin-bottom: 65px; /* Adjust space at the bottom */
+  }
+  }
+
+  /* Make sure the text stays within bounds */
+  body.why-us-page .why-us-new-content-block {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ====== Why a PPA: Master Container ====== */
+
+
+
+/* ====== Why a PPA: Master Container ====== */
+
+/* === Body Setup === */
+body.why-a-ppa-page {
+  font-family: 'Open Sans', sans-serif; /* Sets body font to Open Sans */
+  background:#EAEAEA;
+  display: flex; /* Uses flexbox to align child elements vertically */
+  flex-direction: column; /* Stacks the content vertically (header, main, footer) */
+  padding: 0; /* Removes any default padding on the body */
+  height: 100vh; /* Ensure body takes up the full viewport height */
+  width: 100% !important; /* Remove container width limit */
+  max-width: none !important; /* Ensure the container doesn't restrict footer width */
+  padding-bottom: 100px; /* Ensure there's enough padding at the bottom */
+}
+
+body .ppa-main-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(12px, 3vw, 22px);  /*  margin outside of section */
+  padding-right: clamp(12px, 3vw, 22px); /* matches left  margin outside of section */*/
+  box-sizing: border-box;
+}
+
+/* === Header Styling === */
+
+/* Header layout specific to the 'Why a PPA' page */
+
+
+
+body.why-a-ppa-page .ppa-header h1{
+  margin-top: 35px; /* 🔼 Adjusts the position of the header slightly upwards */
+  font-size: clamp(18px, 2.5vw, 36px); /* 🔠 Responsive font size for the header */
+  color: #333; 
+  font-weight: 500; /* 🅱 Slightly bold font weight for the header */
+  margin-bottom: clamp(34px, 6vw, 52px); /* 📏 Adds responsive margin below the header */
+  display: flex; /* ✅ Treat header like a flex container */
+  flex-direction: column; /* ⬇ Stack spans vertically */
+  align-items: center; /* ⬍ Center-align each span inside */
+ text-align: center; /* 🅰 Ensures text inside span is centered too */
+  padding-top: clamp(20px, 2vw, 40px);
+    padding-bottom: clamp(20px, 2vw, 40px);
+  width: 100%; /* 📏 Ensures the header block spans the full row */
+}
+
+body.why-a-ppa-page .ppa-header span {
+  margin-left: auto;    /* ✅ This is what centers your span */
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+  
+}
+
+/* Gradient Fade just below the header on the 'Why a PPA' page */
+body.why-a-ppa-page .header-gradient {
+  position: absolute;
+  top: 180px; /* Adjust the distance from the header */
+  width: 100%;
+  height: 70px; /* Height of the gradient area */
+  background: linear-gradient(to bottom, #ffffff 0%, #d3d3d3 100%); /* Stronger gradient effect */
+  z-index: -1; /* Keep it behind the content */
+  transition: background 2s ease-out; /* Smooth transition of gradient */
+  box-shadow: inset 0 5px 60px rgba(0, 0, 0, 0.15), inset 0 -12px 10px rgba(0, 0, 0, 0.05); /* Enhanced emboss effect */
+}
+
+/* === triangle watermark behind PPA header === */
+.ppa-header{
+  position:relative;                /* anchor for pseudo‑layer      */
+  overflow:hidden;                  /* keep rounded‐corner clip     */
+}
+
+body.why-a-ppa-page .ppa-header {
+  position: relative;                /* Anchor triangle and text */
+  z-index: 40;
+  min-height: 230px;                 /* More space for triangle */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: none !important;
+  overflow: visible;
+  padding: 0px 0 48px 0;            /* Top/bottom header spacing */
+}
+
+/* decorative layer */
+.ppa-header::before{
+  content:"";
+  position:absolute;
+  inset:0;                          /* full block for centering math*/
+  display:flex;                     /* flex + margin‑auto centers img */
+  justify-content:center;
+  align-items:center;
+  background:url("img/tri_fade.png") no-repeat center/150px;
+  pointer-events:none;              /* never blocks clicks / hovers */
+  z-index:-1;                        /* sits under the real content  */
+  opacity:.9;                       /* image is already faded; tweak if needed */
+  bottom: 35%; /* ⬆️ Raise from 46% to 42% */
+
+}
+
+
+
+
+
+
+
+/* === Section Styling === */
+.ppa-section {
+  width: 100%; /* Increase the width of the section */
+  max-width: 1200px; /* Ensure a max width if it grows too wide */
+  margin-bottom: clamp(40px, 5vw, 80px); /* Keep the bottom margin consistent */
+  padding-left: clamp(20px, 4vw, 40px); /* Keeps padding left */
+  padding-right: clamp(20px, 4vw, 40px); /* Keeps padding right */
+  height: auto; /* Ensures that the section grows with the image */
+  border-radius: 12px; /* App ly rounded corners with a subtle 12px radius */
+  overflow: visable; /* Ensures content is clipped within the rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for depth */
+  overflow-wrap: break-word; /* Ensures content stays within bounds */
+  object-fit: cover; /* Ensures the image fills the container without distortion */
+  margin-top: 70px;
+}
+
+/* === Image and Text Layout === */
+.ppa-content {
+  display: flex; /* Aligns image and text horizontally */
+  gap: 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+
+
+.ppa-image {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 580px;
+  margin-left: clamp(0px, 1vw, 5px);
+  margin-top: clamp(20px, 4vw, 40px);
+  margin-bottom: clamp(0px, 1vw, 5px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 0 25px rgba(0, 0, 0, 0.3); /* Stronger glow */
+  transition: transform 1s ease;
+  object-fit: cover; /* Ensures the image fills the container without distortion */
+    margin-bottom: 0 !important;                         /* 🔧 Eliminate gap above image */
+  padding-bottom: 0 !important; 
+}
+
+
+
+/* === Text Styling === */
+.ppa-text .ppa-subheader {
+  font-size: clamp(14px, 2vw, 24px) !important;
+  color: #333 !important;  /* Force the text color */
+  margin-bottom: 20px; /* Adds spacing below subheader */
+  margin-top:50px !important;
+}
+
+
+
+
+/* === Text Expansion === */
+.ppa-text .intro {
+  font-size: clamp(14px, 2vw, 22px);
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;  /* Show the first 4 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ppa-text {
+  flex: 1 1 auto;
+  width: auto;
+  max-width: 600px;
+  min-width: 300px;
+  font-size: clamp(12px, 2vw, 20px);
+  line-height: 1.8;
+  color: #333;
+  overflow-wrap: break-word;
+  text-align: left;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 1px; /* Prevent layout collapse on first render */
+  transform: translateZ(0); /* Force GPU repaint to fix margin glitch on load */
+
+}
+
+body.why-a-ppa-page .force-margin-sync {
+  transform: translateY(0.001px);
+}
+
+
+
+/* Section Text box Meargins */
+
+.ppa-section:nth-child(odd) .ppa-text { 
+  margin-left: 10px!important;
+  margin-right: 50px!important;
+}
+.ppa-section:nth-child(even) .ppa-text {
+  margin-left: 50px!important;
+  margin-right: 5px!important;
+}
+
+
+/* Section Text box Meargins-holds space on odds at load*/
+
+body.why-a-ppa-page .ppa-image {
+  margin-inline-end: clamp(10px, 2vw, 20px);
+}
+
+
+
+.ppa-text .full-text {
+  margin-top: 0px;
+  display: none; /* Keep it as block initially for smoother transition */
+  max-height: 0; /* Allow full text to be shown when expanded */
+  opacity: 0;
+  overflow: hidden; /* Prevent content from showing during collapse */
+  transition: opacity 1s ease, max-height 1.2s ease-out; /* Smoother expansion */
+}
+
+.ppa-text .full-text p {
+  margin-bottom: 20px; /* Adjust the spacing as needed */
+}
+
+.ppa-text .full-text.open {
+  display: block;
+  opacity: 1;
+  max-height: none; /* Or any large value that fits the content */
+  transition: opacity 1.2s ease, max-height 1.5s ease-in;
+}
+
+/* === "Read More" Link Styling === */
+.ppa-text .read-more {
+  display: inline-block;           /* Forces margin to apply */
+  margin-top: 2px;                /* Creates the space */
+  font-weight: 800;
+  text-decoration: underline;
+  color: #070606;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+
+/* === "Read More" Hover Effect === */
+
+body.why-a-ppa-page .read-more:hover span {
+  color: #a3a4a7 !important; /* Red on hover */
+  transition: color 0.3s ease;
+}
+
+body.why-a-ppa-page .cta-button span {
+  text-transform: none !important;
+}
+
+.ppa-text .read-more.hide {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when hidden */
+}
+
+
+/* === Fade-in Animation === */
+body.why-a-ppa-page .fade-in {
+  opacity: 0; /* Initially invisible */
+  transform: translateY(30px); /* Starts 15px below */
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out; /* Slower fade and slide */
+}
+
+body.why-a-ppa-page .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+/* === Image Zoom Effect on Scroll === */
+.ppa-image.zoom-scroll {
+  transition: transform 1.5s ease; /* Slows down zoom transition */
+}
+
+.ppa-image.zoom-scroll.visible {
+  transform: scale(1.08); /* Zooms in on image */
+}
+
+/* === Section Backgrounds === */
+.ppa-section:nth-child(odd) {
+  background: #EAEAEA;; /* White background for odd sections */
+}
+
+.ppa-section:nth-child(even) {
+  background: #ffffff;/* Light gray background for even sections */
+}
+
+.ppa-image {
+  flex: 0 0 auto;
+  max-width: 580px;
+  margin-left: clamp(0px, 1vw, 5px);
+  margin-top: clamp(20px, 4vw, 40px);
+  margin-bottom: clamp(0px, 1vw, 5px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 0 25px rgba(0, 0, 0, 0.3); /* Stronger glow */
+  transition: transform 1s ease;
+  object-fit: cover; /* Ensures the image fills the container without distortion */
+  width: 60%; /* Increases width of image */
+  overflow: hidden; /* Keeps image contained */
+  position: relative;
+}
+
+.ppa-image img {
+  pointer-events: none; /* Disable interaction on the image itself */
+  display: block; /* Ensures it stays embedded in the layout */
+  max-width: 100%; /* Prevents image from exceeding the container width */
+  max-height: 100%; /* Ensures the image does not exceed the container height */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Keeps the image aspect ratio intact */
+  transition: transform 1.5s ease; /* Apply smooth zoom transition */
+  transform: scale(1); /* Initial scale (same size on load) */
+}
+
+
+/* Divider Between Sections */
+.ppa-section:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 32px auto 0;
+}
+
+/* Prevent divider on the last section */
+.ppa-section:last-child::after {
+  content: none;
+  margin: 0;
+  height: 0;
+  margin-bottom: 0 !important; /* Remove the bottom margin of the last section */
+  overflow: visible; /* Allow the content to show fully without being clipped */
+}
+
+/* Apply the subtle but more pronounced gray fade overlay */
+.ppa-image::after {
+  content: ''; /* Adds a pseudo-element to create the overlay effect */
+  position: absolute; /* Positions the overlay absolutely within the container */
+  top: 0; /* Starts the overlay at the top of the container */
+  left: 0; /* Aligns the overlay to the left edge of the container */
+  width: 100%; /* Ensures the overlay covers the entire width of the image */
+  height: 100%; /* Ensures the overlay covers the entire height of the image */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(169, 169, 169, 0.25) 60%); /* Creates a smooth gradient fade with subtle gray color */
+  pointer-events: none; /* Prevents the overlay from blocking interactions like clicks */
+  z-index: 1; /* Ensures the overlay is placed above the image */
+}
+
+
+
+
+/* Special Section Adjustments */
+/* === Special Section Adjustments === */
+/* === Special Section Adjustments === */
+
+/* Special Section Container */
+.ppa-section.special-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px; /* Padding to ensure text doesn’t touch top */
+  padding-bottom: 20px; /* Added space at bottom */
+  margin-bottom: 60px; /* Space between sections */
+  position: relative; /* Keeps button and image in sync */
+  height: auto; /* Ensure it adjusts with content */
+  max-height: 480px; /* Keep it initially same as other sections */
+  overflow: hidden; /* Prevent image overflow */
+}
+
+/* Image in Special Section */
+.ppa-section.special-section .ppa-image {
+  width: 100%; /* Ensures image is 100% of the width */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 580px; /* Ensures image doesn’t get too large */
+  margin-top: 40px; /* Space above image */
+  margin-bottom: 40px; /* Space below image */
+  object-fit: cover; /* Image will cover the space without distortion */
+}
+
+/* CTA Button in Special Section */
+.ppa-section.special-section .cta-button {
+  display: none; /* Button hidden initially */
+  padding: 15px 30px;
+  background-color: #152a45; /* Green background */
+  color: #fff;
+  border-radius: 50px; /* Rounded corners */
+  font-size: clamp(16px, 2vw, 18px);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  width: 375px; /* Adjust width */
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Fine-tune centering */
+  bottom: 16%; /* Adjust to control vertical position */
+  z-index: 10; /* Ensure the button is on top */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.3); /* Embossed effect */
+}
+
+/* Show Button After Read More Click */
+.ppa-section.special-section .full-text.open + .cta-button {
+  display: block; /* Show button when text expands */
+  bottom: 8%; /* Adjust vertical distance from the bottom */
+}
+
+/* Ensure Container Size Before "Read More" Click */
+.ppa-section.special-section .full-text {
+  display: block;
+  height: auto; /* Let the container size adjust */
+  overflow: hidden; /* Prevent overflow */
+  max-height: 120px; /* Limit the size until "Read More" is clicked */
+}
+
+
+
+
+
+/* === Smooth Transition for Button and Image Expansion === */
+.ppa-section .full-text.open {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.ppa-section .cta-button.show {
+  display: block;
+  transition: opacity 0.3s ease-in;
+}
+
+/* --- Image Slide-Up Effect --- */
+.ppa-section .ppa-image {
+  transition: transform 1s ease; /* Smooth image slide-up */
+}
+
+.ppa-section .full-text.open .ppa-image {
+  transform: translateY(-100px); /* Image slides up by 100px */
+}
+
+/* --- Text Sliding Effect --- */
+.ppa-section .full-text {
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease, top 1s ease;
+}
+
+.ppa-section .full-text.open {
+  opacity: 1;
+  top: 20px; /* Text slides over the image */
+}
+
+
+
+
+
+/* === Read More Button Styling === */
+.ppa-section .read-more {
+  color: #070606;
+  cursor: pointer;
+  font-weight: 800;
+  text-decoration: underline;
+  transition: opacity 1s ease;
+}
+.ppa-section .read-more:hover {
+  color: #acaeac;
+}
+
+/* === Full Text Expansion === */
+.ppa-section .full-text.open {
+  max-height: 650px; /* Adjust to fit content */
+  padding-bottom: 40px;
+  transition: max-height 0.5s ease, padding-bottom 0.3s ease;
+}
+
+
+/* === Smooth Transition for Button and Image Expansion === */
+.ppa-section .full-text.open {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.ppa-section .cta-button.show {
+  display: block;
+  transition: opacity 0.3s ease-in;
+}
+
+/* --- Image Slide-Up Effect (No opacity change) --- */
+.ppa-section .ppa-image {
+  transition: transform 1s ease; /* Smooth image slide-up */
+}
+
+.ppa-section .full-text.open .ppa-image {
+  transform: translateY(-100px); /* Image slides up by 100px */
+}
+
+/* --- Text Sliding Effect --- */
+.ppa-section .full-text {
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease, top 1s ease;
+}
+
+.ppa-section .full-text.open {
+  opacity: 1;
+  top: 20px; /* Text slides over the image */
+}
+
+
+
+/* === CTA Button Styling for All Sections === */
+.ppa-section {
+  position: relative; /* Keep relative positioning for better control of absolute elements */
+}
+
+.ppa-section .cta-button {
+  display: none; /* Initially hidden */
+  background-color: #152a45; /* Green background */
+  color: #fff;
+  border-radius: 50px; /* Rounded corners */
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  font-size: clamp(14px, 2vw, 18px);
+  padding: clamp(10px, 1vw, 16px) clamp(24px, 3vw, 34px);
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  z-index: 10; /* Ensure the button stays on top */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.3); /* Embossed effect */
+
+}
+
+/* === Show Button After Text Expansion === */
+.ppa-section .cta-button.show {
+  display: block; /* Show the button once the text is expanded */
+}
+
+/* === CTA Button Styling for Odd Sections (Left Side) === */
+.ppa-section:nth-child(odd) .cta-button {
+  left: 58%;  /* Position it to the left of the container */
+  bottom: 16%; /* Same bottom position */
+  transform: translateX(0%); /* Ensure no offset, fully aligned to the left */
+}
+
+/* === CTA Button Styling for Even Sections (Right Side) === */
+.ppa-section:nth-child(even) .cta-button {
+  right: 56%;  /* Position it to the right of the container */
+  bottom: 16%; /* Same bottom position */
+  transform: translateX(0%); /* Ensure no offset, fully aligned to the right */
+}
+
+/* === Button hover state === */
+.ppa-section .cta-button:hover {
+  background-color: #fff; /* White background */
+  color: #152a45; /* Green text */
+  border: 2px solid #152a45; /* Green border */
+  transform: scale(1.05); /* Button expands slightly */
+}
+
+
+
+/* Show Button after "Read More" is clicked */
+.ppa-section .full-text.open + .cta-button {
+  display: block;
+}
+
+
+/* === CTA BUTTON -Bottom- UNDER Sections PPA === */
+.ppa-section  .cta-wrap{
+  text-align:center;
+  margin-top:clamp(8px,3vw,16px);
+  margin-bottom:clamp(16px,6vw,32px); 
+}
+
+
+
+.ppa-bottom-cta .cta-button {
+  display: inline-block;
+  font-size: clamp(14px, 2vw, 18px);
+  padding: clamp(10px, 1vw, 16px) clamp(24px, 3vw, 34px);
+  max-width: 90%;
+  font-size: clamp(14px, 2vw, 18px);
+  text-align: center;
+  white-space: normal;
+  line-height: 1.4;
+  color: #fff;
+  background-color: #152a45;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  vertical-align: middle;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3),
+              inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+
+/* invert on hover (white background, green border + text) */
+.ppa-bottom-cta .cta-button:hover{
+  background-color: #fff; /* White background */
+  color: #152a45; /* Green text */
+  border: 2px solid #152a45; /* Green border */
+  transform: scale(1.05); /* Button expands slightly */
+}
+
+
+
+.ppa-bottom-cta {
+  text-align: center; /* Centers the button horizontally */
+  margin-top: 100px; /* Adds 300px margin above the CTA button */
+  margin-bottom: clamp(60px, 8vw, 120px);
+}
+
+
+
+/* Extra correction for PPA Sections without CTA */
+.ppa-section .ppa-image {
+  transition: transform 0.6s ease, opacity 0.6s ease; /* Always smooth */
+}
+
+/* If section has no-cta marker, prevent image from sliding */
+.ppa-section .no-cta ~ .ppa-image {
+  transform: translateY(0) !important; /* Lock image in place if no-cta */
+}
+
+
+
+
+
+  html[lang="en"] .ppa-header .lang-en {
+    display: inline;
+  }
+  html[lang="en"] .ppa-header .lang-es {
+    display: none !important;
+  }
+
+  html[lang="es"] .ppa-header .lang-es {
+    display: inline;
+  }
+  html[lang="es"] .ppa-header .lang-en {
+    display: none !important;
+  }
+
+
+
+@media (max-width: 1024px) {
+  .ppa-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .ppa-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .ppa-text {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .ppa-section .cta-button {
+    position: static;
+    transform: none;
+    margin: 20px auto 0;
+  }
+}
+
+
+/* === Paragraph text size adjustment for Spanish on Why a PPA page === */
+body.why-a-ppa-page html[lang="es"] .ppa-text p {
+  font-size: clamp(14px, 1.7vw, 18px);
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+
+ /* === Top Spacing After Nav === */
+  .ppa-section:first-of-type {
+    margin-top: 80px;
+  }
+  
+  html[lang="en"] .ppa-header .lang-en {
+    display: inline;
+  }
+  html[lang="en"] .ppa-header .lang-es {
+    display: none !important;
+  }
+
+  html[lang="es"] .ppa-header .lang-es {
+    display: inline;
+  }
+  html[lang="es"] .ppa-header .lang-en {
+    display: none !important;
+  }
+
+  .ppa-content {
+    flex-direction: column !important;
+  }
+  .ppa-image,
+  .ppa-text {
+    
+    width: 100%;
+  }
+
+  /* === Reset image behavior + kill fade and slide === */
+  .ppa-image,
+  .ppa-image img,
+  .ppa-image.zoom-scroll,
+  .ppa-image.fade-in,
+  .ppa-image.move-image,
+  .ppa-section .full-text.open ~ .ppa-image {
+    transform: none !important;      /* 🛑 Kill upward slide */
+    transition: none !important;     /* 🛑 Disable animation lag */
+    opacity: 1 !important;           /* ✅ Prevent white space above */
+  }
+
+    .ppa-section .ppa-image {
+    display: block;
+    margin-inline: auto;        /* ✅ Perfectly center the image horizontally */
+    padding-left: 0 !important; /* ✅ Remove accidental left pad */
+    padding-right: 0 !important;/* ✅ Remove accidental right pad */
+  }
+
+  .ppa-section .ppa-image img {
+    display: block;
+    margin-inline: auto;        /* ✅ Center image within the wrapper */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* === Text Block Reset === */
+  .ppa-section .ppa-text,
+  .ppa-text {
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0; /* All spacing controlled by odd/even now */
+  }
+
+  .ppa-text-block,
+  .ppa-text-block .intro,
+  .ppa-text-block .full-text,
+  .ppa-text-block .full-text p {
+    text-align: left;
+    font-size: clamp(16px, 5vw, 20px);
+    line-height: 1.65;
+    color: #333;
+    margin: 0 0 18px 0;
+    padding: 0 !important;
+  }
+
+
+
+body.why-a-ppa-page .ppa-header h1{
+  display: block;                             /* ✅ Full-width block to center reliably */
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: clamp(12px, 4vw, 20px);       /* ✅ Safe left spacing */
+  padding-right: clamp(12px, 4vw, 20px);      /* ✅ Safe right spacing */
+  font-size: clamp(18px, 6vw, 26px);          /* ✅ Slightly tighter max font size */
+  font-weight: 700;
+  padding-top: 10px;     /* ✅ Optional tweak to visually balance top alignment */
+  padding-bottom: 2px;  /* ✅ Optional tweak to avoid triangle overlap */
+  text-align: center;          /* ✅ Remove any global constraint */
+line-height: 1.3;              /* ✅ Prevent line-stretching on container itself */
+max-height: 60px;
+margin-top:50px;
+
+body.why-a-ppa-page .ppa-header {
+  display: block;                     /* ✅ Remove flexbox — it's not helping here */
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;                /* ✅ Triangle watermark anchor */
+  z-index: 1;
+  height: auto !important;         /* ✅ Collapse to fit span only */
+  min-height: unset !important;    /* ✅ Remove accidental min height */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important
+ 
+}
+
+  body.why-a-ppa-page .header-gradient {
+    background: linear-gradient(
+      to bottom,
+    #ffffff 0%,
+    #f5f5f5 45%,
+    #f1f1f1 60%,
+    #d3d3d3 85%,
+    #dcd8d8 100.1%
+    ) !important; /* ⬅️ Forces override over desktop rule */
+    height: 50px; /* Optional tweak */
+   }
+
+
+
+
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+
+
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+
+
+
+
+body.why-a-ppa-page .ppa-header::before {
+  content: "";                                   /* 🔧 Required for pseudo-element to render */
+  position: absolute;                            /* 🔧 Allows manual positioning */
+  inset: 0;                                      /* 📐 Fills the entire .ppa-header box (top/right/bottom/left = 0) */
+  display: flex;                                 /* ✅ Enables alignment within the box */
+  align-items: center;                           /* ✅ Vertically center the image */
+  justify-content: center;                       /* ✅ Horizontally center it (optional if missing) */
+  background: url("img/tri_fade.png") no-repeat center / 130px;/* 🖼 Image source + scales the image to 50px — adjust this directly */
+  opacity: 0.9;                                   /* 🌫 Triangle strength — lower to fade, raise to bold */
+  pointer-events: none;                           /* 🛡 Prevent interaction */
+  z-index: -1;                                     /* 📚 Keeps it behind text */
+  margin-bottom: 0px;
+ bottom: 35%; /* ⬆️ Raise from 46% to 42% */
+}
+
+
+ body.why-a-ppa-page .ppa-subheader span{
+    font-size: clamp(12px, 4.8vw, 20px);
+    font-weight: 700;
+    color: #060606;
+    text-align: center;
+    padding: 0;
+  margin-left: 0px;
+  }
+
+
+  .ppa-section .intro {
+    display: none;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    display: inline-block;
+    font-size: clamp(16px, 5vw, 20px);
+    font-weight: 400;
+    color: #333;
+    letter-spacing: .9px;
+    line-height: 1.6;
+  }
+
+  /* === Read More Button === */
+  .ppa-section .read-more {
+    display: inline-block;
+    font-size: clamp(12px, 4vw, 18px);
+    font-weight: 700;
+    text-decoration: underline;
+    color: #152a45;
+    cursor: pointer;
+    margin-bottom: 12px;
+    text-align: left;
+    padding: 0;
+  }
+
+
+  /* === Full Text Toggle === */
+  .ppa-section .full-text {
+   display: none;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    display: inline-block;
+     font-size: clamp(16px, 5vw, 20px);
+    font-weight: 400;
+    color: #333;
+    letter-spacing: .9px;
+    line-height: 1.6;
+  }
+
+  .ppa-section .full-text.open {
+    display: block;
+    opacity: 1;
+  }
+
+  /* === CTA Buttons — Per Section === */
+  .ppa-section .cta-button {
+    display: none;
+    width: 100%;
+    max-width: 375px;
+    margin: 24px auto 0;
+    background: #152a45;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  .ppa-section .cta-button.show {
+    display: block;
+  }
+  .ppa-section .cta-button:active {
+    transform: scale(0.97);
+  }
+
+  /* === CTA Buttons — Bottom CTA === */
+  .ppa-bottom-cta .cta-button {
+    display: block;
+    width: 80%;
+    max-width: 375px;
+    margin: 48px auto;
+    font-size: 16px;
+    background: #152a45;
+    color: white;
+    padding: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 50px;
+    border: 2px solid white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    margin-top: 0px;
+  }
+  .ppa-bottom-cta .cta-button:active {
+    transform: scale(0.97);
+  }
+
+  /* === Top Spacing After Nav === */
+  .ppa-section:first-of-type {
+    margin-top: 80px;
+  }
+
+  /* === Odd/Even Nudging (Fixed) === */
+  .ppa-section.odd .ppa-content .ppa-text {
+    padding-left: 19px !important;
+    padding-right: 5px !important;
+    margin-left: clamp(10px, 4vw, 20px) !important;
+    margin-right: clamp(10px, 4vw, 20px) !important;
+   }
+
+  .ppa-section.even .ppa-content .ppa-text {
+    padding-left: 18px !important;
+    padding-right: 5px !important;
+     margin-right: clamp(10px, 4vw, 20px) !important;
+
+  }
+
+   .ppa-section .read-more {
+    display: block;
+    text-align: left;
+    padding-top: 4px;
+    margin-top: 4px;
+  }
+
+  .ppa-section.odd .ppa-text {
+    margin-right: clamp(10px, 4vw, 20px) !important;
+  }
+
+    .ppa-section .ppa-image {
+    margin-bottom: 2px !important;  /* 🔧 Reduce spacing under image */
+  }
+
+   .ppa-section:last-of-type {
+    margin-bottom: 16px !important;  /* 🔧 Tighten space before CTA */
+  }
+
+  body.why-a-ppa-page.weglot-active.ready {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  footer.main-footer {
+    margin-bottom: 0 !important;
+    padding-bottom: clamp(32px, 6vw, 48px) !important;
+  }
+
+
+}
+
+
+
+  
+
+
+
+  
