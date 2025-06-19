@@ -519,10 +519,10 @@ function submitForm(e) {
     alert("✅ Form submitted! One of our Energy Guides will be in touch shortly.");
     form.reset();
   })
-  .catch(error => {
-    alert("❌ Something went wrong. Please try again.");
-    console.error("Error!", error.message);
-  });
+.catch(error => {
+  alert("❌ Something went wrong:\n" + error.message);
+  console.error("Error!", error.message);
+});
 }
 </script>
 
