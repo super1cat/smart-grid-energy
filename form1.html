@@ -488,41 +488,27 @@ function toggleFooterLang() {
 
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyrwXtBlZTb823MwY-SB1MuZsA55Wl2ZX4eRSvawp3kMVisI7QBLsngLE9OKMfTzg6Y/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwRGLR8Rp-ssZ-XpCHFJ963VJQyvU2D4Ju6oc2ivp2uj_DSu0SVvzfuGMyN4HpAlmU/exec";
 
 function submitForm(e) {
   e.preventDefault();
   const form = document.getElementById("energy-consultation-form");
 
-  const data = {
-    firstName: document.getElementById("first-name").value,
-    lastName: document.getElementById("last-name").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    address: document.getElementById("home-address").value || document.getElementById("home-address-es").value,
-    city: document.getElementById("city").value,
-    state: document.getElementById("state").value,
-    zip: document.getElementById("zip").value,
-    ownHome: document.getElementById("own-home").value,
-    electricBill: document.getElementById("electric-bill").value,
-    provider: document.getElementById("electric-provider").value,
-    moreInfo: document.getElementById("more-info").value
-  };
+  const formData = new FormData(form);
 
   fetch(scriptURL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: formData
   })
   .then(response => {
     if (!response.ok) throw new Error("Bad response");
     alert("✅ Form submitted! One of our Energy Guides will be in touch shortly.");
     form.reset();
   })
-.catch(error => {
-  alert("❌ Something went wrong:\n" + error.message);
-  console.error("Error!", error.message);
-});
+  .catch(error => {
+    alert("❌ Something went wrong: " + error.message);
+    console.error("Error!", error.message);
+  });
 }
 </script>
 
