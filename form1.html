@@ -511,11 +511,15 @@ function submitForm(e) {
 
   fetch(scriptURL, {
     method: "POST",
+    headers: { "Content-Type": "application/json" }, // ✅ THIS FIXED LINE
     body: JSON.stringify(data)
-  }).then(response => {
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Bad response");
     alert("✅ Form submitted! One of our Energy Guides will be in touch shortly.");
     form.reset();
-  }).catch(error => {
+  })
+  .catch(error => {
     alert("❌ Something went wrong. Please try again.");
     console.error("Error!", error.message);
   });
