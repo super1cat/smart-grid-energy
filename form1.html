@@ -64,7 +64,8 @@
         </span><span class="lang-es">Solo unos detalles</span></h2>
         <p><span class="lang-en">One of our Energy Guides will be in touch soon</span><span class="lang-es">Un Guía Energético le contactará pronto.</span></p>
 
-        <form id="energy-consultation-form" novalidate>
+        <form id="energy-consultation-form" novalidate onsubmit="submitForm(event)">
+
           <div class="inline-fields">
             <div><label for="first-name">First Name <span style="color:red">*</span></label><input type="text" id="first-name" required></div>
             <div><label for="last-name">Last Name <span style="color:red">*</span></label><input type="text" id="last-name" required></div>
@@ -484,6 +485,42 @@ function toggleFooterLang() {
   });
 </script>
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq24012da074c478efe356de62f0963e479b07661b6b35d10a631ed7f46028500d" defer></script>
+
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbx2DL88lOdEBjIdBYB1TDXNqJIPKMQ0qvyfvW4101MwW4jU251FVnfwLAqN8Dzdj8BB/exec";
+
+function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById("energy-consultation-form");
+
+  const data = {
+    firstName: document.getElementById("first-name").value,
+    lastName: document.getElementById("last-name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    address: document.getElementById("home-address").value || document.getElementById("home-address-es").value,
+    city: document.getElementById("city").value,
+    state: document.getElementById("state").value,
+    zip: document.getElementById("zip").value,
+    ownHome: document.getElementById("own-home").value,
+    electricBill: document.getElementById("electric-bill").value,
+    provider: document.getElementById("electric-provider").value,
+    moreInfo: document.getElementById("more-info").value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  }).then(response => {
+    alert("✅ Form submitted! One of our Energy Guides will be in touch shortly.");
+    form.reset();
+  }).catch(error => {
+    alert("❌ Something went wrong. Please try again.");
+    console.error("Error!", error.message);
+  });
+}
+</script>
 
 </body>
 </html>
