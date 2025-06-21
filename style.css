@@ -4161,7 +4161,6 @@ body.why-us-page .why-us-new-section .icon-text-container {
   flex-direction: column; /* Stack the icon above the text */
   align-items: center; /* Center the icon horizontally */
   margin-top: 20px; /* Add space above the icon */
-  
 
 }
 
@@ -4172,7 +4171,6 @@ body.why-us-page .why-us-new-section .icon-text-container .icon {
   object-fit: contain; /* Ensure the icon does not stretch */
   margin-bottom: 10px; /* Space between the icon and the text */
   margin-top: 0px;
-
 }
 
   /* Adjust text size and layout for readability */
