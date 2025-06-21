@@ -4109,7 +4109,7 @@ padding: clamp(14px, 2vw, 20px) clamp(14px, 2.5vw, 24px) clamp(10px, 1.2vw, 16px
 
   /* --- Hero Section --- */
   body.why-us-page .why-us-hero-section {
-    background-image: url('img/group.png');
+    background-image: url('img/group.jpg');
     background-size: 140% auto;  /* Zoom out a little bit */
     background-position: top center;  /* Keep the top of the image in focus */
     background-repeat: no-repeat;
